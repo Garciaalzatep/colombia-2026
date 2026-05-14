@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -103,60 +102,61 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);co
 @media(max-width:580px){.mcd{display:none;}.grp-table th:nth-child(5),.grp-table td:nth-child(5),.grp-table th:nth-child(6),.grp-table td:nth-child(6){display:none;}}
 
 /* MUSIC */
-.music-section{background:var(–card);border:1px solid var(–border);border-radius:16px;padding:clamp(20px,4vw,36px);margin-bottom:16px;}
+.music-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:clamp(20px,4vw,36px);margin-bottom:16px;}
 .music-section:hover{border-color:rgba(255,209,0,0.4);}
 .music-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
 .music-icon{font-size:clamp(2rem,5vw,3rem);}
-.music-title{font-family:‘Arial Black’,‘Arial Bold’,Arial,sans-serif;font-size:clamp(1.3rem,3.5vw,2.2rem);letter-spacing:3px;}
+.music-title{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:clamp(1.3rem,3.5vw,2.2rem);letter-spacing:3px;}
 .music-desc{font-size:0.82rem;color:rgba(255,255,255,0.45);letter-spacing:1px;margin-bottom:16px;line-height:1.5;}
 .music-links{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
-.music-link{font-family:‘Courier New’,Courier,monospace;font-size:0.65rem;font-weight:700;letter-spacing:2px;padding:8px 16px;border-radius:6px;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;}
+.music-link{font-family:'Courier New',Courier,monospace;font-size:0.65rem;font-weight:700;letter-spacing:2px;padding:8px 16px;border-radius:6px;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;}
 .music-link.yt{background:rgba(255,0,0,0.15);border:1px solid rgba(255,0,0,0.4);color:#ff6666;}
 .music-link.yt:hover{background:rgba(255,0,0,0.3);border-color:#ff0000;color:#fff;}
 .music-link.sp{background:rgba(30,215,96,0.12);border:1px solid rgba(30,215,96,0.35);color:#1ed760;}
 .music-link.sp:hover{background:rgba(30,215,96,0.25);border-color:#1ed760;color:#fff;}
 /* synth player */
-.synth-player{background:rgba(0,0,0,0.4);border:1px solid var(–border);border-radius:12px;padding:16px 20px;}
-.synth-title{font-family:‘Courier New’,Courier,monospace;font-size:0.65rem;color:rgba(255,209,0,0.6);letter-spacing:3px;margin-bottom:12px;}
+.synth-player{background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:12px;padding:16px 20px;}
+.synth-title{font-family:'Courier New',Courier,monospace;font-size:0.65rem;color:rgba(255,209,0,0.6);letter-spacing:3px;margin-bottom:12px;}
 .synth-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-.synth-btn{font-family:‘Courier New’,Courier,monospace;font-size:0.7rem;font-weight:700;letter-spacing:2px;padding:8px 18px;border-radius:6px;cursor:pointer;border:none;transition:all 0.2s;}
-.synth-play{background:var(–yellow);color:#000;}
+.synth-btn{font-family:'Courier New',Courier,monospace;font-size:0.7rem;font-weight:700;letter-spacing:2px;padding:8px 18px;border-radius:6px;cursor:pointer;border:none;transition:all 0.2s;}
+.synth-play{background:var(--yellow);color:#000;}
 .synth-play:hover{background:#fff200;}
 .synth-stop{background:rgba(206,17,38,0.2);border:1px solid rgba(206,17,38,0.4);color:#ff6666;}
 .synth-stop:hover{background:rgba(206,17,38,0.4);color:#fff;}
-.synth-mode{background:rgba(255,255,255,0.06);border:1px solid var(–border);color:rgba(255,255,255,0.5);padding:8px 14px;border-radius:6px;cursor:pointer;font-family:‘Courier New’,Courier,monospace;font-size:0.65rem;letter-spacing:1px;transition:all 0.2s;}
-.synth-mode.on{border-color:var(–yellow);color:var(–yellow);}
+.synth-mode{background:rgba(255,255,255,0.06);border:1px solid var(--border);color:rgba(255,255,255,0.5);padding:8px 14px;border-radius:6px;cursor:pointer;font-family:'Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:1px;transition:all 0.2s;}
+.synth-mode.on{border-color:var(--yellow);color:var(--yellow);}
 .synth-viz{display:flex;align-items:flex-end;gap:3px;height:32px;margin-left:auto;}
-.viz-bar{width:4px;background:var(–yellow);border-radius:2px;transition:height 0.1s;}
-.synth-label{font-family:‘Courier New’,Courier,monospace;font-size:0.6rem;color:rgba(255,255,255,0.3);letter-spacing:2px;}
+.viz-bar{width:4px;background:var(--yellow);border-radius:2px;transition:height 0.1s;}
+.synth-label{font-family:'Courier New',Courier,monospace;font-size:0.6rem;color:rgba(255,255,255,0.3);letter-spacing:2px;}
+
 
 /* ENTRY SPLASH */
 #entry-splash{
-position:fixed;inset:0;z-index:99999;
-background:#050a14;
-display:flex;flex-direction:column;align-items:center;justify-content:center;
-cursor:pointer;
-transition:opacity 0.8s ease;
+  position:fixed;inset:0;z-index:99999;
+  background:#050a14;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:opacity 0.8s ease;
 }
 #entry-splash.hide{opacity:0;pointer-events:none;}
 .es-flag{font-size:clamp(3rem,10vw,6rem);margin-bottom:16px;animation:esfloat 2s ease-in-out infinite;}
 @keyframes esfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.es-title{font-family:‘Arial Black’,‘Arial Bold’,Arial,sans-serif;font-size:clamp(3.5rem,13vw,9rem);color:#FFD100;
-text-shadow:0 0 40px rgba(255,209,0,0.5);line-height:0.9;text-align:center;margin-bottom:8px;}
-.es-sub{font-family:‘Courier New’,Courier,monospace;font-size:clamp(0.65rem,2vw,1rem);
-color:rgba(255,255,255,0.4);letter-spacing:6px;margin-bottom:48px;}
+.es-title{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:clamp(3.5rem,13vw,9rem);color:#FFD100;
+  text-shadow:0 0 40px rgba(255,209,0,0.5);line-height:0.9;text-align:center;margin-bottom:8px;}
+.es-sub{font-family:'Courier New',Courier,monospace;font-size:clamp(0.65rem,2vw,1rem);
+  color:rgba(255,255,255,0.4);letter-spacing:6px;margin-bottom:48px;}
 .es-btn{
-font-family:‘Arial Black’,‘Arial Bold’,Arial,sans-serif;font-size:clamp(1.4rem,4vw,2.2rem);letter-spacing:6px;
-color:#000;background:var(–yellow);
-border:none;border-radius:60px;padding:18px 48px;cursor:pointer;
-animation:espulse 1.5s ease-in-out infinite;
-box-shadow:0 0 40px rgba(255,209,0,0.5);
+  font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:clamp(1.4rem,4vw,2.2rem);letter-spacing:6px;
+  color:#000;background:var(--yellow);
+  border:none;border-radius:60px;padding:18px 48px;cursor:pointer;
+  animation:espulse 1.5s ease-in-out infinite;
+  box-shadow:0 0 40px rgba(255,209,0,0.5);
 }
 @keyframes espulse{0%,100%{transform:scale(1);box-shadow:0 0 30px rgba(255,209,0,0.4)}
-50%{transform:scale(1.06);box-shadow:0 0 60px rgba(255,209,0,0.8)}}
+  50%{transform:scale(1.06);box-shadow:0 0 60px rgba(255,209,0,0.8)}}
 .es-btn:hover{background:#fff200;}
-.es-hint{font-family:‘Courier New’,Courier,monospace;font-size:clamp(0.55rem,1.5vw,0.72rem);
-color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
+.es-hint{font-family:'Courier New',Courier,monospace;font-size:clamp(0.55rem,1.5vw,0.72rem);
+  color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
 .es-stripes{position:absolute;top:0;left:0;right:0;height:12px;display:flex;}
 .es-y{flex:2;background:#FFD100;}
 .es-b{flex:1;background:#003087;}
@@ -167,10 +167,11 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
 </head>
 <body>
 
-<!-- Cali Pachanguero - Grupo Niche - Internet Archive -->
 
-<audio id="cali-audio" loop preload="none">
-  <source src="https://archive.org/download/03-consejo-de-madre_202301/04%20Cali%20Pachanguero.mp3" type="audio/mpeg">
+
+<!-- Cali Pachanguero - Grupo Niche - Internet Archive -->
+<audio id="cali-audio" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <div id="entry-splash">
@@ -206,7 +207,6 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
   <div class="scroll-hint">SCROLL FOR MORE</div>
 
 <!-- Music starts here - injected on splash tap -->
-
 <div id="yt-hero-container" style="display:none;width:1px;height:1px;overflow:hidden;position:absolute;"></div>
 
 </div>
@@ -214,6 +214,7 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
 <nav>
   <div class="nav-logo">COLOMBIA 2026</div>
   <div class="nav-links">
+    <a class="nav-link" href="#live">LIVE</a>
     <a class="nav-link" href="#matches">MATCHES</a>
     <a class="nav-link" href="#group">GROUP K</a>
     <a class="nav-link" href="#schedule">SCHEDULE</a>
@@ -225,7 +226,6 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
 </nav>
 
 <!-- COLOMBIA MATCHES -->
-
 <div class="sec" id="matches">
   <div class="sec-label">GROUP STAGE</div>
   <div class="sec-title">COLOMBIA'S <span>MATCHES</span></div>
@@ -237,7 +237,7 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
       <div class="mvs"><span class="tname">UZBEKISTAN</span><span class="vsdot">VS</span><span class="tname col">COLOMBIA</span></div>
       <div class="mmeta"><span>10:00 PM ET</span><span>Estadio Azteca, Mexico City</span><span>Group K MD1</span></div>
     </div>
-    <div class="mcd"><span class="mcd-lbl">KICKOFF IN</span><span id="t1">--</span></div>
+    <div class="mcd"><span class="mcd-lbl">KICKOFF IN</span><span id="t1">--</span></div></div><div id="score-md1" style="display:none;text-align:center;padding:4px 0;"></div><div style="display:none">
   </div>
   <div class="match-card" id="mc2">
     <div class="mdate"><div class="mday">23</div><div class="mmonth">JUNE</div></div>
@@ -259,7 +259,6 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
   </div>
 
   <!-- Progress bar -->
-
   <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:clamp(14px,3vw,24px);margin-top:20px;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
       <div style="font-family:'Courier New',Courier,monospace;font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:3px;">TOURNAMENT PROGRESS</div>
@@ -273,13 +272,16 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
 </div>
 
 <!-- GROUP K -->
-
 <div class="sec" id="group">
   <div class="sec-label">STANDINGS</div>
-  <div class="sec-title">GROUP <span>K</span></div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+    <div class="sec-title" style="margin-bottom:0;">GROUP <span>K</span></div>
+    <div id="live-badge" style="font-family:'Courier New',monospace;font-size:0.6rem;font-weight:700;letter-spacing:2px;padding:4px 10px;border-radius:20px;background:rgba(255,209,0,0.1);border:1px solid rgba(255,209,0,0.3);color:rgba(255,209,0,0.6);">PRE-TOURNAMENT</div>
+  </div>
+  <div id="live-status" style="font-family:'Courier New',monospace;font-size:0.62rem;color:rgba(255,255,255,0.25);letter-spacing:2px;margin-bottom:16px;"></div>
   <table class="grp-table">
     <thead><tr><th>#</th><th>TEAM</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>PTS</th></tr></thead>
-    <tbody>
+    <tbody id="live-group-tbody">
       <tr class="col-row"><td class="pos q">1</td><td>🇨🇴 COLOMBIA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
       <tr><td class="pos q">2</td><td>🇵🇹 PORTUGAL</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
       <tr><td class="pos">3</td><td>🇨🇩 DR CONGO</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
@@ -287,9 +289,63 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
     </tbody>
   </table>
   <div style="font-size:0.7rem;color:rgba(255,209,0,0.6);margin-top:12px;letter-spacing:1px;">Top 2 qualify automatically · Best 8 third-place teams also advance</div>
+<div style="margin-top:16px;background:rgba(0,48,135,0.15);border:1px solid rgba(0,48,135,0.4);border-radius:10px;padding:14px 18px;">
+  <div style="font-family:'Courier New',monospace;font-size:0.68rem;color:#6699ff;letter-spacing:2px;margin-bottom:6px;font-weight:700;">⚡ LIVE AUTO-UPDATES</div>
+  <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.6;">
+    This table updates automatically after every match. Standings, scores and results refresh every 2 minutes during the tournament. Powered by API-Football free tier.
+  </div>
+</div>
+
 </div>
 
 <!-- FULL SCHEDULE -->
+
+<!-- LIVE SCORES & STANDINGS -->
+<div class="sec" id="live">
+  <div class="sec-label">AUTO-UPDATING</div>
+  <div class="sec-title">LIVE <span>SCORES</span></div>
+
+  <!-- Status bar -->
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+    <div id="live-dot" style="width:10px;height:10px;border-radius:50%;background:#888;flex-shrink:0;"></div>
+    <div id="live-status" style="font-family:'Courier New',monospace;font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:2px;">LOADING LIVE DATA...</div>
+    <div style="margin-left:auto;font-family:'Courier New',monospace;font-size:0.6rem;color:rgba(255,255,255,0.2);letter-spacing:1px;" id="live-updated"></div>
+  </div>
+
+  <!-- Live matches -->
+  <div id="live-matches" style="margin-bottom:28px;"></div>
+
+  <!-- Group K live standings -->
+  <div class="sec-label" style="margin-bottom:8px;">LIVE STANDINGS</div>
+  <div class="sec-title" style="font-size:clamp(1.8rem,5vw,3rem);margin-bottom:16px;">GROUP <span>K</span></div>
+  <table class="grp-table" id="live-standings">
+    <thead><tr><th>#</th><th>TEAM</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>PTS</th></tr></thead>
+    <tbody id="live-standings-body">
+      <tr class="col-row"><td class="pos q">1</td><td>🇨🇴 COLOMBIA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+      <tr><td class="pos q">2</td><td>🇵🇹 PORTUGAL</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+      <tr><td class="pos">3</td><td>🇨🇩 DR CONGO</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+      <tr><td class="pos">4</td><td>🇺🇿 UZBEKISTAN</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
+    </tbody>
+  </table>
+  <div style="font-size:0.68rem;color:rgba(255,209,0,0.5);margin-top:10px;font-family:'Courier New',monospace;letter-spacing:1px;">Updates automatically after each match · Top 2 + best 3rd advance</div>
+</div>
+
+<style>
+.live-match{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:10px;position:relative;transition:border-color 0.3s;}
+.live-match.is-live{border-color:rgba(206,17,38,0.6);animation:livepulse 2s ease-in-out infinite;}
+.live-match.col-match{border-left:3px solid var(--yellow);}
+@keyframes livepulse{0%,100%{box-shadow:0 0 0 rgba(206,17,38,0)}50%{box-shadow:0 0 20px rgba(206,17,38,0.3)}}
+.lm-top{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.lm-teams{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(1rem,2.5vw,1.3rem);font-weight:900;letter-spacing:1px;flex:1;}
+.lm-score{font-family:'Courier New',monospace;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:900;color:var(--yellow);min-width:60px;text-align:center;}
+.lm-score.is-live{color:#ff4444;animation:scorepulse 1s step-end infinite;}
+@keyframes scorepulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.lm-meta{font-size:0.65rem;color:rgba(255,255,255,0.35);font-family:'Courier New',monospace;letter-spacing:1px;display:flex;gap:12px;flex-wrap:wrap;}
+.lm-badge{font-family:'Courier New',monospace;font-size:0.55rem;font-weight:700;letter-spacing:2px;padding:2px 8px;border-radius:12px;margin-left:auto;}
+.badge-live{background:var(--red);color:#fff;animation:livepulse 1s ease-in-out infinite;}
+.badge-ft{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);}
+.badge-ns{background:rgba(0,48,135,0.4);color:rgba(100,150,255,0.8);}
+</style>
 
 <div class="sec" id="schedule">
   <div class="sec-label">ALL 104 MATCHES</div>
@@ -311,24 +367,127 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
 </div>
 
 <!-- SQUAD -->
-
 <div class="sec" id="players">
-  <div class="sec-label">THE SQUAD</div>
-  <div class="sec-title">KEY <span>PLAYERS</span></div>
-  <div class="players-grid">
-    <div class="player-card star-p"><div class="pnum">7</div><div class="pname">LUIS DIAZ</div><div class="ppos">FORWARD</div><div class="pclub">Liverpool FC</div></div>
-    <div class="player-card star-p"><div class="pnum">10</div><div class="pname">JAMES RODRIGUEZ</div><div class="ppos">MIDFIELDER</div><div class="pclub">Rayo Vallecano</div></div>
-    <div class="player-card"><div class="pnum">1</div><div class="pname">CAMILO VARGAS</div><div class="ppos">GOALKEEPER</div><div class="pclub">Nacional</div></div>
-    <div class="player-card"><div class="pnum">13</div><div class="pname">YERRY MINA</div><div class="ppos">DEFENDER</div><div class="pclub">Fiorentina</div></div>
-    <div class="player-card"><div class="pnum">8</div><div class="pname">MATEUS URIBE</div><div class="ppos">MIDFIELDER</div><div class="pclub">Porto</div></div>
-    <div class="player-card"><div class="pnum">11</div><div class="pname">CUADRADO</div><div class="ppos">MIDFIELDER</div><div class="pclub">Internacional</div></div>
-    <div class="player-card"><div class="pnum">6</div><div class="pname">DAVINSON SANCHEZ</div><div class="ppos">DEFENDER</div><div class="pclub">Galatasaray</div></div>
-    <div class="player-card"><div class="pnum">9</div><div class="pname">FALCAO</div><div class="ppos">FORWARD</div><div class="pclub">Club Legend</div></div>
+  <div class="sec-label">LOS CAFETEROS</div>
+  <div class="sec-title">THE <span>SQUAD</span></div>
+  <div class="photo-grid">
+
+    <div class="photo-card star-p">
+      <div class="photo-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Luis_D%C3%ADaz_2022_%28cropped%29.jpg/440px-Luis_D%C3%ADaz_2022_%28cropped%29.jpg" alt="Luis Diaz" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="photo-fallback">7</div>
+      </div>
+      <div class="photo-info">
+        <div class="photo-name">LUIS DÍAZ</div>
+        <div class="photo-pos">⚡ FORWARD</div>
+        <div class="photo-club">Liverpool FC</div>
+      </div>
+    </div>
+
+    <div class="photo-card star-p">
+      <div class="photo-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/forty/James_Rodr%C3%ADguez_2018_FIFA_World_Cup.jpg/440px-James_Rodr%C3%ADguez_2018_FIFA_World_Cup.jpg" alt="James Rodriguez" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="photo-fallback">10</div>
+      </div>
+      <div class="photo-info">
+        <div class="photo-name">JAMES RODRÍGUEZ</div>
+        <div class="photo-pos">🎯 MIDFIELDER</div>
+        <div class="photo-club">Rayo Vallecano</div>
+      </div>
+    </div>
+
+    <div class="photo-card star-p">
+      <div class="photo-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Falcao_2019_%28cropped%29.jpg/440px-Falcao_2019_%28cropped%29.jpg" alt="Falcao" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="photo-fallback">9</div>
+      </div>
+      <div class="photo-info">
+        <div class="photo-name">FALCAO</div>
+        <div class="photo-pos">🔥 FORWARD</div>
+        <div class="photo-club">Club Legend</div>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <div class="photo-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/20181115_FIFA_Friendly_Austria_vs._Russia_Federico_Valverde_850_5955_%28cropped%29.jpg/440px-20181115_FIFA_Friendly_Austria_vs._Russia_Federico_Valverde_850_5955_%28cropped%29.jpg" alt="Davinson Sanchez" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="photo-fallback">6</div>
+      </div>
+      <div class="photo-info">
+        <div class="photo-name">DÁVINSON SÁNCHEZ</div>
+        <div class="photo-pos">🛡️ DEFENDER</div>
+        <div class="photo-club">Galatasaray</div>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <div class="photo-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Yerry_Mina_2019_%28cropped%29.jpg/440px-Yerry_Mina_2019_%28cropped%29.jpg" alt="Yerry Mina" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="photo-fallback">13</div>
+      </div>
+      <div class="photo-info">
+        <div class="photo-name">YERRY MINA</div>
+        <div class="photo-pos">🛡️ DEFENDER</div>
+        <div class="photo-club">Fiorentina</div>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <div class="photo-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Juan_Cuadrado_2019_%28cropped%29.jpg/440px-Juan_Cuadrado_2019_%28cropped%29.jpg" alt="Cuadrado" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="photo-fallback">11</div>
+      </div>
+      <div class="photo-info">
+        <div class="photo-name">CUADRADO</div>
+        <div class="photo-pos">⚙️ MIDFIELDER</div>
+        <div class="photo-club">Internacional</div>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <div class="photo-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Richard_Rios_2024_%28cropped%29.jpg/440px-Richard_Rios_2024_%28cropped%29.jpg" alt="Richard Rios" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="photo-fallback">8</div>
+      </div>
+      <div class="photo-info">
+        <div class="photo-name">RICHARD RÍOS</div>
+        <div class="photo-pos">⚙️ MIDFIELDER</div>
+        <div class="photo-club">Palmeiras</div>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <div class="photo-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Daniel_Mu%C3%B1oz_%282023%29_%28cropped%29.jpg/440px-Daniel_Mu%C3%B1oz_%282023%29_%28cropped%29.jpg" alt="Daniel Munoz" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="photo-fallback">2</div>
+      </div>
+      <div class="photo-info">
+        <div class="photo-name">DANIEL MUÑOZ</div>
+        <div class="photo-pos">🛡️ DEFENDER</div>
+        <div class="photo-club">Crystal Palace</div>
+      </div>
+    </div>
+
   </div>
+
+  <style>
+  .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(150px,22vw,220px),1fr));gap:16px;}
+  .photo-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color 0.3s,transform 0.2s;position:relative;}
+  .photo-card:hover{border-color:var(--yellow);transform:translateY(-5px);}
+  .photo-card.star-p::before{content:'⭐ STAR';position:absolute;top:8px;right:8px;font-size:0.5rem;font-family:'Courier New',monospace;color:var(--yellow);letter-spacing:1px;z-index:2;background:rgba(0,0,0,0.7);padding:2px 6px;border-radius:10px;}
+  .photo-wrap{width:100%;aspect-ratio:1;overflow:hidden;background:rgba(0,48,135,0.3);position:relative;display:flex;align-items:center;justify-content:center;}
+  .photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 0.4s;}
+  .photo-card:hover .photo-wrap img{transform:scale(1.07);}
+  .photo-fallback{display:none;width:100%;height:100%;align-items:center;justify-content:center;font-family:'Arial Black',Arial,sans-serif;font-size:3rem;font-weight:900;color:rgba(255,209,0,0.3);}
+  .photo-info{padding:12px 14px;}
+  .photo-name{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(0.8rem,1.8vw,1rem);font-weight:900;letter-spacing:1px;margin-bottom:3px;color:#fff;}
+  .photo-pos{font-size:0.72rem;color:rgba(255,255,255,0.45);letter-spacing:1px;margin-bottom:4px;}
+  .photo-club{font-size:0.72rem;color:rgba(255,209,0,0.65);font-weight:600;}
+  .photo-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--yellow),var(--blue),var(--red));}
+  </style>
 </div>
 
 <!-- STATS -->
-
 <div class="sec" id="stats">
   <div class="sec-label">LOS CAFETEROS</div>
   <div class="sec-title">WORLD CUP <span>HISTORY</span></div>
@@ -344,14 +503,13 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
   </div>
 </div>
 
-<!-- MUSIC -->
 
+<!-- MUSIC -->
 <div class="sec" id="music">
   <div class="sec-label">AMBIENTE</div>
   <div class="sec-title">MUSICA <span>COLOMBIANA</span></div>
 
   <!-- Vallenato -->
-
   <div class="music-section">
     <div class="music-header">
       <div class="music-icon">🪗</div>
@@ -361,40 +519,36 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
     </div>
     <div class="music-desc">El sonido del alma colombiana — acordeon, caja y guacharaca. Carlos Vives, Los Diablitos, Silvestre Dangond y mas.</div>
 
-```
-<!-- YouTube player - injected with sound on splash tap -->
-<div id="yt-container" style="border-radius:12px;overflow:hidden;margin-bottom:16px;border:1px solid var(--border);background:#000;min-height:clamp(200px,40vw,360px);display:flex;align-items:center;justify-content:center;">
-  <div style="font-family:'Courier New',Courier,monospace;font-size:0.7rem;color:rgba(255,209,0,0.4);letter-spacing:3px;">🪗 MUSICA LISTA — ENTRA PARA ESCUCHAR</div>
-</div>
-
-<div class="music-links">
-  <a class="music-link yt" href="https://www.youtube.com/watch?v=0c1XrFaOJ8c" target="_blank">▶ Carlos Vives Mix · YouTube</a>
-  <a class="music-link yt" href="https://www.youtube.com/watch?v=1F6TULQ3vb4" target="_blank">▶ Mix Colombiano · YouTube</a>
-  <a class="music-link sp" href="https://open.spotify.com/playlist/3c8cOIL9fPdlBQDQ5OINC7" target="_blank">♫ Vallenato Mix 2026 · Spotify</a>
-</div>
-<div class="synth-player">
-  <div class="synth-title">RITMO VALLENATO — IN-PAGE SYNTH</div>
-  <div class="synth-controls">
-    <button class="synth-btn synth-play" onclick="startSynth('vallenato')">▶ PLAY VALLENATO</button>
-    <button class="synth-btn synth-stop" onclick="stopSynth()">■ STOP</button>
-    <div class="synth-viz" id="viz1">
-      <div class="viz-bar" style="height:8px"></div>
-      <div class="viz-bar" style="height:8px"></div>
-      <div class="viz-bar" style="height:8px"></div>
-      <div class="viz-bar" style="height:8px"></div>
-      <div class="viz-bar" style="height:8px"></div>
-      <div class="viz-bar" style="height:8px"></div>
-      <div class="viz-bar" style="height:8px"></div>
-      <div class="viz-bar" style="height:8px"></div>
+    <!-- YouTube player - injected with sound on splash tap -->
+    <div id="yt-container" style="border-radius:12px;overflow:hidden;margin-bottom:16px;border:1px solid var(--border);background:#000;min-height:clamp(200px,40vw,360px);display:flex;align-items:center;justify-content:center;">
+      <div style="font-family:'Courier New',Courier,monospace;font-size:0.7rem;color:rgba(255,209,0,0.4);letter-spacing:3px;">🪗 MUSICA LISTA — ENTRA PARA ESCUCHAR</div>
     </div>
-  </div>
-</div>
-```
 
+    <div class="music-links">
+      <a class="music-link yt" href="https://www.youtube.com/watch?v=0c1XrFaOJ8c" target="_blank">▶ Carlos Vives Mix · YouTube</a>
+      <a class="music-link yt" href="https://www.youtube.com/watch?v=1F6TULQ3vb4" target="_blank">▶ Mix Colombiano · YouTube</a>
+      <a class="music-link sp" href="https://open.spotify.com/playlist/3c8cOIL9fPdlBQDQ5OINC7" target="_blank">♫ Vallenato Mix 2026 · Spotify</a>
+    </div>
+    <div class="synth-player">
+      <div class="synth-title">RITMO VALLENATO — IN-PAGE SYNTH</div>
+      <div class="synth-controls">
+        <button class="synth-btn synth-play" onclick="startSynth('vallenato')">▶ PLAY VALLENATO</button>
+        <button class="synth-btn synth-stop" onclick="stopSynth()">■ STOP</button>
+        <div class="synth-viz" id="viz1">
+          <div class="viz-bar" style="height:8px"></div>
+          <div class="viz-bar" style="height:8px"></div>
+          <div class="viz-bar" style="height:8px"></div>
+          <div class="viz-bar" style="height:8px"></div>
+          <div class="viz-bar" style="height:8px"></div>
+          <div class="viz-bar" style="height:8px"></div>
+          <div class="viz-bar" style="height:8px"></div>
+          <div class="viz-bar" style="height:8px"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Salsa -->
-
   <div class="music-section">
     <div class="music-header">
       <div class="music-icon">💃</div>
@@ -428,8 +582,8 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
   </div>
 </div>
 
-<!-- NJ EVENTS -->
 
+<!-- NJ EVENTS -->
 <div class="sec" id="njevents">
   <div class="sec-label">IF YOU ARE IN NEW JERSEY</div>
   <div class="sec-title">WORLD CUP <span>EVENTS IN NJ</span></div>
@@ -437,70 +591,68 @@ color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
 
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(280px,40vw,420px),1fr));gap:14px;">
 
-```
-<div class="nj-card">
-  <div class="nj-date">JUN 6</div>
-  <div class="nj-num">01</div>
-  <div class="nj-title">Family Cup & Festival</div>
-  <div class="nj-loc">📍 Old Overpeck Park – Henry Hoebel Area, Leonia</div>
-  <div class="nj-desc">5-a-side tournaments, food trucks, cultural celebrations and kids activities. A full day of soccer fun for the whole family.</div>
-</div>
+    <div class="nj-card">
+      <div class="nj-date">JUN 6</div>
+      <div class="nj-num">01</div>
+      <div class="nj-title">Family Cup & Festival</div>
+      <div class="nj-loc">📍 Old Overpeck Park – Henry Hoebel Area, Leonia</div>
+      <div class="nj-desc">5-a-side tournaments, food trucks, cultural celebrations and kids activities. A full day of soccer fun for the whole family.</div>
+    </div>
 
-<div class="nj-card nj-ongoing">
-  <div class="nj-date">JUN 11 – JUL 19</div>
-  <div class="nj-num">02</div>
-  <div class="nj-title">World Cup Fan Fest</div>
-  <div class="nj-loc">📍 American Dream, East Rutherford</div>
-  <div class="nj-desc">Daily watch parties, live performances, celebrity appearances, giveaways and concerts throughout the entire tournament.</div>
-</div>
+    <div class="nj-card nj-ongoing">
+      <div class="nj-date">JUN 11 – JUL 19</div>
+      <div class="nj-num">02</div>
+      <div class="nj-title">World Cup Fan Fest</div>
+      <div class="nj-loc">📍 American Dream, East Rutherford</div>
+      <div class="nj-desc">Daily watch parties, live performances, celebrity appearances, giveaways and concerts throughout the entire tournament.</div>
+    </div>
 
-<div class="nj-card nj-ongoing">
-  <div class="nj-date">JUN 11 – JUL 19</div>
-  <div class="nj-num">03</div>
-  <div class="nj-title">Millburn Hills CE Watch Events</div>
-  <div class="nj-loc">📍 Millburn area spots</div>
-  <div class="nj-desc">Watch spots around town, themed retail and dining offers, Skills Day on June 20, Final Viewing Party on July 19.</div>
-</div>
+    <div class="nj-card nj-ongoing">
+      <div class="nj-date">JUN 11 – JUL 19</div>
+      <div class="nj-num">03</div>
+      <div class="nj-title">Millburn Hills CE Watch Events</div>
+      <div class="nj-loc">📍 Millburn area spots</div>
+      <div class="nj-desc">Watch spots around town, themed retail and dining offers, Skills Day on June 20, Final Viewing Party on July 19.</div>
+    </div>
 
-<div class="nj-card">
-  <div class="nj-date">5 STOPS</div>
-  <div class="nj-num">04</div>
-  <div class="nj-title">Fan Festival Stops — 5 NJ Towns</div>
-  <div class="nj-loc">📍 Multiple locations</div>
-  <div class="nj-desc">
-    Pre-game fan festivals before MetLife match days:<br>
-    <span style="color:rgba(255,209,0,0.7);">Jun 12</span> Jersey City &nbsp;·&nbsp;
-    <span style="color:rgba(255,209,0,0.7);">Jun 14</span> Overpeck Park, Bergen County<br>
-    <span style="color:rgba(255,209,0,0.7);">Jun 21</span> Secaucus &nbsp;·&nbsp;
-    <span style="color:rgba(255,209,0,0.7);">Jun 24</span> Newark<br>
-    <span style="color:rgba(255,209,0,0.7);">Jun 26</span> East Rutherford + Rutherford
-  </div>
-</div>
+    <div class="nj-card">
+      <div class="nj-date">5 STOPS</div>
+      <div class="nj-num">04</div>
+      <div class="nj-title">Fan Festival Stops — 5 NJ Towns</div>
+      <div class="nj-loc">📍 Multiple locations</div>
+      <div class="nj-desc">
+        Pre-game fan festivals before MetLife match days:<br>
+        <span style="color:rgba(255,209,0,0.7);">Jun 12</span> Jersey City &nbsp;·&nbsp;
+        <span style="color:rgba(255,209,0,0.7);">Jun 14</span> Overpeck Park, Bergen County<br>
+        <span style="color:rgba(255,209,0,0.7);">Jun 21</span> Secaucus &nbsp;·&nbsp;
+        <span style="color:rgba(255,209,0,0.7);">Jun 24</span> Newark<br>
+        <span style="color:rgba(255,209,0,0.7);">Jun 26</span> East Rutherford + Rutherford
+      </div>
+    </div>
 
-<div class="nj-card nj-special">
-  <div class="nj-date">JUN 13</div>
-  <div class="nj-num">05</div>
-  <div class="nj-title">World Cup Concert 🎤</div>
-  <div class="nj-loc">📍 American Dream, East Rutherford</div>
-  <div class="nj-desc">French Montana performs live after the Brazil vs. Morocco match. Concert + soccer in one night.</div>
-</div>
+    <div class="nj-card nj-special">
+      <div class="nj-date">JUN 13</div>
+      <div class="nj-num">05</div>
+      <div class="nj-title">World Cup Concert 🎤</div>
+      <div class="nj-loc">📍 American Dream, East Rutherford</div>
+      <div class="nj-desc">French Montana performs live after the Brazil vs. Morocco match. Concert + soccer in one night.</div>
+    </div>
 
-<div class="nj-card">
-  <div class="nj-date">JUN 14</div>
-  <div class="nj-num">06</div>
-  <div class="nj-title">Family Day</div>
-  <div class="nj-loc">📍 Sports Illustrated Stadium, Harrison</div>
-  <div class="nj-desc">Watch parties, Red Bulls meet-and-greets, soccer challenges, photo ops and KIDZ BOP LIVE.</div>
-</div>
+    <div class="nj-card">
+      <div class="nj-date">JUN 14</div>
+      <div class="nj-num">06</div>
+      <div class="nj-title">Family Day</div>
+      <div class="nj-loc">📍 Sports Illustrated Stadium, Harrison</div>
+      <div class="nj-desc">Watch parties, Red Bulls meet-and-greets, soccer challenges, photo ops and KIDZ BOP LIVE.</div>
+    </div>
 
-<div class="nj-card nj-special">
-  <div class="nj-date">JUL 19</div>
-  <div class="nj-num">07</div>
-  <div class="nj-title">World Cup Final Viewing Party 🏆</div>
-  <div class="nj-loc">📍 Taylor Park, Millburn</div>
-  <div class="nj-desc">Massive LED screen, live music, food stands and kids entertainment for the World Cup Final.</div>
-</div>
-```
+    <div class="nj-card nj-special">
+      <div class="nj-date">JUL 19</div>
+      <div class="nj-num">07</div>
+      <div class="nj-title">World Cup Final Viewing Party 🏆</div>
+      <div class="nj-loc">📍 Taylor Park, Millburn</div>
+      <div class="nj-desc">Massive LED screen, live music, food stands and kids entertainment for the World Cup Final.</div>
+    </div>
 
   </div>
 
@@ -1011,8 +1163,285 @@ function unmuteYT() {
   document.getElementById('entry-splash').addEventListener('click', enter);
 })();
 
-</script>
 
+// ── LIVE SCORES & STANDINGS ──────────────────────────────────────
+// Uses openfootball open data (no API key needed) + fallback to ESPN
+var GROUP_K_TEAMS = ['Colombia','Portugal','DR Congo','Uzbekistan'];
+var FLAGS = {'Colombia':'🇨🇴','Portugal':'🇵🇹','DR Congo':'🇨🇩','Uzbekistan':'🇺🇿'};
+var TEAM_NORM = {
+  'Colombia':'Colombia','colombia':'Colombia',
+  'Portugal':'Portugal','portugal':'Portugal',
+  'DR Congo':'DR Congo','dr congo':'DR Congo','Congo DR':'DR Congo',
+  'Uzbekistan':'Uzbekistan','uzbekistan':'Uzbekistan'
+};
+
+function normTeam(name) {
+  if (!name) return name;
+  return TEAM_NORM[name] || TEAM_NORM[name.toLowerCase()] || name;
+}
+
+function fetchLiveData() {
+  // Try openfootball GitHub raw JSON - free, no key
+  var url = 'https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json';
+  fetch(url)
+    .then(function(r){ return r.json(); })
+    .then(function(data){ processMatches(data); })
+    .catch(function(){ showOffline(); });
+}
+
+function processMatches(data) {
+  var matches = data.matches || [];
+  var groupK = [];
+  var live = [];
+  var recent = [];
+  var now = new Date();
+
+  // Standings tracker
+  var standings = {};
+  GROUP_K_TEAMS.forEach(function(t){ standings[t]={p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0}; });
+
+  matches.forEach(function(m) {
+    var t1 = normTeam(m.team1); var t2 = normTeam(m.team2);
+    var isK = GROUP_K_TEAMS.indexOf(t1)>=0 || GROUP_K_TEAMS.indexOf(t2)>=0;
+    if (!isK) return;
+
+    groupK.push(m);
+    var mDate = new Date(m.date + 'T' + (m.time||'00:00') + ':00');
+    var diff = now - mDate;
+    var isFinished = m.score && m.score.ft;
+    var isLive = !isFinished && diff > 0 && diff < 120*60*1000;
+    var isUpcoming = !isFinished && !isLive;
+
+    if (isLive) live.push(m);
+    else if (isFinished) recent.push(m);
+
+    // Update standings if finished
+    if (isFinished && standings[t1] && standings[t2]) {
+      var g1 = m.score.ft[0], g2 = m.score.ft[1];
+      standings[t1].p++; standings[t2].p++;
+      standings[t1].gf+=g1; standings[t1].ga+=g2;
+      standings[t2].gf+=g2; standings[t2].ga+=g1;
+      if(g1>g2){standings[t1].w++;standings[t1].pts+=3;standings[t2].l++;}
+      else if(g2>g1){standings[t2].w++;standings[t2].pts+=3;standings[t1].l++;}
+      else{standings[t1].d++;standings[t1].pts++;standings[t2].d++;standings[t2].pts++;}
+    }
+  });
+
+  // Render live matches
+  var toShow = live.concat(recent.slice(-3));
+  renderMatches(toShow, live.length > 0);
+
+  // Render standings
+  renderStandings(standings);
+
+  // Status
+  var dot = document.getElementById('live-dot');
+  var status = document.getElementById('live-status');
+  var updated = document.getElementById('live-updated');
+  if (live.length > 0) {
+    dot.style.background = '#ff2222';
+    dot.style.animation = 'livepulse 1s ease-in-out infinite';
+    status.textContent = live.length + ' MATCH' + (live.length>1?'ES':'') + ' LIVE NOW';
+    status.style.color = '#ff6666';
+  } else if (recent.length > 0) {
+    dot.style.background = '#22cc44';
+    status.textContent = 'LIVE DATA · ' + recent.length + ' GROUP K MATCHES PLAYED';
+    status.style.color = 'rgba(255,255,255,0.5)';
+  } else {
+    dot.style.background = '#ffdd44';
+    status.textContent = 'LIVE DATA CONNECTED · TOURNAMENT STARTS JUN 11';
+    status.style.color = 'rgba(255,255,255,0.4)';
+  }
+  updated.textContent = 'UPDATED ' + new Date().toLocaleTimeString();
+}
+
+function renderMatches(matches, hasLive) {
+  var el = document.getElementById('live-matches');
+  if (!matches.length) {
+    el.innerHTML = '<div style="font-family:\'Courier New\',monospace;font-size:0.72rem;color:rgba(255,255,255,0.25);letter-spacing:2px;padding:20px 0;">NO GROUP K MATCHES PLAYED YET · FIRST MATCH JUN 17</div>';
+    return;
+  }
+  var html = '';
+  matches.forEach(function(m) {
+    var t1 = normTeam(m.team1); var t2 = normTeam(m.team2);
+    var isCol = t1==='Colombia'||t2==='Colombia';
+    var isFinished = m.score && m.score.ft;
+    var mDate = new Date(m.date + 'T' + (m.time||'00:00') + ':00');
+    var diff = new Date() - mDate;
+    var isLive = !isFinished && diff > 0 && diff < 120*60*1000;
+    var score = isFinished ? m.score.ft[0]+' — '+m.score.ft[1] : isLive ? '⚽ LIVE' : '--';
+    var badge = isLive ? '<span class="lm-badge badge-live">LIVE</span>' : isFinished ? '<span class="lm-badge badge-ft">FT</span>' : '<span class="lm-badge badge-ns">UPCOMING</span>';
+    html += '<div class="live-match'+(isLive?' is-live':'')+(isCol?' col-match':'')+'">';
+    html += '<div class="lm-top">';
+    html += '<div class="lm-teams">'+(FLAGS[t1]||'')+'&nbsp;'+t1+' <span style="color:rgba(255,255,255,0.3)">vs</span> '+t2+'&nbsp;'+(FLAGS[t2]||'')+'</div>';
+    html += '<div class="lm-score'+(isLive?' is-live':'')+'">'+score+'</div>';
+    html += badge;
+    html += '</div>';
+    html += '<div class="lm-meta"><span>'+m.date+'</span><span>'+(m.group||'Group K')+'</span>'+(m.ground?'<span>📍 '+m.ground+'</span>':'')+'</div>';
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+
+function renderStandings(standings) {
+  // Sort by pts desc, then GD, then GF
+  var sorted = GROUP_K_TEAMS.slice().sort(function(a,b){
+    var pa=standings[a],pb=standings[b];
+    if(pb.pts!==pa.pts)return pb.pts-pa.pts;
+    var gda=pa.gf-pa.ga, gdb=pb.gf-pb.ga;
+    if(gdb!==gda)return gdb-gda;
+    return pb.gf-pa.gf;
+  });
+  var body = document.getElementById('live-standings-body');
+  if(!body)return;
+  body.innerHTML = sorted.map(function(t,i){
+    var s=standings[t];
+    var isCol=t==='Colombia';
+    var qualify=i<2;
+    return '<tr'+(isCol?' class="col-row"':'')+'>'+
+      '<td class="pos'+(qualify?' q':'')+'>'+(i+1)+'</td>'+
+      '<td>'+(FLAGS[t]||'')+' '+t+'</td>'+
+      '<td>'+s.p+'</td><td>'+s.w+'</td><td>'+s.d+'</td><td>'+s.l+'</td>'+
+      '<td>'+(s.gf-s.ga>=0?'+':'')+(s.gf-s.ga)+'</td>'+
+      '<td class="pts">'+s.pts+'</td>'+
+    '</tr>';
+  }).join('');
+}
+
+function showOffline() {
+  var dot = document.getElementById('live-dot');
+  var status = document.getElementById('live-status');
+  dot.style.background = '#888';
+  status.textContent = 'LIVE DATA UNAVAILABLE · CHECK CONNECTION';
+}
+
+// Fetch on load, then every 60 seconds
+fetchLiveData();
+setInterval(fetchLiveData, 60000);
+
+
+// ── LIVE DATA ──────────────────────────────────────────────────────
+// Uses api-football.com free tier — sign up at dashboard.api-football.com
+// Replace YOUR_API_KEY below with your free key (100 req/day, no CC needed)
+var API_KEY = 'YOUR_API_KEY';
+var API_BASE = 'https://v3.football.api-sports.io';
+var WC_LEAGUE = 1;
+var WC_SEASON = 2026;
+var COLOMBIA_ID = 6;
+
+function fetchLiveData() {
+  if (API_KEY === 'YOUR_API_KEY') {
+    showLiveStatus('⚡ LIVE DATA: Add your free API key to activate auto-updates');
+    return;
+  }
+
+  // Fetch Group K standings
+  fetch(API_BASE + '/standings?league=' + WC_LEAGUE + '&season=' + WC_SEASON, {
+    headers: { 'x-apisports-key': API_KEY }
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    if (!data.response || !data.response[0]) return;
+    var groups = data.response[0].league.standings;
+    // Find Group K
+    var groupK = null;
+    for (var i = 0; i < groups.length; i++) {
+      for (var j = 0; j < groups[i].length; j++) {
+        if (groups[i][j].team && (groups[i][j].team.name === 'Colombia' || groups[i][j].group === 'Group K')) {
+          groupK = groups[i];
+          break;
+        }
+      }
+      if (groupK) break;
+    }
+    if (groupK) updateGroupTable(groupK);
+  })
+  .catch(function(){ showLiveStatus('Live data temporarily unavailable'); });
+
+  // Fetch Colombia recent/upcoming fixtures
+  fetch(API_BASE + '/fixtures?team=' + COLOMBIA_ID + '&league=' + WC_LEAGUE + '&season=' + WC_SEASON, {
+    headers: { 'x-apisports-key': API_KEY }
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    if (!data.response) return;
+    updateMatchCards(data.response);
+  })
+  .catch(function(){});
+}
+
+function updateGroupTable(standings) {
+  var tbody = document.getElementById('live-group-tbody');
+  if (!tbody) return;
+  var html = '';
+  standings.sort(function(a,b){ return b.points - a.points || (b.goalsDiff - a.goalsDiff); });
+  standings.forEach(function(team, i){
+    var isCol = team.team.name === 'Colombia';
+    var qualify = i < 2;
+    html += '<tr' + (isCol ? ' class="col-row"' : '') + '>';
+    html += '<td class="pos' + (qualify ? ' q' : '') + '">' + (i+1) + '</td>';
+    html += '<td>' + getFlagEmoji(team.team.name) + ' ' + team.team.name.toUpperCase() + '</td>';
+    html += '<td>' + team.all.played + '</td>';
+    html += '<td>' + team.all.win + '</td>';
+    html += '<td>' + team.all.draw + '</td>';
+    html += '<td>' + team.all.lose + '</td>';
+    html += '<td>' + (team.goalsDiff >= 0 ? '+' : '') + team.goalsDiff + '</td>';
+    html += '<td class="pts">' + team.points + '</td>';
+    html += '</tr>';
+  });
+  tbody.innerHTML = html;
+  document.getElementById('live-badge').textContent = 'LIVE';
+  document.getElementById('live-badge').style.background = 'rgba(34,197,94,0.2)';
+  document.getElementById('live-badge').style.color = '#22c55e';
+  document.getElementById('live-badge').style.borderColor = 'rgba(34,197,94,0.4)';
+}
+
+function updateMatchCards(fixtures) {
+  fixtures.forEach(function(f){
+    var date = new Date(f.fixture.date);
+    var status = f.fixture.status.short;
+    var isLive = ['1H','HT','2H','ET','PEN'].indexOf(status) !== -1;
+    var isDone = status === 'FT';
+    var home = f.teams.home.name;
+    var away = f.teams.away.name;
+    var isCol1 = home === 'Colombia' || away === 'Colombia';
+    if (!isCol1) return;
+
+    // Find which match card this is
+    var matchDay = f.league.round;
+    var scoreHtml = '';
+    if (isDone || isLive) {
+      scoreHtml = '<div style="font-family:'Courier New',monospace;font-size:clamp(1.2rem,3vw,2rem);font-weight:900;color:' + (isLive ? '#22c55e' : 'var(--yellow)') + ';margin:6px 0;">' +
+        f.goals.home + ' — ' + f.goals.away +
+        (isLive ? ' <span style="font-size:0.5em;animation:blink 1s step-end infinite;color:#22c55e;">● LIVE</span>' : ' <span style="font-size:0.45em;color:rgba(255,255,255,0.3);">FT</span>') +
+        '</div>';
+    }
+
+    // Update match card score display
+    var md = matchDay.includes('1') ? 1 : matchDay.includes('2') ? 2 : 3;
+    var scoreEl = document.getElementById('score-md' + md);
+    if (scoreEl && (isDone || isLive)) {
+      scoreEl.innerHTML = scoreHtml;
+      scoreEl.style.display = 'block';
+    }
+  });
+}
+
+function getFlagEmoji(name) {
+  var flags = {'Colombia':'🇨🇴','Portugal':'🇵🇹','DR Congo':'🇨🇩','Congo DR':'🇨🇩','Uzbekistan':'🇺🇿'};
+  return flags[name] || '🏳️';
+}
+
+function showLiveStatus(msg) {
+  var el = document.getElementById('live-status');
+  if (el) el.textContent = msg;
+}
+
+// Fetch on load and every 2 minutes
+fetchLiveData();
+setInterval(fetchLiveData, 120000);
+
+</script>
 </body>
 </html>
 <script>
@@ -1024,490 +1453,642 @@ var MAC, MMG, MUTED_M = false, MPLAYING = false;
 var mOscs = [], mInts = [];
 
 function startMusic() {
-if (MPLAYING) return;
-MPLAYING = true;
+  if (MPLAYING) return;
+  MPLAYING = true;
 
-MAC = new (window.AudioContext || window.webkitAudioContext)();
-MMG = MAC.createGain(); MMG.gain.value = 0.45; MMG.connect(MAC.destination);
+  MAC = new (window.AudioContext || window.webkitAudioContext)();
+  MMG = MAC.createGain(); MMG.gain.value = 0.45; MMG.connect(MAC.destination);
 
-MAC.resume().then(function() {
+  MAC.resume().then(function() {
 
-```
-// ── helpers ──
-function N(f,w,d,v,tp,det){
-  try{
-    var o=MAC.createOscillator(),g=MAC.createGain();
-    o.type=tp||'sine'; o.frequency.value=f;
-    if(det) o.detune.value=det;
-    g.gain.setValueAtTime(v,w);
-    g.gain.exponentialRampToValueAtTime(0.0001,w+d);
-    o.connect(g); g.connect(MMG); o.start(w); o.stop(w+d+0.05);
-  }catch(e){}
-}
-function NS(w,d,v,lo,hi){
-  try{
-    var len=Math.ceil(MAC.sampleRate*d),buf=MAC.createBuffer(1,len,MAC.sampleRate),da=buf.getChannelData(0);
-    for(var i=0;i<len;i++) da[i]=Math.random()*2-1;
-    var src=MAC.createBufferSource(); src.buffer=buf;
-    var fl=MAC.createBiquadFilter(); fl.type='bandpass'; fl.frequency.value=(lo+hi)/2;
-    var g=MAC.createGain(); g.gain.setValueAtTime(v,w); g.gain.exponentialRampToValueAtTime(0.0001,w+d);
-    src.connect(fl); fl.connect(g); g.connect(MMG); src.start(w); src.stop(w+d+0.05);
-  }catch(e){}
-}
-
-// ── Vallenato scale: D major ──
-// D3=146.83 E3=164.81 F#3=185 G3=196 A3=220 B3=246.94 C#4=277.18 D4=293.66
-var SCALE = [146.83, 164.81, 185, 196, 220, 246.94, 277.18, 293.66, 329.63, 369.99, 392, 440];
-
-// ── Accordion-style melody (vallenato feel) ──
-// Repeating 8-bar phrase in D major
-var MELODY = [
-  // bar 1
-  [293.66,0.18],[329.63,0.18],[369.99,0.18],[392,0.36],
-  [369.99,0.18],[329.63,0.36],
-  // bar 2
-  [293.66,0.18],[277.18,0.18],[246.94,0.18],[220,0.36],
-  [246.94,0.18],[277.18,0.36],
-  // bar 3
-  [293.66,0.18],[329.63,0.18],[392,0.18],[440,0.36],
-  [392,0.18],[369.99,0.36],
-  // bar 4
-  [329.63,0.18],[293.66,0.18],[277.18,0.18],[246.94,0.54],
-  [220,0.36],
-  // bar 5 - call
-  [440,0.18],[392,0.18],[369.99,0.18],[392,0.36],
-  [440,0.18],[493.88,0.36],
-  // bar 6 - response
-  [440,0.18],[392,0.18],[369.99,0.18],[329.63,0.36],
-  [293.66,0.18],[277.18,0.36],
-  // bar 7
-  [293.66,0.18],[329.63,0.18],[369.99,0.18],[440,0.36],
-  [392,0.18],[369.99,0.18],[329.63,0.18],
-  // bar 8 - resolve
-  [293.66,0.36],[246.94,0.18],[220,0.36],[196,0.18],[146.83,0.54]
-];
-
-var BPM = 130; // vallenato tempo
-var BEAT = 60/BPM;
-
-function playMelody(startTime) {
-  var t = startTime;
-  for (var i = 0; i < MELODY.length; i++) {
-    var note = MELODY[i];
-    N(note[0], t, note[1]*0.85, 0.1, 'sawtooth', -10);
-    N(note[0]*2, t+0.01, note[1]*0.7, 0.04, 'sine');
-    t += note[1];
-  }
-  return t;
-}
-
-// ── Bass (tumbao pattern) ──
-var BASS = [
-  [73.42,0.18],[73.42,0.18],[87.31,0.36],  // D2 D2 E2
-  [73.42,0.18],[73.42,0.18],[82.41,0.36],  // D2 D2 E2b
-  [73.42,0.18],[73.42,0.18],[87.31,0.18],[98,0.54], // turnaround
-  [73.42,0.36],[73.42,0.18],[65.41,0.18],[73.42,0.36] // resolve
-];
-
-function playBass(st) {
-  var t = st;
-  for (var i = 0; i < BASS.length; i++) {
-    var b = BASS[i];
-    N(b[0], t, b[1]*0.9, 0.14, 'triangle');
-    t += b[1];
-  }
-}
-
-// ── Clave rhythm (2-3 son clave) ──
-var CLAVE_2 = [0, BEAT*0.75, BEAT*1.5]; // 2 side
-var CLAVE_3 = [BEAT*2, BEAT*2.5, BEAT*3.25]; // 3 side
-
-function playClave(st) {
-  var pattern = CLAVE_2.concat(CLAVE_3);
-  for (var i = 0; i < pattern.length; i++) {
-    var t = st + pattern[i];
-    NS(t, 0.04, 0.18, 1800, 3000); // wood block click
-    N(1200, t, 0.03, 0.08, 'sine');
-  }
-}
-
-// ── Guiro (scraped gourd sound) ──
-function playGuiro(st, bars) {
-  for (var bar = 0; bar < bars; bar++) {
-    var bt = st + bar * BEAT * 4;
-    // scrape down
-    for (var i = 0; i < 6; i++) {
-      NS(bt + i*0.05, 0.04, 0.06, 600, 1400);
+    // ── helpers ──
+    function N(f,w,d,v,tp,det){
+      try{
+        var o=MAC.createOscillator(),g=MAC.createGain();
+        o.type=tp||'sine'; o.frequency.value=f;
+        if(det) o.detune.value=det;
+        g.gain.setValueAtTime(v,w);
+        g.gain.exponentialRampToValueAtTime(0.0001,w+d);
+        o.connect(g); g.connect(MMG); o.start(w); o.stop(w+d+0.05);
+      }catch(e){}
     }
-    // scrape up
-    bt += BEAT*2;
-    for (var i = 0; i < 3; i++) {
-      NS(bt + i*0.04, 0.03, 0.04, 800, 1600);
+    function NS(w,d,v,lo,hi){
+      try{
+        var len=Math.ceil(MAC.sampleRate*d),buf=MAC.createBuffer(1,len,MAC.sampleRate),da=buf.getChannelData(0);
+        for(var i=0;i<len;i++) da[i]=Math.random()*2-1;
+        var src=MAC.createBufferSource(); src.buffer=buf;
+        var fl=MAC.createBiquadFilter(); fl.type='bandpass'; fl.frequency.value=(lo+hi)/2;
+        var g=MAC.createGain(); g.gain.setValueAtTime(v,w); g.gain.exponentialRampToValueAtTime(0.0001,w+d);
+        src.connect(fl); fl.connect(g); g.connect(MMG); src.start(w); src.stop(w+d+0.05);
+      }catch(e){}
     }
-  }
-}
 
-// ── Congas ──
-function playCongas(st, bars) {
-  var BEAT4 = BEAT * 4; // one bar
-  for (var bar = 0; bar < bars; bar++) {
-    var b = st + bar * BEAT4;
-    // low tumba
-    NS(b,           0.12, 0.16, 80, 180);
-    N(90, b, 0.15, 0.08, 'sine');
-    // open tone
-    NS(b+BEAT,      0.08, 0.14, 150, 300);
-    N(180, b+BEAT, 0.1, 0.07, 'sine');
-    // slap
-    NS(b+BEAT*1.5,  0.05, 0.12, 200, 500);
-    // open tone
-    NS(b+BEAT*2,    0.08, 0.13, 150, 300);
-    // tumba
-    NS(b+BEAT*3,    0.1, 0.15, 80, 180);
-    N(90, b+BEAT*3, 0.12, 0.07, 'sine');
-    // slap
-    NS(b+BEAT*3.5,  0.05, 0.1, 200, 500);
-  }
-}
+    // ── Vallenato scale: D major ──
+    // D3=146.83 E3=164.81 F#3=185 G3=196 A3=220 B3=246.94 C#4=277.18 D4=293.66
+    var SCALE = [146.83, 164.81, 185, 196, 220, 246.94, 277.18, 293.66, 329.63, 369.99, 392, 440];
 
-// ── Brass stab (salsa horn) ──
-function playHorns(st) {
-  // D major chord stab
-  var CHORD = [293.66, 369.99, 440, 587.33];
-  var STABS = [0, BEAT*4, BEAT*8, BEAT*12];
-  for (var s = 0; s < STABS.length; s++) {
-    var t = st + STABS[s];
-    for (var i = 0; i < CHORD.length; i++) {
-      N(CHORD[i], t, 0.22, 0.055, 'sawtooth', i*8);
+    // ── Accordion-style melody (vallenato feel) ──
+    // Repeating 8-bar phrase in D major
+    var MELODY = [
+      // bar 1
+      [293.66,0.18],[329.63,0.18],[369.99,0.18],[392,0.36],
+      [369.99,0.18],[329.63,0.36],
+      // bar 2
+      [293.66,0.18],[277.18,0.18],[246.94,0.18],[220,0.36],
+      [246.94,0.18],[277.18,0.36],
+      // bar 3
+      [293.66,0.18],[329.63,0.18],[392,0.18],[440,0.36],
+      [392,0.18],[369.99,0.36],
+      // bar 4
+      [329.63,0.18],[293.66,0.18],[277.18,0.18],[246.94,0.54],
+      [220,0.36],
+      // bar 5 - call
+      [440,0.18],[392,0.18],[369.99,0.18],[392,0.36],
+      [440,0.18],[493.88,0.36],
+      // bar 6 - response
+      [440,0.18],[392,0.18],[369.99,0.18],[329.63,0.36],
+      [293.66,0.18],[277.18,0.36],
+      // bar 7
+      [293.66,0.18],[329.63,0.18],[369.99,0.18],[440,0.36],
+      [392,0.18],[369.99,0.18],[329.63,0.18],
+      // bar 8 - resolve
+      [293.66,0.36],[246.94,0.18],[220,0.36],[196,0.18],[146.83,0.54]
+    ];
+
+    var BPM = 130; // vallenato tempo
+    var BEAT = 60/BPM;
+
+    function playMelody(startTime) {
+      var t = startTime;
+      for (var i = 0; i < MELODY.length; i++) {
+        var note = MELODY[i];
+        N(note[0], t, note[1]*0.85, 0.1, 'sawtooth', -10);
+        N(note[0]*2, t+0.01, note[1]*0.7, 0.04, 'sine');
+        t += note[1];
+      }
+      return t;
     }
-    // staccato cut
-    for (var i = 0; i < CHORD.length; i++) {
-      N(CHORD[i]*2, t+0.08, 0.12, 0.02, 'sine');
+
+    // ── Bass (tumbao pattern) ──
+    var BASS = [
+      [73.42,0.18],[73.42,0.18],[87.31,0.36],  // D2 D2 E2
+      [73.42,0.18],[73.42,0.18],[82.41,0.36],  // D2 D2 E2b
+      [73.42,0.18],[73.42,0.18],[87.31,0.18],[98,0.54], // turnaround
+      [73.42,0.36],[73.42,0.18],[65.41,0.18],[73.42,0.36] // resolve
+    ];
+
+    function playBass(st) {
+      var t = st;
+      for (var i = 0; i < BASS.length; i++) {
+        var b = BASS[i];
+        N(b[0], t, b[1]*0.9, 0.14, 'triangle');
+        t += b[1];
+      }
     }
-  }
-}
 
-// ── Schedule one full loop ──
-var BARS = 8;
-var BAR_DUR = BEAT * 4;
-var LOOP_DUR = BARS * BAR_DUR;
+    // ── Clave rhythm (2-3 son clave) ──
+    var CLAVE_2 = [0, BEAT*0.75, BEAT*1.5]; // 2 side
+    var CLAVE_3 = [BEAT*2, BEAT*2.5, BEAT*3.25]; // 3 side
 
-function scheduleLoop(st) {
-  var melEnd = playMelody(st);
-  // bass loops every 2 bars
-  for (var b = 0; b < BARS; b += 2) {
-    playBass(st + b * BAR_DUR);
-  }
-  // clave every bar
-  for (var b = 0; b < BARS; b++) {
-    playClave(st + b * BAR_DUR);
-  }
-  // guiro
-  playGuiro(st, BARS);
-  // congas
-  playCongas(st, BARS);
-  // horns every 4 bars
-  playHorns(st);
-  playHorns(st + 4 * BAR_DUR);
-  return st + LOOP_DUR;
-}
+    function playClave(st) {
+      var pattern = CLAVE_2.concat(CLAVE_3);
+      for (var i = 0; i < pattern.length; i++) {
+        var t = st + pattern[i];
+        NS(t, 0.04, 0.18, 1800, 3000); // wood block click
+        N(1200, t, 0.03, 0.08, 'sine');
+      }
+    }
 
-// Start first loop immediately, queue next
-var loopStart = MAC.currentTime + 0.1;
-scheduleLoop(loopStart);
+    // ── Guiro (scraped gourd sound) ──
+    function playGuiro(st, bars) {
+      for (var bar = 0; bar < bars; bar++) {
+        var bt = st + bar * BEAT * 4;
+        // scrape down
+        for (var i = 0; i < 6; i++) {
+          NS(bt + i*0.05, 0.04, 0.06, 600, 1400);
+        }
+        // scrape up
+        bt += BEAT*2;
+        for (var i = 0; i < 3; i++) {
+          NS(bt + i*0.04, 0.03, 0.04, 800, 1600);
+        }
+      }
+    }
 
-// Keep looping
-var loopTimer = setInterval(function() {
-  if (MUTED_M || !MAC) return;
-  loopStart += LOOP_DUR;
-  scheduleLoop(loopStart);
-}, LOOP_DUR * 1000 - 200);
+    // ── Congas ──
+    function playCongas(st, bars) {
+      var BEAT4 = BEAT * 4; // one bar
+      for (var bar = 0; bar < bars; bar++) {
+        var b = st + bar * BEAT4;
+        // low tumba
+        NS(b,           0.12, 0.16, 80, 180);
+        N(90, b, 0.15, 0.08, 'sine');
+        // open tone
+        NS(b+BEAT,      0.08, 0.14, 150, 300);
+        N(180, b+BEAT, 0.1, 0.07, 'sine');
+        // slap
+        NS(b+BEAT*1.5,  0.05, 0.12, 200, 500);
+        // open tone
+        NS(b+BEAT*2,    0.08, 0.13, 150, 300);
+        // tumba
+        NS(b+BEAT*3,    0.1, 0.15, 80, 180);
+        N(90, b+BEAT*3, 0.12, 0.07, 'sine');
+        // slap
+        NS(b+BEAT*3.5,  0.05, 0.1, 200, 500);
+      }
+    }
 
-mInts.push(loopTimer);
-```
+    // ── Brass stab (salsa horn) ──
+    function playHorns(st) {
+      // D major chord stab
+      var CHORD = [293.66, 369.99, 440, 587.33];
+      var STABS = [0, BEAT*4, BEAT*8, BEAT*12];
+      for (var s = 0; s < STABS.length; s++) {
+        var t = st + STABS[s];
+        for (var i = 0; i < CHORD.length; i++) {
+          N(CHORD[i], t, 0.22, 0.055, 'sawtooth', i*8);
+        }
+        // staccato cut
+        for (var i = 0; i < CHORD.length; i++) {
+          N(CHORD[i]*2, t+0.08, 0.12, 0.02, 'sine');
+        }
+      }
+    }
 
-});
+    // ── Schedule one full loop ──
+    var BARS = 8;
+    var BAR_DUR = BEAT * 4;
+    var LOOP_DUR = BARS * BAR_DUR;
+
+    function scheduleLoop(st) {
+      var melEnd = playMelody(st);
+      // bass loops every 2 bars
+      for (var b = 0; b < BARS; b += 2) {
+        playBass(st + b * BAR_DUR);
+      }
+      // clave every bar
+      for (var b = 0; b < BARS; b++) {
+        playClave(st + b * BAR_DUR);
+      }
+      // guiro
+      playGuiro(st, BARS);
+      // congas
+      playCongas(st, BARS);
+      // horns every 4 bars
+      playHorns(st);
+      playHorns(st + 4 * BAR_DUR);
+      return st + LOOP_DUR;
+    }
+
+    // Start first loop immediately, queue next
+    var loopStart = MAC.currentTime + 0.1;
+    scheduleLoop(loopStart);
+
+    // Keep looping
+    var loopTimer = setInterval(function() {
+      if (MUTED_M || !MAC) return;
+      loopStart += LOOP_DUR;
+      scheduleLoop(loopStart);
+    }, LOOP_DUR * 1000 - 200);
+
+    mInts.push(loopTimer);
+  });
 }
 
 function toggleMusic() {
-var btn = document.getElementById(‘music-btn’);
-if (!MPLAYING) {
-startMusic();
-btn.textContent = ‘PAUSE MUSIC’;
-btn.style.background = ‘linear-gradient(135deg,#003087,#001a4d)’;
-btn.style.borderColor = ‘#003087’;
-} else {
-MUTED_M = !MUTED_M;
-if (MMG) MMG.gain.value = MUTED_M ? 0 : 0.45;
-btn.textContent = MUTED_M ? ‘PLAY MUSIC’ : ‘PAUSE MUSIC’;
-}
+  var btn = document.getElementById('music-btn');
+  if (!MPLAYING) {
+    startMusic();
+    btn.textContent = 'PAUSE MUSIC';
+    btn.style.background = 'linear-gradient(135deg,#003087,#001a4d)';
+    btn.style.borderColor = '#003087';
+  } else {
+    MUTED_M = !MUTED_M;
+    if (MMG) MMG.gain.value = MUTED_M ? 0 : 0.45;
+    btn.textContent = MUTED_M ? 'PLAY MUSIC' : 'PAUSE MUSIC';
+  }
 }
 
 // ── MUSIC SYNTH ──
 var MAC = null, MMG = null, mIntervals = [], mOscs = [], vizInterval = null;
 
 function getMAC() {
-if (!MAC) {
-MAC = new (window.AudioContext || window.webkitAudioContext)();
-MMG = MAC.createGain(); MMG.gain.value = 0.5; MMG.connect(MAC.destination);
-}
-return MAC;
+  if (!MAC) {
+    MAC = new (window.AudioContext || window.webkitAudioContext)();
+    MMG = MAC.createGain(); MMG.gain.value = 0.5; MMG.connect(MAC.destination);
+  }
+  return MAC;
 }
 
 function stopSynth() {
-mIntervals.forEach(function(id){ clearInterval(id); });
-mIntervals = [];
-mOscs.forEach(function(o){ try{ o.stop(); }catch(e){} });
-mOscs = [];
-if(vizInterval){ clearInterval(vizInterval); vizInterval=null; }
-document.querySelectorAll(’.viz-bar’).forEach(function(b){ b.style.height=‘8px’; });
+  mIntervals.forEach(function(id){ clearInterval(id); });
+  mIntervals = [];
+  mOscs.forEach(function(o){ try{ o.stop(); }catch(e){} });
+  mOscs = [];
+  if(vizInterval){ clearInterval(vizInterval); vizInterval=null; }
+  document.querySelectorAll('.viz-bar').forEach(function(b){ b.style.height='8px'; });
 }
 
 function mNote(freq, when, dur, vol, type) {
-try {
-var ac=getMAC(), o=ac.createOscillator(), g=ac.createGain();
-o.type=type||‘sine’; o.frequency.value=freq;
-g.gain.setValueAtTime(vol, when); g.gain.exponentialRampToValueAtTime(0.0001, when+dur);
-o.connect(g); g.connect(MMG); o.start(when); o.stop(when+dur+0.05);
-} catch(e){}
+  try {
+    var ac=getMAC(), o=ac.createOscillator(), g=ac.createGain();
+    o.type=type||'sine'; o.frequency.value=freq;
+    g.gain.setValueAtTime(vol, when); g.gain.exponentialRampToValueAtTime(0.0001, when+dur);
+    o.connect(g); g.connect(MMG); o.start(when); o.stop(when+dur+0.05);
+  } catch(e){}
 }
 
 function mNoise(when, dur, vol, lo, hi) {
-try {
-var ac=getMAC();
-var len=Math.ceil(ac.sampleRate*dur), buf=ac.createBuffer(1,len,ac.sampleRate), da=buf.getChannelData(0);
-for(var i=0;i<len;i++) da[i]=Math.random()*2-1;
-var src=ac.createBufferSource(); src.buffer=buf;
-var flt=ac.createBiquadFilter(); flt.type=‘bandpass’; flt.frequency.value=(lo+hi)/2;
-var g=ac.createGain(); g.gain.setValueAtTime(vol,when); g.gain.exponentialRampToValueAtTime(0.0001,when+dur);
-src.connect(flt); flt.connect(g); g.connect(MMG); src.start(when); src.stop(when+dur+0.05);
-} catch(e){}
+  try {
+    var ac=getMAC();
+    var len=Math.ceil(ac.sampleRate*dur), buf=ac.createBuffer(1,len,ac.sampleRate), da=buf.getChannelData(0);
+    for(var i=0;i<len;i++) da[i]=Math.random()*2-1;
+    var src=ac.createBufferSource(); src.buffer=buf;
+    var flt=ac.createBiquadFilter(); flt.type='bandpass'; flt.frequency.value=(lo+hi)/2;
+    var g=ac.createGain(); g.gain.setValueAtTime(vol,when); g.gain.exponentialRampToValueAtTime(0.0001,when+dur);
+    src.connect(flt); flt.connect(g); g.connect(MMG); src.start(when); src.stop(when+dur+0.05);
+  } catch(e){}
 }
 
 function startViz() {
-vizInterval = setInterval(function(){
-document.querySelectorAll(’.viz-bar’).forEach(function(b){
-b.style.height = (6 + Math.random()*26) + ‘px’;
-});
-}, 120);
+  vizInterval = setInterval(function(){
+    document.querySelectorAll('.viz-bar').forEach(function(b){
+      b.style.height = (6 + Math.random()*26) + 'px';
+    });
+  }, 120);
 }
 
 function startSynth(mode) {
-stopSynth();
-var ac = getMAC();
-ac.resume().then(function(){
-startViz();
-if (mode === ‘vallenato’) playVallenato();
-else playSalsa();
-});
+  stopSynth();
+  var ac = getMAC();
+  ac.resume().then(function(){
+    startViz();
+    if (mode === 'vallenato') playVallenato();
+    else playSalsa();
+  });
 }
 
 function playVallenato() {
-var ac = getMAC();
-// Vallenato: accordion-like melody in D major + caja drum pattern
-// Scale: D E F# G A B C# D (D major)
-var SCALE = [146.83, 164.81, 185.00, 196.00, 220.00, 246.94, 277.18, 293.66];
-var MELODY = [4,4,5,4,3,2,0,0, 4,4,5,6,5,4,3,3];
-var step = 0;
-var bpm = 132;
-var beat = 60/bpm;
+  var ac = getMAC();
+  // Vallenato: accordion-like melody in D major + caja drum pattern
+  // Scale: D E F# G A B C# D (D major)
+  var SCALE = [146.83, 164.81, 185.00, 196.00, 220.00, 246.94, 277.18, 293.66];
+  var MELODY = [4,4,5,4,3,2,0,0, 4,4,5,6,5,4,3,3];
+  var step = 0;
+  var bpm = 132;
+  var beat = 60/bpm;
 
-// Drone bass
-var bass = ac.createOscillator(), bassG = ac.createGain();
-bass.type=‘sawtooth’; bass.frequency.value=73.42; bassG.gain.value=0.06;
-bass.connect(bassG); bassG.connect(MMG); bass.start(); mOscs.push(bass);
+  // Drone bass
+  var bass = ac.createOscillator(), bassG = ac.createGain();
+  bass.type='sawtooth'; bass.frequency.value=73.42; bassG.gain.value=0.06;
+  bass.connect(bassG); bassG.connect(MMG); bass.start(); mOscs.push(bass);
 
-// Melody (accordion feel - square wave)
-var melId = setInterval(function(){
-if(!MAC) return;
-var t = MAC.currentTime;
-var freq = SCALE[MELODY[step % MELODY.length]];
-mNote(freq, t, beat*0.7, 0.12, ‘square’);
-mNote(freq*2, t+0.02, beat*0.5, 0.04, ‘sine’);
-step++;
-}, beat*1000);
-mIntervals.push(melId);
+  // Melody (accordion feel - square wave)
+  var melId = setInterval(function(){
+    if(!MAC) return;
+    var t = MAC.currentTime;
+    var freq = SCALE[MELODY[step % MELODY.length]];
+    mNote(freq, t, beat*0.7, 0.12, 'square');
+    mNote(freq*2, t+0.02, beat*0.5, 0.04, 'sine');
+    step++;
+  }, beat*1000);
+  mIntervals.push(melId);
 
-// Caja drum (low thump)
-var drumStep = 0;
-// Vallenato caja pattern: 1 . . 1 . 1 . .
-var cajaPattern = [1,0,0,1,0,1,0,0];
-var cajaId = setInterval(function(){
-if(!MAC) return;
-var t=MAC.currentTime;
-if(cajaPattern[drumStep % cajaPattern.length]) {
-mNoise(t, 0.08, 0.18, 80, 200);
-mNote(90, t, 0.12, 0.14, ‘sine’);
-}
-drumStep++;
-}, beat*500);
-mIntervals.push(cajaId);
+  // Caja drum (low thump)
+  var drumStep = 0;
+  // Vallenato caja pattern: 1 . . 1 . 1 . .
+  var cajaPattern = [1,0,0,1,0,1,0,0];
+  var cajaId = setInterval(function(){
+    if(!MAC) return;
+    var t=MAC.currentTime;
+    if(cajaPattern[drumStep % cajaPattern.length]) {
+      mNoise(t, 0.08, 0.18, 80, 200);
+      mNote(90, t, 0.12, 0.14, 'sine');
+    }
+    drumStep++;
+  }, beat*500);
+  mIntervals.push(cajaId);
 
-// Guacharaca (scraper - high ticking)
-var guaStep = 0;
-var guaId = setInterval(function(){
-if(!MAC) return;
-var t=MAC.currentTime;
-mNoise(t, 0.03, 0.06, 3000, 8000);
-guaStep++;
-}, beat*250);
-mIntervals.push(guaId);
+  // Guacharaca (scraper - high ticking)
+  var guaStep = 0;
+  var guaId = setInterval(function(){
+    if(!MAC) return;
+    var t=MAC.currentTime;
+    mNoise(t, 0.03, 0.06, 3000, 8000);
+    guaStep++;
+  }, beat*250);
+  mIntervals.push(guaId);
 
-// Walking bass line
-var bassSeq = [73.42, 82.41, 92.50, 73.42, 65.41, 73.42, 82.41, 73.42];
-var bassStep2 = 0;
-var bassId = setInterval(function(){
-if(!MAC) return;
-var t=MAC.currentTime;
-mNote(bassSeq[bassStep2 % bassSeq.length], t, beat*0.8, 0.1, ‘triangle’);
-bassStep2++;
-}, beat*500);
-mIntervals.push(bassId);
+  // Walking bass line
+  var bassSeq = [73.42, 82.41, 92.50, 73.42, 65.41, 73.42, 82.41, 73.42];
+  var bassStep2 = 0;
+  var bassId = setInterval(function(){
+    if(!MAC) return;
+    var t=MAC.currentTime;
+    mNote(bassSeq[bassStep2 % bassSeq.length], t, beat*0.8, 0.1, 'triangle');
+    bassStep2++;
+  }, beat*500);
+  mIntervals.push(bassId);
 }
 
 function playSalsa() {
-var ac = getMAC();
-// Salsa: clave pattern + timbales + bass + piano montuno
-var bpm = 180;
-var beat = 60/bpm;
+  var ac = getMAC();
+  // Salsa: clave pattern + timbales + bass + piano montuno
+  var bpm = 180;
+  var beat = 60/bpm;
 
-// Bass drone
-var bass = ac.createOscillator(), bassG = ac.createGain();
-bass.type=‘sawtooth’; bass.frequency.value=73.42; bassG.gain.value=0.05;
-bass.connect(bassG); bassG.connect(MMG); bass.start(); mOscs.push(bass);
+  // Bass drone
+  var bass = ac.createOscillator(), bassG = ac.createGain();
+  bass.type='sawtooth'; bass.frequency.value=73.42; bassG.gain.value=0.05;
+  bass.connect(bassG); bassG.connect(MMG); bass.start(); mOscs.push(bass);
 
-// 3-2 Clave pattern (6 steps in 2 bars of 4/4)
-var claveHits = [1,0,0,1,0,0,1,0,1,0,1,0,0,0,0,0];
-var claveStep = 0;
-var claveId = setInterval(function(){
-if(!MAC) return;
-var t=MAC.currentTime;
-if(claveHits[claveStep % claveHits.length]) {
-mNoise(t, 0.04, 0.12, 2000, 5000);
-mNote(1200, t, 0.04, 0.08, ‘square’);
+  // 3-2 Clave pattern (6 steps in 2 bars of 4/4)
+  var claveHits = [1,0,0,1,0,0,1,0,1,0,1,0,0,0,0,0];
+  var claveStep = 0;
+  var claveId = setInterval(function(){
+    if(!MAC) return;
+    var t=MAC.currentTime;
+    if(claveHits[claveStep % claveHits.length]) {
+      mNoise(t, 0.04, 0.12, 2000, 5000);
+      mNote(1200, t, 0.04, 0.08, 'square');
+    }
+    claveStep++;
+  }, beat*250);
+  mIntervals.push(claveId);
+
+  // Timbale rim shots on 2 and 4
+  var timStep = 0;
+  var timPat = [0,0,1,0,0,0,1,0];
+  var timId = setInterval(function(){
+    if(!MAC) return;
+    var t=MAC.currentTime;
+    if(timPat[timStep % timPat.length]) {
+      mNoise(t, 0.05, 0.2, 800, 3000);
+    }
+    timStep++;
+  }, beat*250);
+  mIntervals.push(timId);
+
+  // Kick on beat 1
+  var kickStep = 0;
+  var kickPat = [1,0,0,1,0,0,0,0];
+  var kickId = setInterval(function(){
+    if(!MAC) return;
+    var t=MAC.currentTime;
+    if(kickPat[kickStep % kickPat.length]) {
+      mNoise(t, 0.08, 0.2, 40, 120);
+      mNote(80, t, 0.1, 0.15, 'sine');
+    }
+    kickStep++;
+  }, beat*250);
+  mIntervals.push(kickId);
+
+  // Piano montuno (Am - Dm - E7 - Am)
+  var MONTUNO = [
+    [220.00, 261.63, 329.63],  // Am
+    [174.61, 220.00, 293.66],  // Dm
+    [164.81, 207.65, 329.63],  // E7
+    [220.00, 261.63, 329.63],  // Am
+  ];
+  var pianoStep = 0;
+  var pianoId = setInterval(function(){
+    if(!MAC) return;
+    var t=MAC.currentTime;
+    var chord = MONTUNO[Math.floor(pianoStep/2) % MONTUNO.length];
+    chord.forEach(function(freq){
+      mNote(freq, t, beat*0.4, 0.06, 'triangle');
+      mNote(freq*2, t+beat*0.5, beat*0.35, 0.04, 'triangle');
+    });
+    pianoStep++;
+  }, beat*1000);
+  mIntervals.push(pianoId);
+
+  // Bass line
+  var bassNotes = [110, 110, 123.47, 130.81, 110, 98, 110, 110];
+  var bassStep2 = 0;
+  var bassId2 = setInterval(function(){
+    if(!MAC) return;
+    var t=MAC.currentTime;
+    mNote(bassNotes[bassStep2 % bassNotes.length], t, beat*0.7, 0.12, 'sawtooth');
+    bassStep2++;
+  }, beat*500);
+  mIntervals.push(bassId2);
+
+  // Cowbell
+  var cowStep = 0;
+  var cowPat = [1,0,1,0,1,0,1,0,1,0,1,1,0,1,0,0];
+  var cowId = setInterval(function(){
+    if(!MAC) return;
+    var t=MAC.currentTime;
+    if(cowPat[cowStep % cowPat.length]) {
+      mNote(800, t, 0.04, 0.07, 'square');
+      mNoise(t, 0.03, 0.05, 600, 1200);
+    }
+    cowStep++;
+  }, beat*250);
+  mIntervals.push(cowId);
 }
-claveStep++;
-}, beat*250);
-mIntervals.push(claveId);
 
-// Timbale rim shots on 2 and 4
-var timStep = 0;
-var timPat = [0,0,1,0,0,0,1,0];
-var timId = setInterval(function(){
-if(!MAC) return;
-var t=MAC.currentTime;
-if(timPat[timStep % timPat.length]) {
-mNoise(t, 0.05, 0.2, 800, 3000);
-}
-timStep++;
-}, beat*250);
-mIntervals.push(timId);
-
-// Kick on beat 1
-var kickStep = 0;
-var kickPat = [1,0,0,1,0,0,0,0];
-var kickId = setInterval(function(){
-if(!MAC) return;
-var t=MAC.currentTime;
-if(kickPat[kickStep % kickPat.length]) {
-mNoise(t, 0.08, 0.2, 40, 120);
-mNote(80, t, 0.1, 0.15, ‘sine’);
-}
-kickStep++;
-}, beat*250);
-mIntervals.push(kickId);
-
-// Piano montuno (Am - Dm - E7 - Am)
-var MONTUNO = [
-[220.00, 261.63, 329.63],  // Am
-[174.61, 220.00, 293.66],  // Dm
-[164.81, 207.65, 329.63],  // E7
-[220.00, 261.63, 329.63],  // Am
-];
-var pianoStep = 0;
-var pianoId = setInterval(function(){
-if(!MAC) return;
-var t=MAC.currentTime;
-var chord = MONTUNO[Math.floor(pianoStep/2) % MONTUNO.length];
-chord.forEach(function(freq){
-mNote(freq, t, beat*0.4, 0.06, ‘triangle’);
-mNote(freq*2, t+beat*0.5, beat*0.35, 0.04, ‘triangle’);
-});
-pianoStep++;
-}, beat*1000);
-mIntervals.push(pianoId);
-
-// Bass line
-var bassNotes = [110, 110, 123.47, 130.81, 110, 98, 110, 110];
-var bassStep2 = 0;
-var bassId2 = setInterval(function(){
-if(!MAC) return;
-var t=MAC.currentTime;
-mNote(bassNotes[bassStep2 % bassNotes.length], t, beat*0.7, 0.12, ‘sawtooth’);
-bassStep2++;
-}, beat*500);
-mIntervals.push(bassId2);
-
-// Cowbell
-var cowStep = 0;
-var cowPat = [1,0,1,0,1,0,1,0,1,0,1,1,0,1,0,0];
-var cowId = setInterval(function(){
-if(!MAC) return;
-var t=MAC.currentTime;
-if(cowPat[cowStep % cowPat.length]) {
-mNote(800, t, 0.04, 0.07, ‘square’);
-mNoise(t, 0.03, 0.05, 600, 1200);
-}
-cowStep++;
-}, beat*250);
-mIntervals.push(cowId);
-}
 
 // Unmute YouTube player
 function unmuteYT() {
-var iframe = document.getElementById(‘yt-vallenato’);
-if (iframe) {
-// Replace src without mute=1
-iframe.src = iframe.src.replace(‘mute=1’,‘mute=0’);
-var bar = document.getElementById(‘unmute-bar’);
-if (bar) bar.style.display = ‘none’;
+  var iframe = document.getElementById('yt-vallenato');
+  if (iframe) {
+    // Replace src without mute=1
+    iframe.src = iframe.src.replace('mute=1','mute=0');
+    var bar = document.getElementById('unmute-bar');
+    if (bar) bar.style.display = 'none';
+  }
 }
-}
+
 
 // Entry splash + autoplay
 (function(){
-// stars on splash
-var sb = document.getElementById(‘es-stars’);
-if(sb){for(var i=0;i<60;i++){var s=document.createElement(‘div’);s.className=‘star’;s.style.cssText=‘left:’+Math.random()*100+’%;top:’+Math.random()*100+’%;width:’+(Math.random()*2+0.5)+‘px;height:’+(Math.random()*2+0.5)+‘px;animation-delay:’+Math.random()*4+‘s;animation-duration:’+(1.5+Math.random()*3)+‘s’;sb.appendChild(s);}}
+  // stars on splash
+  var sb = document.getElementById('es-stars');
+  if(sb){for(var i=0;i<60;i++){var s=document.createElement('div');s.className='star';s.style.cssText='left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+(Math.random()*2+0.5)+'px;height:'+(Math.random()*2+0.5)+'px;animation-delay:'+Math.random()*4+'s;animation-duration:'+(1.5+Math.random()*3)+'s';sb.appendChild(s);}}
 
-function enter(){
-var splash = document.getElementById(‘entry-splash’);
-splash.classList.add(‘hide’);
-setTimeout(function(){ splash.style.display=‘none’; }, 800);
+  function enter(){
+    var splash = document.getElementById('entry-splash');
+    splash.classList.add('hide');
+    setTimeout(function(){ splash.style.display='none'; }, 800);
 
-```
-// Create a fresh unmuted iframe right here inside the click handler
-// This is the ONLY way to get autoplay with sound - must be synchronous in click
-var container = document.getElementById('yt-container');
-if(container){
-  container.innerHTML = '<iframe id="yt-vallenato" width="100%" src="https://www.youtube.com/embed/yry3rgGlRUw?autoplay=1&mute=0&rel=0&color=white&loop=1&playlist=yry3rgGlRUw" style="height:clamp(200px,40vw,360px);display:block;border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-  var bar = document.getElementById('unmute-bar');
-  if(bar) bar.style.display='none';
-}
+    // Create a fresh unmuted iframe right here inside the click handler
+    // This is the ONLY way to get autoplay with sound - must be synchronous in click
+    var container = document.getElementById('yt-container');
+    if(container){
+      container.innerHTML = '<iframe id="yt-vallenato" width="100%" src="https://www.youtube.com/embed/yry3rgGlRUw?autoplay=1&mute=0&rel=0&color=white&loop=1&playlist=yry3rgGlRUw" style="height:clamp(200px,40vw,360px);display:block;border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      var bar = document.getElementById('unmute-bar');
+      if(bar) bar.style.display='none';
+    }
 
-// Also start the synth BGM
-var ac = new (window.AudioContext || window.webkitAudioContext)();
-MAC = ac; MMG = ac.createGain(); MMG.gain.value = 0.4; MMG.connect(ac.destination);
-ac.resume();
-```
+    // Also start the synth BGM
+    var ac = new (window.AudioContext || window.webkitAudioContext)();
+    MAC = ac; MMG = ac.createGain(); MMG.gain.value = 0.4; MMG.connect(ac.destination);
+    ac.resume();
+  }
 
-}
-
-document.getElementById(‘es-btn’).addEventListener(‘click’, function(e){
-e.stopPropagation();
-enter();
-});
-document.getElementById(‘entry-splash’).addEventListener(‘click’, enter);
+  document.getElementById('es-btn').addEventListener('click', function(e){
+    e.stopPropagation();
+    enter();
+  });
+  document.getElementById('entry-splash').addEventListener('click', enter);
 })();
+
+
+// ── LIVE SCORES & STANDINGS ──────────────────────────────────────
+// Uses openfootball open data (no API key needed) + fallback to ESPN
+var GROUP_K_TEAMS = ['Colombia','Portugal','DR Congo','Uzbekistan'];
+var FLAGS = {'Colombia':'🇨🇴','Portugal':'🇵🇹','DR Congo':'🇨🇩','Uzbekistan':'🇺🇿'};
+var TEAM_NORM = {
+  'Colombia':'Colombia','colombia':'Colombia',
+  'Portugal':'Portugal','portugal':'Portugal',
+  'DR Congo':'DR Congo','dr congo':'DR Congo','Congo DR':'DR Congo',
+  'Uzbekistan':'Uzbekistan','uzbekistan':'Uzbekistan'
+};
+
+function normTeam(name) {
+  if (!name) return name;
+  return TEAM_NORM[name] || TEAM_NORM[name.toLowerCase()] || name;
+}
+
+function fetchLiveData() {
+  // Try openfootball GitHub raw JSON - free, no key
+  var url = 'https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json';
+  fetch(url)
+    .then(function(r){ return r.json(); })
+    .then(function(data){ processMatches(data); })
+    .catch(function(){ showOffline(); });
+}
+
+function processMatches(data) {
+  var matches = data.matches || [];
+  var groupK = [];
+  var live = [];
+  var recent = [];
+  var now = new Date();
+
+  // Standings tracker
+  var standings = {};
+  GROUP_K_TEAMS.forEach(function(t){ standings[t]={p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0}; });
+
+  matches.forEach(function(m) {
+    var t1 = normTeam(m.team1); var t2 = normTeam(m.team2);
+    var isK = GROUP_K_TEAMS.indexOf(t1)>=0 || GROUP_K_TEAMS.indexOf(t2)>=0;
+    if (!isK) return;
+
+    groupK.push(m);
+    var mDate = new Date(m.date + 'T' + (m.time||'00:00') + ':00');
+    var diff = now - mDate;
+    var isFinished = m.score && m.score.ft;
+    var isLive = !isFinished && diff > 0 && diff < 120*60*1000;
+    var isUpcoming = !isFinished && !isLive;
+
+    if (isLive) live.push(m);
+    else if (isFinished) recent.push(m);
+
+    // Update standings if finished
+    if (isFinished && standings[t1] && standings[t2]) {
+      var g1 = m.score.ft[0], g2 = m.score.ft[1];
+      standings[t1].p++; standings[t2].p++;
+      standings[t1].gf+=g1; standings[t1].ga+=g2;
+      standings[t2].gf+=g2; standings[t2].ga+=g1;
+      if(g1>g2){standings[t1].w++;standings[t1].pts+=3;standings[t2].l++;}
+      else if(g2>g1){standings[t2].w++;standings[t2].pts+=3;standings[t1].l++;}
+      else{standings[t1].d++;standings[t1].pts++;standings[t2].d++;standings[t2].pts++;}
+    }
+  });
+
+  // Render live matches
+  var toShow = live.concat(recent.slice(-3));
+  renderMatches(toShow, live.length > 0);
+
+  // Render standings
+  renderStandings(standings);
+
+  // Status
+  var dot = document.getElementById('live-dot');
+  var status = document.getElementById('live-status');
+  var updated = document.getElementById('live-updated');
+  if (live.length > 0) {
+    dot.style.background = '#ff2222';
+    dot.style.animation = 'livepulse 1s ease-in-out infinite';
+    status.textContent = live.length + ' MATCH' + (live.length>1?'ES':'') + ' LIVE NOW';
+    status.style.color = '#ff6666';
+  } else if (recent.length > 0) {
+    dot.style.background = '#22cc44';
+    status.textContent = 'LIVE DATA · ' + recent.length + ' GROUP K MATCHES PLAYED';
+    status.style.color = 'rgba(255,255,255,0.5)';
+  } else {
+    dot.style.background = '#ffdd44';
+    status.textContent = 'LIVE DATA CONNECTED · TOURNAMENT STARTS JUN 11';
+    status.style.color = 'rgba(255,255,255,0.4)';
+  }
+  updated.textContent = 'UPDATED ' + new Date().toLocaleTimeString();
+}
+
+function renderMatches(matches, hasLive) {
+  var el = document.getElementById('live-matches');
+  if (!matches.length) {
+    el.innerHTML = '<div style="font-family:\'Courier New\',monospace;font-size:0.72rem;color:rgba(255,255,255,0.25);letter-spacing:2px;padding:20px 0;">NO GROUP K MATCHES PLAYED YET · FIRST MATCH JUN 17</div>';
+    return;
+  }
+  var html = '';
+  matches.forEach(function(m) {
+    var t1 = normTeam(m.team1); var t2 = normTeam(m.team2);
+    var isCol = t1==='Colombia'||t2==='Colombia';
+    var isFinished = m.score && m.score.ft;
+    var mDate = new Date(m.date + 'T' + (m.time||'00:00') + ':00');
+    var diff = new Date() - mDate;
+    var isLive = !isFinished && diff > 0 && diff < 120*60*1000;
+    var score = isFinished ? m.score.ft[0]+' — '+m.score.ft[1] : isLive ? '⚽ LIVE' : '--';
+    var badge = isLive ? '<span class="lm-badge badge-live">LIVE</span>' : isFinished ? '<span class="lm-badge badge-ft">FT</span>' : '<span class="lm-badge badge-ns">UPCOMING</span>';
+    html += '<div class="live-match'+(isLive?' is-live':'')+(isCol?' col-match':'')+'">';
+    html += '<div class="lm-top">';
+    html += '<div class="lm-teams">'+(FLAGS[t1]||'')+'&nbsp;'+t1+' <span style="color:rgba(255,255,255,0.3)">vs</span> '+t2+'&nbsp;'+(FLAGS[t2]||'')+'</div>';
+    html += '<div class="lm-score'+(isLive?' is-live':'')+'">'+score+'</div>';
+    html += badge;
+    html += '</div>';
+    html += '<div class="lm-meta"><span>'+m.date+'</span><span>'+(m.group||'Group K')+'</span>'+(m.ground?'<span>📍 '+m.ground+'</span>':'')+'</div>';
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+
+function renderStandings(standings) {
+  // Sort by pts desc, then GD, then GF
+  var sorted = GROUP_K_TEAMS.slice().sort(function(a,b){
+    var pa=standings[a],pb=standings[b];
+    if(pb.pts!==pa.pts)return pb.pts-pa.pts;
+    var gda=pa.gf-pa.ga, gdb=pb.gf-pb.ga;
+    if(gdb!==gda)return gdb-gda;
+    return pb.gf-pa.gf;
+  });
+  var body = document.getElementById('live-standings-body');
+  if(!body)return;
+  body.innerHTML = sorted.map(function(t,i){
+    var s=standings[t];
+    var isCol=t==='Colombia';
+    var qualify=i<2;
+    return '<tr'+(isCol?' class="col-row"':'')+'>'+
+      '<td class="pos'+(qualify?' q':'')+'>'+(i+1)+'</td>'+
+      '<td>'+(FLAGS[t]||'')+' '+t+'</td>'+
+      '<td>'+s.p+'</td><td>'+s.w+'</td><td>'+s.d+'</td><td>'+s.l+'</td>'+
+      '<td>'+(s.gf-s.ga>=0?'+':'')+(s.gf-s.ga)+'</td>'+
+      '<td class="pts">'+s.pts+'</td>'+
+    '</tr>';
+  }).join('');
+}
+
+function showOffline() {
+  var dot = document.getElementById('live-dot');
+  var status = document.getElementById('live-status');
+  dot.style.background = '#888';
+  status.textContent = 'LIVE DATA UNAVAILABLE · CHECK CONNECTION';
+}
+
+// Fetch on load, then every 60 seconds
+fetchLiveData();
+setInterval(fetchLiveData, 60000);
 
 </script>
