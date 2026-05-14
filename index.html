@@ -5,240 +5,244 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Colombia · FIFA World Cup 2026</title>
 <style>
-/* No external fonts - using system fonts for reliability */
-:root{--yellow:#FFD100;--blue:#003087;--red:#CE1126;--dark:#050a14;--card:#0a1628;--border:rgba(255,209,0,0.2);}
+:root{--y:#FFD100;--b:#003087;--r:#CE1126;--dark:#050a14;--card:#0a1628;--brd:rgba(255,209,0,0.2);}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--dark);color:#fff;font-family:Arial,Helvetica,sans-serif;min-height:100vh;overflow-x:hidden;}
-#hero{position:relative;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;text-align:center;padding:20px;}
-#hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,#003087 0%,#050a14 65%);}
-.stars{position:absolute;inset:0;pointer-events:none;}
+body{background:var(--dark);color:#fff;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden;}
+
+/* SPLASH */
+#splash{position:fixed;inset:0;z-index:9999;background:#050a14;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;cursor:pointer;}
+#splash.hide{opacity:0;pointer-events:none;transition:opacity 0.8s;}
+.sp-flag{font-size:clamp(3rem,10vw,5rem);margin-bottom:12px;animation:float 2s ease-in-out infinite;}
+.sp-title{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(3rem,13vw,8rem);color:#FFD100;text-shadow:0 0 40px rgba(255,209,0,0.5);line-height:0.9;margin-bottom:8px;}
+.sp-sub{font-size:clamp(0.6rem,2vw,0.9rem);color:rgba(255,255,255,0.4);letter-spacing:6px;margin-bottom:8px;}
+.sp-vic{font-size:clamp(0.7rem,2vw,1rem);color:rgba(255,209,0,0.7);letter-spacing:4px;margin-bottom:28px;}
+.sp-btn{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(1.2rem,4vw,1.8rem);letter-spacing:4px;color:#000;background:#FFD100;border:none;border-radius:50px;padding:16px 40px;cursor:pointer;animation:pulse 1.5s ease-in-out infinite;}
+.sp-hint{font-size:0.7rem;color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:16px;}
+.sp-stripes{position:absolute;top:0;left:0;right:0;display:flex;height:10px;}
+.sp-y{flex:2;background:#FFD100;}.sp-b{flex:1;background:#003087;}.sp-r{flex:1;background:#CE1126;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 20px rgba(255,209,0,0.4)}50%{transform:scale(1.05);box-shadow:0 0 50px rgba(255,209,0,0.8)}}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(5,10,20,0.96);border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(12px,4vw,40px);height:52px;}
+.nav-logo{font-family:'Arial Black',Arial,sans-serif;font-size:1.2rem;color:#FFD100;letter-spacing:2px;}
+.nav-links{display:flex;gap:clamp(8px,2vw,20px);}
+.nav-links a{font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:2px;cursor:pointer;text-decoration:none;}
+.nav-links a:hover{color:#FFD100;}
+
+/* HERO */
+#hero{position:relative;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,#003087 0%,#050a14 65%);z-index:0;}
+.stars{position:absolute;inset:0;pointer-events:none;z-index:0;}
 .star{position:absolute;background:#fff;border-radius:50%;animation:twinkle 3s ease-in-out infinite;}
 @keyframes twinkle{0%,100%{opacity:0.1}50%{opacity:1}}
-.flag-stripe{position:absolute;left:0;right:0;height:4px;}
-.flag-stripe.y{top:0;background:var(--yellow);}
-.flag-stripe.b{top:4px;height:6px;background:var(--blue);}
-.flag-stripe.r{top:10px;height:4px;background:var(--red);}
-.wc-badge{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:clamp(0.7rem,1.8vw,1rem);color:var(--yellow);letter-spacing:8px;margin-bottom:12px;opacity:0.8;position:relative;z-index:1;}
-.hero-title{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:clamp(3.5rem,12vw,9rem);line-height:0.9;color:#fff;text-shadow:0 0 60px rgba(255,209,0,0.4);margin-bottom:8px;position:relative;z-index:1;font-weight:900;letter-spacing:-1px;}
-.hero-title span{color:var(--yellow);}
-.hero-sub{font-family:'Courier New',Courier,monospace;font-size:clamp(0.7rem,2vw,1rem);color:rgba(255,255,255,0.5);letter-spacing:4px;margin-bottom:40px;position:relative;z-index:1;}
-#countdown{display:flex;gap:clamp(12px,3vw,32px);margin-bottom:48px;position:relative;z-index:1;}
-.cd-unit{display:flex;flex-direction:column;align-items:center;gap:4px;}
-.cd-num{font-family:'Courier New',Courier,monospace;font-size:clamp(2rem,6vw,4.5rem);font-weight:900;color:var(--yellow);text-shadow:0 0 30px rgba(255,209,0,0.6);line-height:1;min-width:clamp(60px,12vw,100px);text-align:center;background:rgba(0,48,135,0.3);border:1px solid var(--border);border-radius:8px;padding:8px 4px;}
-.cd-label{font-family:Arial,Helvetica,sans-serif;font-size:clamp(0.55rem,1.4vw,0.75rem);color:rgba(255,255,255,0.4);letter-spacing:3px;font-weight:600;}
-.cd-sep{font-family:'Courier New',Courier,monospace;font-size:clamp(1.5rem,4vw,3rem);color:var(--yellow);opacity:0.4;align-self:flex-start;padding-top:8px;animation:blink 1s step-end infinite;}
-@keyframes blink{0%,100%{opacity:0.4}50%{opacity:0}}
-.scroll-hint{font-family:Arial,Helvetica,sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.3);letter-spacing:3px;animation:bounce 2s ease-in-out infinite;position:relative;z-index:1;}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-nav{position:sticky;top:0;z-index:100;background:rgba(5,10,20,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,48px);height:56px;}
-.nav-logo{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:1.4rem;color:var(--yellow);letter-spacing:3px;}
-.nav-links{display:flex;gap:clamp(8px,2vw,24px);}
-.nav-link{font-family:Arial,Helvetica,sans-serif;font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:2px;cursor:pointer;transition:color 0.2s;text-decoration:none;}
-.nav-link:hover{color:var(--yellow);}
-.sec{padding:clamp(40px,8vw,80px) clamp(16px,5vw,60px);max-width:1100px;margin:0 auto;}
-.sec-label{font-family:'Courier New',Courier,monospace;font-size:0.7rem;color:var(--yellow);letter-spacing:6px;margin-bottom:8px;opacity:0.8;}
-.sec-title{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:clamp(2.5rem,7vw,5rem);line-height:1;margin-bottom:32px;}
-.sec-title span{color:var(--yellow);}
-.match-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:clamp(14px,3vw,24px);margin-bottom:14px;display:flex;align-items:center;gap:clamp(10px,2.5vw,22px);position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.2s;}
-.match-card:hover{border-color:var(--yellow);transform:translateX(4px);}
-.match-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--yellow);}
-.match-card.next::before{background:var(--red);animation:pulsebar 1.5s ease-in-out infinite;}
-@keyframes pulsebar{0%,100%{opacity:1}50%{opacity:0.3}}
-.match-card.next{border-color:rgba(206,17,38,0.4);}
-.mbadge{position:absolute;top:10px;right:10px;font-family:'Courier New',Courier,monospace;font-size:0.6rem;font-weight:700;letter-spacing:2px;padding:3px 8px;border-radius:20px;}
-.mbadge.next{background:var(--red);color:#fff;}
-.mdate{text-align:center;min-width:clamp(44px,9vw,72px);}
-.mday{font-family:'Courier New',Courier,monospace;font-size:clamp(1.2rem,3vw,2rem);font-weight:900;color:var(--yellow);line-height:1;}
-.mmonth{font-size:0.7rem;color:rgba(255,255,255,0.4);letter-spacing:2px;font-weight:600;}
-.mdiv{width:1px;height:44px;background:var(--border);flex-shrink:0;}
+.h-stripe{position:absolute;left:0;right:0;z-index:1;}
+.h-stripe.y{top:0;height:4px;background:#FFD100;}
+.h-stripe.b{top:4px;height:6px;background:#003087;}
+.h-stripe.r{top:10px;height:4px;background:#CE1126;}
+.hero-content{position:relative;z-index:2;}
+.hero-badge{font-size:clamp(0.6rem,1.5vw,0.85rem);color:#FFD100;letter-spacing:6px;margin-bottom:10px;opacity:0.8;}
+.hero-vic{font-size:clamp(0.55rem,1.3vw,0.75rem);color:rgba(255,209,0,0.5);letter-spacing:4px;margin-bottom:6px;}
+.hero-title{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(3.5rem,13vw,9rem);line-height:0.9;color:#fff;text-shadow:0 0 50px rgba(255,209,0,0.4);margin-bottom:6px;}
+.hero-title span{color:#FFD100;}
+.hero-sub{font-size:clamp(0.6rem,1.8vw,0.9rem);color:rgba(255,255,255,0.4);letter-spacing:4px;margin-bottom:32px;}
+#cd{display:flex;gap:clamp(10px,2.5vw,24px);margin-bottom:32px;}
+.cd-u{display:flex;flex-direction:column;align-items:center;gap:3px;}
+.cd-n{font-family:'Courier New',monospace;font-size:clamp(1.8rem,5.5vw,4rem);font-weight:900;color:#FFD100;text-shadow:0 0 20px rgba(255,209,0,0.5);line-height:1;min-width:clamp(55px,10vw,90px);text-align:center;background:rgba(0,48,135,0.3);border:1px solid var(--brd);border-radius:8px;padding:6px 4px;}
+.cd-l{font-size:clamp(0.5rem,1.2vw,0.7rem);color:rgba(255,255,255,0.35);letter-spacing:3px;}
+.cd-sep{font-family:'Courier New',monospace;font-size:clamp(1.2rem,3.5vw,2.5rem);color:#FFD100;opacity:0.35;align-self:flex-start;padding-top:6px;animation:blink 1s step-end infinite;}
+@keyframes blink{0%,100%{opacity:0.35}50%{opacity:0}}
+.scroll-hint{font-size:0.75rem;color:rgba(255,255,255,0.25);letter-spacing:3px;animation:bounce 2s ease-in-out infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+/* SECTIONS */
+.sec{max-width:1100px;margin:0 auto;padding:clamp(36px,7vw,70px) clamp(14px,4vw,50px);}
+.sec-lbl{font-family:'Courier New',monospace;font-size:0.68rem;color:#FFD100;letter-spacing:5px;margin-bottom:6px;opacity:0.8;}
+.sec-title{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);line-height:1;margin-bottom:28px;}
+.sec-title span{color:#FFD100;}
+
+/* MATCH CARDS */
+.match-card{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:clamp(12px,2.5vw,22px);margin-bottom:12px;display:flex;align-items:center;gap:clamp(8px,2vw,20px);position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.2s;}
+.match-card:hover{border-color:#FFD100;transform:translateX(3px);}
+.match-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#FFD100;}
+.match-card.next-up::before{background:#CE1126;animation:pb 1.5s ease-in-out infinite;}
+@keyframes pb{0%,100%{opacity:1}50%{opacity:0.3}}
+.match-card.next-up{border-color:rgba(206,17,38,0.4);}
+.mbadge{position:absolute;top:8px;right:8px;font-family:'Courier New',monospace;font-size:0.55rem;font-weight:700;letter-spacing:2px;padding:3px 8px;border-radius:20px;background:#CE1126;color:#fff;}
+.mdate{text-align:center;min-width:clamp(40px,8vw,65px);}
+.mday{font-family:'Courier New',monospace;font-size:clamp(1.1rem,2.8vw,1.8rem);font-weight:900;color:#FFD100;line-height:1;}
+.mmonth{font-size:0.65rem;color:rgba(255,255,255,0.35);letter-spacing:2px;font-weight:700;}
+.mdiv{width:1px;height:40px;background:var(--brd);flex-shrink:0;}
 .mteams{flex:1;}
-.mvs{display:flex;align-items:center;gap:clamp(6px,1.5vw,14px);margin-bottom:6px;flex-wrap:wrap;}
-.tname{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:clamp(1rem,3vw,1.8rem);letter-spacing:2px;}
-.tname.col{color:var(--yellow);}
-.vsdot{font-family:'Courier New',Courier,monospace;font-size:0.7rem;color:rgba(255,255,255,0.3);font-weight:700;}
-.mmeta{font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:1px;display:flex;gap:10px;flex-wrap:wrap;}
-.mcd{font-family:'Courier New',Courier,monospace;font-size:clamp(0.6rem,1.4vw,0.78rem);color:var(--yellow);text-align:right;min-width:clamp(70px,11vw,110px);line-height:1.7;}
-.mcd-lbl{font-size:0.52rem;color:rgba(255,255,255,0.3);letter-spacing:2px;display:block;}
-.prog-bar{background:rgba(255,255,255,0.05);border-radius:100px;height:8px;overflow:hidden;}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--red));border-radius:100px;}
-.grp-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
-.grp-table th{font-family:'Courier New',Courier,monospace;font-size:0.62rem;letter-spacing:2px;color:rgba(255,255,255,0.4);padding:12px 14px;text-align:left;border-bottom:1px solid var(--border);}
-.grp-table td{padding:13px 14px;border-bottom:1px solid rgba(255,209,0,0.05);font-weight:600;font-size:0.9rem;}
+.mvs{display:flex;align-items:center;gap:clamp(5px,1.5vw,12px);margin-bottom:5px;flex-wrap:wrap;}
+.tname{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(0.9rem,2.8vw,1.7rem);letter-spacing:1px;}
+.tname.col{color:#FFD100;}
+.vsdot{font-size:0.65rem;color:rgba(255,255,255,0.25);font-weight:700;}
+.mmeta{font-size:0.68rem;color:rgba(255,255,255,0.35);display:flex;gap:8px;flex-wrap:wrap;}
+.mcd{font-family:'Courier New',monospace;font-size:clamp(0.55rem,1.3vw,0.72rem);color:#FFD100;text-align:right;min-width:clamp(65px,10vw,105px);line-height:1.7;}
+.mcd-lbl{font-size:0.5rem;color:rgba(255,255,255,0.25);letter-spacing:2px;display:block;}
+
+/* PROGRESS */
+.prog-wrap{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:clamp(12px,2.5vw,22px);margin-top:16px;}
+.prog-bar{background:rgba(255,255,255,0.05);border-radius:100px;height:7px;overflow:hidden;margin:8px 0 5px;}
+.prog-fill{height:100%;background:linear-gradient(90deg,#FFD100,#CE1126);border-radius:100px;}
+.prog-labels{display:flex;justify-content:space-between;font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:1px;}
+
+/* GROUP TABLE */
+.grp-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;border:1px solid var(--brd);}
+.grp-table th{font-family:'Courier New',monospace;font-size:0.6rem;letter-spacing:2px;color:rgba(255,255,255,0.35);padding:11px 12px;text-align:left;border-bottom:1px solid var(--brd);}
+.grp-table td{padding:12px 12px;border-bottom:1px solid rgba(255,209,0,0.04);font-weight:700;font-size:0.88rem;}
 .grp-table tr:last-child td{border-bottom:none;}
 .grp-table tr.col-row td{background:rgba(255,209,0,0.05);}
-.pos{font-family:'Courier New',Courier,monospace;font-weight:900;font-size:1.1rem;color:rgba(255,255,255,0.25);width:28px;}
-.pos.q{color:var(--yellow);}
-.pts{font-family:'Courier New',Courier,monospace;font-weight:900;font-size:1.1rem;color:var(--yellow);}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(130px,18vw,190px),1fr));gap:14px;}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:clamp(14px,2.5vw,22px);text-align:center;transition:border-color 0.3s,transform 0.2s;}
-.stat-card:hover{border-color:var(--yellow);transform:translateY(-4px);}
-.stat-num{font-family:'Courier New',Courier,monospace;font-size:clamp(1.8rem,5vw,3.2rem);font-weight:900;color:var(--yellow);line-height:1;margin-bottom:4px;}
-.stat-lbl{font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:2px;font-weight:600;}
-.players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(140px,20vw,210px),1fr));gap:14px;}
-.player-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:clamp(12px,2vw,20px);transition:border-color 0.3s,transform 0.2s;position:relative;overflow:hidden;}
-.player-card:hover{border-color:var(--yellow);transform:translateY(-4px);}
-.player-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--yellow),var(--blue),var(--red));}
-.pnum{font-family:'Courier New',Courier,monospace;font-size:0.62rem;font-weight:700;color:rgba(255,209,0,0.4);letter-spacing:2px;margin-bottom:3px;}
-.pname{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:clamp(1rem,2.3vw,1.4rem);letter-spacing:2px;margin-bottom:3px;}
-.ppos{font-size:0.68rem;color:rgba(255,255,255,0.4);letter-spacing:2px;font-weight:600;margin-bottom:6px;}
-.pclub{font-size:0.72rem;color:rgba(255,209,0,0.6);font-weight:600;}
-.star-p::before{content:'STAR';position:absolute;top:8px;right:8px;font-family:'Courier New',Courier,monospace;font-size:0.45rem;color:var(--yellow);letter-spacing:1px;opacity:0.6;}
-/* SCHEDULE */
-.tab-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
-.tab-btn{font-family:'Courier New',Courier,monospace;font-size:clamp(0.52rem,1.2vw,0.68rem);font-weight:700;letter-spacing:2px;padding:7px 12px;background:var(--card);border:1px solid var(--border);border-radius:6px;color:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.2s;}
-.tab-btn:hover{border-color:var(--yellow);color:var(--yellow);}
-.tab-btn.on{background:var(--yellow);color:#000;border-color:var(--yellow);}
-.sched-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(260px,38vw,380px),1fr));gap:10px;}
-.sc{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative;transition:border-color 0.2s;}
+.pos{font-family:'Courier New',monospace;font-weight:900;font-size:1rem;color:rgba(255,255,255,0.2);width:26px;}
+.pos.q{color:#FFD100;}
+.pts{font-family:'Courier New',monospace;font-weight:900;font-size:1rem;color:#FFD100;}
+
+/* SCHEDULE TABS */
+.tab-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px;}
+.tab-btn{font-family:'Courier New',monospace;font-size:clamp(0.5rem,1.1vw,0.65rem);font-weight:700;letter-spacing:2px;padding:7px 11px;background:var(--card);border:1px solid var(--brd);border-radius:6px;color:rgba(255,255,255,0.35);cursor:pointer;transition:all 0.2s;}
+.tab-btn:hover{border-color:#FFD100;color:#FFD100;}
+.tab-btn.on{background:#FFD100;color:#000;border-color:#FFD100;}
+.sched-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(240px,36vw,360px),1fr));gap:9px;}
+.sc{background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:11px 13px;position:relative;transition:border-color 0.2s;}
 .sc:hover{border-color:rgba(255,209,0,0.35);}
-.sc.col{border-color:rgba(255,209,0,0.4);background:rgba(255,209,0,0.03);}
-.sc.col::after{content:'COL';position:absolute;top:8px;right:8px;font-family:'Courier New',Courier,monospace;font-size:0.48rem;color:var(--yellow);letter-spacing:1px;opacity:0.7;}
-.sc-grp{font-family:'Courier New',Courier,monospace;font-size:0.52rem;color:var(--yellow);letter-spacing:2px;margin-bottom:5px;opacity:0.7;}
-.sc-dt{font-family:'Courier New',Courier,monospace;font-size:0.6rem;color:rgba(255,255,255,0.35);margin-bottom:3px;display:flex;justify-content:space-between;}
-.sc-m{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:clamp(0.9rem,2vw,1.15rem);letter-spacing:2px;margin-bottom:3px;}
-.sc-v{font-size:0.62rem;color:rgba(255,255,255,0.28);letter-spacing:1px;}
-.stage-note{font-family:'Courier New',Courier,monospace;font-size:0.62rem;color:rgba(255,209,0,0.55);letter-spacing:3px;margin-bottom:18px;}
-footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);color:rgba(255,255,255,0.2);font-size:0.75rem;letter-spacing:2px;}
-@media(max-width:580px){.mcd{display:none;}.grp-table th:nth-child(5),.grp-table td:nth-child(5),.grp-table th:nth-child(6),.grp-table td:nth-child(6){display:none;}}
+.sc.col{border-color:rgba(255,209,0,0.45);background:rgba(255,209,0,0.03);}
+.sc.col::after{content:'COL';position:absolute;top:7px;right:7px;font-family:'Courier New',monospace;font-size:0.46rem;color:#FFD100;letter-spacing:1px;opacity:0.8;}
+.sc-grp{font-family:'Courier New',monospace;font-size:0.5rem;color:#FFD100;letter-spacing:2px;margin-bottom:4px;opacity:0.7;}
+.sc-dt{font-family:'Courier New',monospace;font-size:0.58rem;color:rgba(255,255,255,0.3);margin-bottom:3px;display:flex;justify-content:space-between;}
+.sc-m{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(0.82rem,1.8vw,1.05rem);letter-spacing:1px;margin-bottom:2px;}
+.sc-v{font-size:0.6rem;color:rgba(255,255,255,0.25);letter-spacing:1px;}
+.stage-note{font-family:'Courier New',monospace;font-size:0.6rem;color:rgba(255,209,0,0.5);letter-spacing:3px;margin-bottom:16px;}
+
+/* PLAYERS */
+.player-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(130px,18vw,185px),1fr));gap:14px;}
+.pcard{border-radius:12px;overflow:hidden;border:1px solid var(--brd);transition:border-color 0.3s,transform 0.2s;position:relative;}
+.pcard:hover{border-color:#FFD100;transform:translateY(-4px);}
+.pcard.star::before{content:'STAR';position:absolute;top:7px;right:7px;font-size:0.45rem;font-weight:700;color:#000;background:#FFD100;padding:2px 6px;border-radius:8px;letter-spacing:1px;z-index:2;}
+.pjerseybox{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.pjerseybox svg{width:85%;height:85%;}
+.pinfo{background:var(--card);padding:10px 12px;}
+.pname{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(0.68rem,1.4vw,0.85rem);font-weight:900;margin-bottom:2px;}
+.ppos{font-size:0.65rem;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:2px;}
+.pclub{font-size:0.65rem;color:rgba(255,209,0,0.65);font-weight:700;}
+.pcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FFD100,#003087,#CE1126);}
 
 /* MUSIC */
-.music-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:clamp(20px,4vw,36px);margin-bottom:16px;}
-.music-section:hover{border-color:rgba(255,209,0,0.4);}
-.music-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
-.music-icon{font-size:clamp(2rem,5vw,3rem);}
-.music-title{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:clamp(1.3rem,3.5vw,2.2rem);letter-spacing:3px;}
-.music-desc{font-size:0.82rem;color:rgba(255,255,255,0.45);letter-spacing:1px;margin-bottom:16px;line-height:1.5;}
-.music-links{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
-.music-link{font-family:'Courier New',Courier,monospace;font-size:0.65rem;font-weight:700;letter-spacing:2px;padding:8px 16px;border-radius:6px;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;}
-.music-link.yt{background:rgba(255,0,0,0.15);border:1px solid rgba(255,0,0,0.4);color:#ff6666;}
-.music-link.yt:hover{background:rgba(255,0,0,0.3);border-color:#ff0000;color:#fff;}
-.music-link.sp{background:rgba(30,215,96,0.12);border:1px solid rgba(30,215,96,0.35);color:#1ed760;}
-.music-link.sp:hover{background:rgba(30,215,96,0.25);border-color:#1ed760;color:#fff;}
-/* synth player */
-.synth-player{background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:12px;padding:16px 20px;}
-.synth-title{font-family:'Courier New',Courier,monospace;font-size:0.65rem;color:rgba(255,209,0,0.6);letter-spacing:3px;margin-bottom:12px;}
-.synth-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-.synth-btn{font-family:'Courier New',Courier,monospace;font-size:0.7rem;font-weight:700;letter-spacing:2px;padding:8px 18px;border-radius:6px;cursor:pointer;border:none;transition:all 0.2s;}
-.synth-play{background:var(--yellow);color:#000;}
-.synth-play:hover{background:#fff200;}
-.synth-stop{background:rgba(206,17,38,0.2);border:1px solid rgba(206,17,38,0.4);color:#ff6666;}
-.synth-stop:hover{background:rgba(206,17,38,0.4);color:#fff;}
-.synth-mode{background:rgba(255,255,255,0.06);border:1px solid var(--border);color:rgba(255,255,255,0.5);padding:8px 14px;border-radius:6px;cursor:pointer;font-family:'Courier New',Courier,monospace;font-size:0.65rem;letter-spacing:1px;transition:all 0.2s;}
-.synth-mode.on{border-color:var(--yellow);color:var(--yellow);}
-.synth-viz{display:flex;align-items:flex-end;gap:3px;height:32px;margin-left:auto;}
-.viz-bar{width:4px;background:var(--yellow);border-radius:2px;transition:height 0.1s;}
-.synth-label{font-family:'Courier New',Courier,monospace;font-size:0.6rem;color:rgba(255,255,255,0.3);letter-spacing:2px;}
+.music-box{background:var(--card);border:1px solid var(--brd);border-radius:14px;padding:clamp(16px,3vw,28px);margin-bottom:14px;}
+.music-hd{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.music-icon{font-size:clamp(1.8rem,4vw,2.5rem);}
+.music-title{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(1.1rem,3vw,1.8rem);letter-spacing:2px;}
+.music-desc{font-size:0.78rem;color:rgba(255,255,255,0.4);margin-bottom:14px;line-height:1.5;}
+.music-links{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.mlink{font-family:'Courier New',monospace;font-size:0.62rem;font-weight:700;letter-spacing:2px;padding:7px 14px;border-radius:6px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.mlink.yt{background:rgba(255,0,0,0.12);border:1px solid rgba(255,0,0,0.35);color:#ff6666;}
+.mlink.yt:hover{background:rgba(255,0,0,0.28);color:#fff;}
+.mlink.sp{background:rgba(30,215,96,0.1);border:1px solid rgba(30,215,96,0.3);color:#1ed760;}
+.mlink.sp:hover{background:rgba(30,215,96,0.22);color:#fff;}
+.synth-box{background:rgba(0,0,0,0.35);border:1px solid var(--brd);border-radius:10px;padding:14px 18px;}
+.synth-lbl{font-family:'Courier New',monospace;font-size:0.62rem;color:rgba(255,209,0,0.55);letter-spacing:3px;margin-bottom:10px;}
+.synth-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.sbtn{font-family:'Courier New',monospace;font-size:0.68rem;font-weight:700;letter-spacing:2px;padding:7px 16px;border-radius:6px;cursor:pointer;border:none;}
+.sbtn.play{background:#FFD100;color:#000;}
+.sbtn.stop{background:rgba(206,17,38,0.18);border:1px solid rgba(206,17,38,0.4);color:#ff6666;}
+.viz{display:flex;align-items:flex-end;gap:2px;height:28px;margin-left:auto;}
+.vb{width:4px;background:#FFD100;border-radius:2px;}
 
+/* NJ EVENTS */
+.nj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(260px,38vw,400px),1fr));gap:12px;}
+.nj-card{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:clamp(12px,2.5vw,20px);position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.2s;}
+.nj-card:hover{border-color:rgba(255,209,0,0.45);transform:translateY(-3px);}
+.nj-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#FFD100;}
+.nj-card.ongoing::before{background:#003087;}
+.nj-card.special::before{background:#CE1126;}
+.nj-num{position:absolute;top:10px;right:12px;font-family:'Arial Black',Arial,sans-serif;font-size:2.2rem;font-weight:900;color:rgba(255,209,0,0.06);line-height:1;}
+.nj-date{font-family:'Courier New',monospace;font-size:0.6rem;font-weight:700;color:#FFD100;letter-spacing:3px;margin-bottom:5px;}
+.nj-card.ongoing .nj-date{color:#6699ff;}
+.nj-card.special .nj-date{color:#ff6666;}
+.nj-title{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(0.88rem,2vw,1.15rem);font-weight:900;margin-bottom:5px;}
+.nj-loc{font-size:0.7rem;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:7px;}
+.nj-desc{font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.5;}
 
-/* ENTRY SPLASH */
-#entry-splash{
-  position:fixed;inset:0;z-index:99999;
-  background:#050a14;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  cursor:pointer;
-  transition:opacity 0.8s ease;
-}
-#entry-splash.hide{opacity:0;pointer-events:none;}
-.es-flag{font-size:clamp(3rem,10vw,6rem);margin-bottom:16px;animation:esfloat 2s ease-in-out infinite;}
-@keyframes esfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.es-title{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:clamp(3.5rem,13vw,9rem);color:#FFD100;
-  text-shadow:0 0 40px rgba(255,209,0,0.5);line-height:0.9;text-align:center;margin-bottom:8px;}
-.es-sub{font-family:'Courier New',Courier,monospace;font-size:clamp(0.65rem,2vw,1rem);
-  color:rgba(255,255,255,0.4);letter-spacing:6px;margin-bottom:48px;}
-.es-btn{
-  font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-size:clamp(1.4rem,4vw,2.2rem);letter-spacing:6px;
-  color:#000;background:var(--yellow);
-  border:none;border-radius:60px;padding:18px 48px;cursor:pointer;
-  animation:espulse 1.5s ease-in-out infinite;
-  box-shadow:0 0 40px rgba(255,209,0,0.5);
-}
-@keyframes espulse{0%,100%{transform:scale(1);box-shadow:0 0 30px rgba(255,209,0,0.4)}
-  50%{transform:scale(1.06);box-shadow:0 0 60px rgba(255,209,0,0.8)}}
-.es-btn:hover{background:#fff200;}
-.es-hint{font-family:'Courier New',Courier,monospace;font-size:clamp(0.55rem,1.5vw,0.72rem);
-  color:rgba(255,255,255,0.2);letter-spacing:3px;margin-top:20px;}
-.es-stripes{position:absolute;top:0;left:0;right:0;height:12px;display:flex;}
-.es-y{flex:2;background:#FFD100;}
-.es-b{flex:1;background:#003087;}
-.es-r{flex:1;background:#CE1126;}
-.es-stars-bg{position:absolute;inset:0;pointer-events:none;}
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(120px,16vw,180px),1fr));gap:12px;}
+.stat-card{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:clamp(12px,2.5vw,20px);text-align:center;transition:border-color 0.3s,transform 0.2s;}
+.stat-card:hover{border-color:#FFD100;transform:translateY(-4px);}
+.stat-num{font-family:'Courier New',monospace;font-size:clamp(1.6rem,4.5vw,3rem);font-weight:900;color:#FFD100;line-height:1;margin-bottom:4px;}
+.stat-lbl{font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:2px;font-weight:700;}
 
+footer{text-align:center;padding:36px 20px;border-top:1px solid var(--brd);color:rgba(255,255,255,0.18);font-size:0.72rem;letter-spacing:2px;}
+
+@media(max-width:560px){.mcd{display:none;}.grp-table th:nth-child(n+5):nth-child(-n+7),.grp-table td:nth-child(n+5):nth-child(-n+7){display:none;}}
 </style>
 </head>
 <body>
 
+<audio id="aud" loop preload="auto"><source src="music.mp3" type="audio/mpeg"></audio>
 
-
-<!-- Cali Pachanguero - Grupo Niche - Internet Archive -->
-<audio id="cali-audio" loop preload="auto">
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<div id="entry-splash">
-  <div class="es-stars-bg" id="es-stars"></div>
-  <div class="es-stripes"><div class="es-y"></div><div class="es-b"></div><div class="es-r"></div></div>
-  <div class="es-flag">🇨🇴</div>
-  <div class="es-title">COLOMBIA<br>2026</div>
-  <div class="es-sub">FIFA WORLD CUP · USA · CANADA · MEXICO</div>
-  <button class="es-btn" id="es-btn">🪗 ENTRAR CON MUSICA 🪗</button>
-  <div class="es-hint">TAP TO ENTER AND START MUSIC</div>
-  <div style="font-family:'Courier New',Courier,monospace;font-size:clamp(0.55rem,1.5vw,0.72rem);color:rgba(255,209,0,0.5);letter-spacing:3px;margin-top:12px;">ESPECIALMENTE HECHO PARA VICENTE</div>
+<!-- SPLASH -->
+<div id="splash">
+  <div class="sp-stripes"><div class="sp-y"></div><div class="sp-b"></div><div class="sp-r"></div></div>
+  <div class="sp-flag">🇨🇴</div>
+  <div class="sp-title">COLOMBIA<br>2026</div>
+  <div class="sp-sub">FIFA WORLD CUP · USA · CANADA · MEXICO</div>
+  <div class="sp-vic">⭐ ESPECIALMENTE HECHO PARA VICENTE ⭐</div>
+  <button class="sp-btn" id="sp-btn">🪗 ENTRAR CON MUSICA 🪗</button>
+  <div class="sp-hint">TAP TO ENTER AND START MUSIC</div>
 </div>
 
+<!-- HERO -->
 <div id="hero">
-  <div id="hero-bg"></div>
+  <div class="hero-bg"></div>
   <div class="stars" id="stars"></div>
-  <div class="flag-stripe y"></div>
-  <div class="flag-stripe b"></div>
-  <div class="flag-stripe r"></div>
-  <div class="wc-badge">FIFA WORLD CUP 2026 · USA / CANADA / MEXICO</div>
-  <div style="font-family:'Courier New',Courier,monospace;font-size:clamp(0.55rem,1.4vw,0.72rem);color:rgba(255,209,0,0.45);letter-spacing:4px;margin-bottom:8px;position:relative;z-index:1;">ESPECIALMENTE HECHO PARA VICENTE 🎁</div>
-  <div class="hero-title">LOS <span>CAFETEROS</span></div>
-  <div class="hero-sub">COLOMBIA · GROUP K · THE JOURNEY BEGINS</div>
-  <div id="countdown">
-    <div class="cd-unit"><div class="cd-num" id="cd-d">--</div><div class="cd-label">DAYS</div></div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-label">HRS</div></div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit"><div class="cd-num" id="cd-m">--</div><div class="cd-label">MIN</div></div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-label">SEC</div></div>
+  <div class="h-stripe y"></div><div class="h-stripe b"></div><div class="h-stripe r"></div>
+  <div class="hero-content">
+    <div class="hero-badge">FIFA WORLD CUP 2026 · USA / CANADA / MEXICO</div>
+    <div class="hero-vic">ESPECIALMENTE HECHO PARA VICENTE 🎁</div>
+    <div class="hero-title">LOS <span>CAFETEROS</span></div>
+    <div class="hero-sub">COLOMBIA · GROUP K · THE JOURNEY BEGINS</div>
+    <div id="cd">
+      <div class="cd-u"><div class="cd-n" id="cd-d">--</div><div class="cd-l">DAYS</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-u"><div class="cd-n" id="cd-h">--</div><div class="cd-l">HRS</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-u"><div class="cd-n" id="cd-m">--</div><div class="cd-l">MIN</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-u"><div class="cd-n" id="cd-s">--</div><div class="cd-l">SEC</div></div>
+    </div>
+    <div class="scroll-hint">▼ SCROLL FOR MORE ▼</div>
   </div>
-  <div class="scroll-hint">SCROLL FOR MORE</div>
-
-<!-- Music starts here - injected on splash tap -->
-<div id="yt-hero-container" style="display:none;width:1px;height:1px;overflow:hidden;position:absolute;"></div>
-
 </div>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">COLOMBIA 2026</div>
+  <div class="nav-logo">🇨🇴 COL 2026</div>
   <div class="nav-links">
-    <a class="nav-link" href="#live">LIVE</a>
-    <a class="nav-link" href="#matches">MATCHES</a>
-    <a class="nav-link" href="#group">GROUP K</a>
-    <a class="nav-link" href="#schedule">SCHEDULE</a>
-    <a class="nav-link" href="#players">SQUAD</a>
-    <a class="nav-link" href="#njevents">NJ EVENTS</a>
-    <a class="nav-link" href="#music">MUSICA</a><a class="nav-link" href="#stats">STATS</a>
-    <button id="music-btn" onclick="toggleMusic()" style="font-family:'Courier New',Courier,monospace;font-size:0.62rem;font-weight:700;letter-spacing:2px;padding:6px 14px;background:linear-gradient(135deg,#880000,#440000);color:#ffcccc;border:1.5px solid #cc2222;border-radius:20px;cursor:pointer;">PLAY MUSIC</button>
+    <a href="#matches">MATCHES</a>
+    <a href="#group">GROUP K</a>
+    <a href="#schedule">SCHEDULE</a>
+    <a href="#njevents">NJ EVENTS</a>
+    <a href="#music">MUSICA</a>
+    <a href="#players">SQUAD</a>
+    <a href="#stats">STATS</a>
   </div>
 </nav>
 
-<!-- COLOMBIA MATCHES -->
+<!-- MATCHES -->
 <div class="sec" id="matches">
-  <div class="sec-label">GROUP STAGE</div>
+  <div class="sec-lbl">GROUP STAGE</div>
   <div class="sec-title">COLOMBIA'S <span>MATCHES</span></div>
-  <div class="match-card next" id="mc1">
-    <div class="mbadge next" id="b1">NEXT UP</div>
+
+  <div class="match-card next-up">
+    <div class="mbadge" id="b1">NEXT UP</div>
     <div class="mdate"><div class="mday">17</div><div class="mmonth">JUNE</div></div>
     <div class="mdiv"></div>
     <div class="mteams">
       <div class="mvs"><span class="tname">UZBEKISTAN</span><span class="vsdot">VS</span><span class="tname col">COLOMBIA</span></div>
       <div class="mmeta"><span>10:00 PM ET</span><span>Estadio Azteca, Mexico City</span><span>Group K MD1</span></div>
     </div>
-    <div class="mcd"><span class="mcd-lbl">KICKOFF IN</span><span id="t1">--</span></div></div><div id="score-md1" style="display:none;text-align:center;padding:4px 0;"></div><div style="display:none">
+    <div class="mcd"><span class="mcd-lbl">KICKOFF IN</span><span id="t1">--</span></div>
   </div>
+
   <div class="match-card" id="mc2">
     <div class="mdate"><div class="mday">23</div><div class="mmonth">JUNE</div></div>
     <div class="mdiv"></div>
@@ -248,6 +252,7 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);co
     </div>
     <div class="mcd"><span class="mcd-lbl">KICKOFF IN</span><span id="t2">--</span></div>
   </div>
+
   <div class="match-card" id="mc3">
     <div class="mdate"><div class="mday">27</div><div class="mmonth">JUNE</div></div>
     <div class="mdiv"></div>
@@ -258,97 +263,35 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);co
     <div class="mcd"><span class="mcd-lbl">KICKOFF IN</span><span id="t3">--</span></div>
   </div>
 
-  <!-- Progress bar -->
-  <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:clamp(14px,3vw,24px);margin-top:20px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-      <div style="font-family:'Courier New',Courier,monospace;font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:3px;">TOURNAMENT PROGRESS</div>
-      <div style="font-family:'Courier New',Courier,monospace;font-size:0.68rem;color:var(--yellow);" id="pct">0%</div>
+  <div class="prog-wrap">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+      <div style="font-family:'Courier New',monospace;font-size:0.65rem;color:rgba(255,255,255,0.3);letter-spacing:3px;">TOURNAMENT PROGRESS</div>
+      <div style="font-family:'Courier New',monospace;font-size:0.65rem;color:#FFD100;" id="pct">0%</div>
     </div>
     <div class="prog-bar"><div class="prog-fill" id="pfill" style="width:0%"></div></div>
-    <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(255,255,255,0.2);margin-top:5px;letter-spacing:1px;">
-      <span>JUN 11</span><span>GROUP</span><span>R32</span><span>R16</span><span>QF</span><span>SF</span><span>FINAL</span><span>JUL 19</span>
-    </div>
+    <div class="prog-labels"><span>JUN 11</span><span>GROUP</span><span>R32</span><span>R16</span><span>QF</span><span>SF</span><span>FINAL</span><span>JUL 19</span></div>
   </div>
 </div>
 
 <!-- GROUP K -->
 <div class="sec" id="group">
-  <div class="sec-label">STANDINGS</div>
-  <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
-    <div class="sec-title" style="margin-bottom:0;">GROUP <span>K</span></div>
-    <div id="live-badge" style="font-family:'Courier New',monospace;font-size:0.6rem;font-weight:700;letter-spacing:2px;padding:4px 10px;border-radius:20px;background:rgba(255,209,0,0.1);border:1px solid rgba(255,209,0,0.3);color:rgba(255,209,0,0.6);">PRE-TOURNAMENT</div>
-  </div>
-  <div id="live-status" style="font-family:'Courier New',monospace;font-size:0.62rem;color:rgba(255,255,255,0.25);letter-spacing:2px;margin-bottom:16px;"></div>
+  <div class="sec-lbl">STANDINGS</div>
+  <div class="sec-title">GROUP <span>K</span></div>
   <table class="grp-table">
     <thead><tr><th>#</th><th>TEAM</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>PTS</th></tr></thead>
-    <tbody id="live-group-tbody">
+    <tbody id="grp-body">
       <tr class="col-row"><td class="pos q">1</td><td>🇨🇴 COLOMBIA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
       <tr><td class="pos q">2</td><td>🇵🇹 PORTUGAL</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
       <tr><td class="pos">3</td><td>🇨🇩 DR CONGO</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
       <tr><td class="pos">4</td><td>🇺🇿 UZBEKISTAN</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
     </tbody>
   </table>
-  <div style="font-size:0.7rem;color:rgba(255,209,0,0.6);margin-top:12px;letter-spacing:1px;">Top 2 qualify automatically · Best 8 third-place teams also advance</div>
-<div style="margin-top:16px;background:rgba(0,48,135,0.15);border:1px solid rgba(0,48,135,0.4);border-radius:10px;padding:14px 18px;">
-  <div style="font-family:'Courier New',monospace;font-size:0.68rem;color:#6699ff;letter-spacing:2px;margin-bottom:6px;font-weight:700;">⚡ LIVE AUTO-UPDATES</div>
-  <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.6;">
-    This table updates automatically after every match. Standings, scores and results refresh every 2 minutes during the tournament. Powered by API-Football free tier.
-  </div>
-</div>
-
+  <div style="font-size:0.68rem;color:rgba(255,209,0,0.55);margin-top:10px;letter-spacing:1px;">Top 2 qualify automatically · Best 8 third-place teams also advance</div>
 </div>
 
 <!-- FULL SCHEDULE -->
-
-<!-- LIVE SCORES & STANDINGS -->
-<div class="sec" id="live">
-  <div class="sec-label">AUTO-UPDATING</div>
-  <div class="sec-title">LIVE <span>SCORES</span></div>
-
-  <!-- Status bar -->
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
-    <div id="live-dot" style="width:10px;height:10px;border-radius:50%;background:#888;flex-shrink:0;"></div>
-    <div id="live-status" style="font-family:'Courier New',monospace;font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:2px;">LOADING LIVE DATA...</div>
-    <div style="margin-left:auto;font-family:'Courier New',monospace;font-size:0.6rem;color:rgba(255,255,255,0.2);letter-spacing:1px;" id="live-updated"></div>
-  </div>
-
-  <!-- Live matches -->
-  <div id="live-matches" style="margin-bottom:28px;"></div>
-
-  <!-- Group K live standings -->
-  <div class="sec-label" style="margin-bottom:8px;">LIVE STANDINGS</div>
-  <div class="sec-title" style="font-size:clamp(1.8rem,5vw,3rem);margin-bottom:16px;">GROUP <span>K</span></div>
-  <table class="grp-table" id="live-standings">
-    <thead><tr><th>#</th><th>TEAM</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>PTS</th></tr></thead>
-    <tbody id="live-standings-body">
-      <tr class="col-row"><td class="pos q">1</td><td>🇨🇴 COLOMBIA</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
-      <tr><td class="pos q">2</td><td>🇵🇹 PORTUGAL</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
-      <tr><td class="pos">3</td><td>🇨🇩 DR CONGO</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
-      <tr><td class="pos">4</td><td>🇺🇿 UZBEKISTAN</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts">0</td></tr>
-    </tbody>
-  </table>
-  <div style="font-size:0.68rem;color:rgba(255,209,0,0.5);margin-top:10px;font-family:'Courier New',monospace;letter-spacing:1px;">Updates automatically after each match · Top 2 + best 3rd advance</div>
-</div>
-
-<style>
-.live-match{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:10px;position:relative;transition:border-color 0.3s;}
-.live-match.is-live{border-color:rgba(206,17,38,0.6);animation:livepulse 2s ease-in-out infinite;}
-.live-match.col-match{border-left:3px solid var(--yellow);}
-@keyframes livepulse{0%,100%{box-shadow:0 0 0 rgba(206,17,38,0)}50%{box-shadow:0 0 20px rgba(206,17,38,0.3)}}
-.lm-top{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
-.lm-teams{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(1rem,2.5vw,1.3rem);font-weight:900;letter-spacing:1px;flex:1;}
-.lm-score{font-family:'Courier New',monospace;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:900;color:var(--yellow);min-width:60px;text-align:center;}
-.lm-score.is-live{color:#ff4444;animation:scorepulse 1s step-end infinite;}
-@keyframes scorepulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.lm-meta{font-size:0.65rem;color:rgba(255,255,255,0.35);font-family:'Courier New',monospace;letter-spacing:1px;display:flex;gap:12px;flex-wrap:wrap;}
-.lm-badge{font-family:'Courier New',monospace;font-size:0.55rem;font-weight:700;letter-spacing:2px;padding:2px 8px;border-radius:12px;margin-left:auto;}
-.badge-live{background:var(--red);color:#fff;animation:livepulse 1s ease-in-out infinite;}
-.badge-ft{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);}
-.badge-ns{background:rgba(0,48,135,0.4);color:rgba(100,150,255,0.8);}
-</style>
-
 <div class="sec" id="schedule">
-  <div class="sec-label">ALL 104 MATCHES</div>
+  <div class="sec-lbl">ALL 104 MATCHES</div>
   <div class="sec-title">FULL <span>SCHEDULE</span></div>
   <div class="tab-row">
     <button class="tab-btn on" onclick="showTab('gs')">GROUP STAGE</button>
@@ -358,7 +301,7 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);co
     <button class="tab-btn" onclick="showTab('sf')">SEMI-FINALS</button>
     <button class="tab-btn" onclick="showTab('fi')">FINAL</button>
   </div>
-  <div id="tab-gs"><div class="stage-note">JUN 11 - JUN 27 · 72 MATCHES · COL = COLOMBIA GAME</div><div class="sched-grid" id="gs-grid"></div></div>
+  <div id="tab-gs"><div class="stage-note">JUN 11 - JUN 27 · 72 MATCHES · COL = COLOMBIA</div><div class="sched-grid" id="gs-grid"></div></div>
   <div id="tab-r32" style="display:none"><div class="stage-note">JUN 28 - JUL 3 · 16 MATCHES</div><div class="sched-grid" id="r32-grid"></div></div>
   <div id="tab-r16" style="display:none"><div class="stage-note">JUL 4 - JUL 7 · 8 MATCHES</div><div class="sched-grid" id="r16-grid"></div></div>
   <div id="tab-qf" style="display:none"><div class="stage-note">JUL 9 - JUL 11 · 4 MATCHES</div><div class="sched-grid" id="qf-grid"></div></div>
@@ -366,110 +309,79 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);co
   <div id="tab-fi" style="display:none"><div class="stage-note">JUL 18 - JUL 19 · FINAL WEEKEND</div><div class="sched-grid" id="fi-grid"></div></div>
 </div>
 
-<!-- SQUAD -->
-<div class="sec" id="players">
-  <div class="sec-label">LOS CAFETEROS</div>
-  <div class="sec-title">THE <span>SQUAD</span></div>
-  <div class="photo-grid">
-    <div class="photo-card star-p">
-      <div class="photo-wrap">
-        <img src="data:image/svg+xml,<svg viewBox=&quot;0 0 170 200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100%&quot; height=&quot;100%&quot;>   <defs>     <linearGradient id=&quot;bg7&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#e30613&quot; stop-opacity=&quot;0.9&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#dc052d&quot; stop-opacity=&quot;0.6&quot;/>     </linearGradient>     <linearGradient id=&quot;jersey7&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#e30613&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#dc052d&quot;/>     </linearGradient>   </defs>   <!-- Background -->   <rect width=&quot;170&quot; height=&quot;200&quot; fill=&quot;url(#bg7)&quot;/>   <!-- Geometric accent -->   <circle cx=&quot;160&quot; cy=&quot;-10&quot; r=&quot;80&quot; fill=&quot;rgba(255,255,255,0.04)&quot;/>   <circle cx=&quot;10&quot; cy=&quot;190&quot; r=&quot;60&quot; fill=&quot;rgba(0,0,0,0.1)&quot;/>   <!-- Star badge -->   <rect x=&quot;110&quot; y=&quot;8&quot; width=&quot;52&quot; height=&quot;18&quot; rx=&quot;9&quot; fill=&quot;#FFD100&quot;/><text x=&quot;136&quot; y=&quot;21&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;8&quot; font-weight=&quot;700&quot; fill=&quot;#000&quot;>⭐ STAR</text>   <!-- Jersey shape -->   <g transform=&quot;translate(85,90)&quot;>     <path d=&quot;M-35,-45 L-50,-30 L-38,-25 L-38,40 L38,40 L38,-25 L50,-30 L35,-45 L20,-38 C20,-30 -20,-30 -20,-38 Z&quot; fill=&quot;url(#jersey7)&quot; stroke=&quot;rgba(255,255,255,0.3)&quot; stroke-width=&quot;1.5&quot;/>     <!-- Collar -->     <ellipse cx=&quot;0&quot; cy=&quot;-38&quot; rx=&quot;20&quot; ry=&quot;8&quot; fill=&quot;rgba(255,255,255,0.15)&quot;/>     <!-- Shirt number -->     <text x=&quot;0&quot; y=&quot;15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;30&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.95)&quot; letter-spacing=&quot;-1&quot;>7</text>     <!-- Stars on shirt -->     <text x=&quot;0&quot; y=&quot;-15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;9&quot; fill=&quot;rgba(255,255,255,0.6)&quot;>★ ★ ★</text>   </g>   <!-- Initials circle -->   <circle cx=&quot;85&quot; cy=&quot;155&quot; r=&quot;22&quot; fill=&quot;rgba(0,0,0,0.3)&quot; stroke=&quot;rgba(255,255,255,0.2)&quot; stroke-width=&quot;1.5&quot;/>   <text x=&quot;85&quot; y=&quot;161&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;14&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.9)&quot;>LD</text>   <!-- Colombia flag strip at bottom -->   <rect x=&quot;0&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#FFD100&quot;/>   <rect x=&quot;57&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#003087&quot;/>   <rect x=&quot;114&quot; y=&quot;192&quot; width=&quot;56&quot; height=&quot;8&quot; fill=&quot;#CE1126&quot;/> </svg>" alt="LUIS DÍAZ"/>
-      </div>
-      <div class="photo-info">
-        <div class="photo-name">LUIS DÍAZ</div>
-        <div class="photo-pos">⚡ FORWARD</div>
-        <div class="photo-club">Bayern Munich</div>
-      </div>
+<!-- NJ EVENTS -->
+<div class="sec" id="njevents">
+  <div class="sec-lbl">IF YOU ARE IN NEW JERSEY</div>
+  <div class="sec-title">WORLD CUP <span>EVENTS IN NJ</span></div>
+  <div style="font-size:0.72rem;color:rgba(255,209,0,0.45);letter-spacing:1px;margin-bottom:20px;font-family:'Courier New',monospace;">JUNE 6 – JULY 19 · ALWAYS VERIFY DATES & TIMES BEFORE GOING</div>
+  <div class="nj-grid">
+    <div class="nj-card"><div class="nj-num">01</div><div class="nj-date">JUN 6</div><div class="nj-title">Family Cup &amp; Festival</div><div class="nj-loc">📍 Old Overpeck Park, Leonia</div><div class="nj-desc">5-a-side tournaments, food trucks, cultural celebrations and kids activities.</div></div>
+    <div class="nj-card ongoing"><div class="nj-num">02</div><div class="nj-date">JUN 11 – JUL 19</div><div class="nj-title">World Cup Fan Fest</div><div class="nj-loc">📍 American Dream, East Rutherford</div><div class="nj-desc">Daily watch parties, live performances, celebrity appearances, giveaways and concerts throughout the tournament.</div></div>
+    <div class="nj-card ongoing"><div class="nj-num">03</div><div class="nj-date">JUN 11 – JUL 19</div><div class="nj-title">Millburn Hills Watch Events</div><div class="nj-loc">📍 Millburn area spots</div><div class="nj-desc">Watch spots around town, themed retail and dining, Skills Day Jun 20, Final Viewing Party Jul 19.</div></div>
+    <div class="nj-card"><div class="nj-num">04</div><div class="nj-date">5 STOPS</div><div class="nj-title">Fan Festival — 5 NJ Towns</div><div class="nj-loc">📍 Multiple locations</div><div class="nj-desc">Jun 12 Jersey City · Jun 14 Overpeck Park · Jun 21 Secaucus · Jun 24 Newark · Jun 26 East Rutherford</div></div>
+    <div class="nj-card special"><div class="nj-num">05</div><div class="nj-date">JUN 13</div><div class="nj-title">World Cup Concert 🎤</div><div class="nj-loc">📍 American Dream, East Rutherford</div><div class="nj-desc">French Montana performs live after the Brazil vs. Morocco match.</div></div>
+    <div class="nj-card"><div class="nj-num">06</div><div class="nj-date">JUN 14</div><div class="nj-title">Family Day</div><div class="nj-loc">📍 Sports Illustrated Stadium, Harrison</div><div class="nj-desc">Watch parties, Red Bulls meet-and-greets, soccer challenges and KIDZ BOP LIVE.</div></div>
+    <div class="nj-card special"><div class="nj-num">07</div><div class="nj-date">JUL 19</div><div class="nj-title">World Cup Final Viewing Party 🏆</div><div class="nj-loc">📍 Taylor Park, Millburn</div><div class="nj-desc">Massive LED screen, live music, food stands and kids entertainment for the Final.</div></div>
+  </div>
+  <div style="margin-top:14px;background:rgba(255,209,0,0.04);border:1px solid rgba(255,209,0,0.12);border-radius:8px;padding:12px 16px;font-size:0.68rem;color:rgba(255,255,255,0.3);font-family:'Courier New',monospace;letter-spacing:1px;line-height:1.6;">⚠ NJ events only · NYC excluded · Verify all dates before going · Source: MommyTheExplorer / NJ Family</div>
+</div>
+
+<!-- MUSIC -->
+<div class="sec" id="music">
+  <div class="sec-lbl">AMBIENTE</div>
+  <div class="sec-title">MUSICA <span>COLOMBIANA</span></div>
+  <div class="music-box">
+    <div class="music-hd"><div class="music-icon">🪗</div><div class="music-title">VALLENATO</div></div>
+    <div class="music-desc">El sonido del alma colombiana — acordeon, caja y guacharaca. Cali Pachanguero playing on entry!</div>
+    <div id="yt-container" style="border-radius:10px;overflow:hidden;margin-bottom:14px;border:1px solid var(--brd);background:#000;min-height:180px;display:flex;align-items:center;justify-content:center;">
+      <div style="font-family:'Courier New',monospace;font-size:0.68rem;color:rgba(255,209,0,0.35);letter-spacing:3px;">🪗 ENTRA PARA ESCUCHAR</div>
     </div>
-    <div class="photo-card star-p">
-      <div class="photo-wrap">
-        <img src="data:image/svg+xml,<svg viewBox=&quot;0 0 170 200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100%&quot; height=&quot;100%&quot;>   <defs>     <linearGradient id=&quot;bg10&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#003087&quot; stop-opacity=&quot;0.9&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#0050a0&quot; stop-opacity=&quot;0.6&quot;/>     </linearGradient>     <linearGradient id=&quot;jersey10&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#003087&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#0050a0&quot;/>     </linearGradient>   </defs>   <!-- Background -->   <rect width=&quot;170&quot; height=&quot;200&quot; fill=&quot;url(#bg10)&quot;/>   <!-- Geometric accent -->   <circle cx=&quot;160&quot; cy=&quot;-10&quot; r=&quot;80&quot; fill=&quot;rgba(255,255,255,0.04)&quot;/>   <circle cx=&quot;10&quot; cy=&quot;190&quot; r=&quot;60&quot; fill=&quot;rgba(0,0,0,0.1)&quot;/>   <!-- Star badge -->   <rect x=&quot;110&quot; y=&quot;8&quot; width=&quot;52&quot; height=&quot;18&quot; rx=&quot;9&quot; fill=&quot;#FFD100&quot;/><text x=&quot;136&quot; y=&quot;21&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;8&quot; font-weight=&quot;700&quot; fill=&quot;#000&quot;>⭐ STAR</text>   <!-- Jersey shape -->   <g transform=&quot;translate(85,90)&quot;>     <path d=&quot;M-35,-45 L-50,-30 L-38,-25 L-38,40 L38,40 L38,-25 L50,-30 L35,-45 L20,-38 C20,-30 -20,-30 -20,-38 Z&quot; fill=&quot;url(#jersey10)&quot; stroke=&quot;rgba(255,255,255,0.3)&quot; stroke-width=&quot;1.5&quot;/>     <!-- Collar -->     <ellipse cx=&quot;0&quot; cy=&quot;-38&quot; rx=&quot;20&quot; ry=&quot;8&quot; fill=&quot;rgba(255,255,255,0.15)&quot;/>     <!-- Shirt number -->     <text x=&quot;0&quot; y=&quot;15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;30&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.95)&quot; letter-spacing=&quot;-1&quot;>10</text>     <!-- Stars on shirt -->     <text x=&quot;0&quot; y=&quot;-15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;9&quot; fill=&quot;rgba(255,255,255,0.6)&quot;>★ ★ ★</text>   </g>   <!-- Initials circle -->   <circle cx=&quot;85&quot; cy=&quot;155&quot; r=&quot;22&quot; fill=&quot;rgba(0,0,0,0.3)&quot; stroke=&quot;rgba(255,255,255,0.2)&quot; stroke-width=&quot;1.5&quot;/>   <text x=&quot;85&quot; y=&quot;161&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;14&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.9)&quot;>JR</text>   <!-- Colombia flag strip at bottom -->   <rect x=&quot;0&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#FFD100&quot;/>   <rect x=&quot;57&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#003087&quot;/>   <rect x=&quot;114&quot; y=&quot;192&quot; width=&quot;56&quot; height=&quot;8&quot; fill=&quot;#CE1126&quot;/> </svg>" alt="JAMES RODRÍGUEZ"/>
-      </div>
-      <div class="photo-info">
-        <div class="photo-name">JAMES RODRÍGUEZ</div>
-        <div class="photo-pos">⚙️ MIDFIELDER</div>
-        <div class="photo-club">Rayo Vallecano</div>
-      </div>
+    <div class="music-links">
+      <a class="mlink yt" href="https://www.youtube.com/watch?v=0c1XrFaOJ8c" target="_blank">▶ Carlos Vives · YouTube</a>
+      <a class="mlink yt" href="https://www.youtube.com/watch?v=yry3rgGlRUw" target="_blank">▶ Cali Pachanguero · YouTube</a>
+      <a class="mlink sp" href="https://open.spotify.com/playlist/3c8cOIL9fPdlBQDQ5OINC7" target="_blank">♫ Vallenato 2026 · Spotify</a>
     </div>
-    <div class="photo-card star-p">
-      <div class="photo-wrap">
-        <img src="data:image/svg+xml,<svg viewBox=&quot;0 0 170 200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100%&quot; height=&quot;100%&quot;>   <defs>     <linearGradient id=&quot;bg9&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#FFD100&quot; stop-opacity=&quot;0.9&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#e6bc00&quot; stop-opacity=&quot;0.6&quot;/>     </linearGradient>     <linearGradient id=&quot;jersey9&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#FFD100&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#e6bc00&quot;/>     </linearGradient>   </defs>   <!-- Background -->   <rect width=&quot;170&quot; height=&quot;200&quot; fill=&quot;url(#bg9)&quot;/>   <!-- Geometric accent -->   <circle cx=&quot;160&quot; cy=&quot;-10&quot; r=&quot;80&quot; fill=&quot;rgba(255,255,255,0.04)&quot;/>   <circle cx=&quot;10&quot; cy=&quot;190&quot; r=&quot;60&quot; fill=&quot;rgba(0,0,0,0.1)&quot;/>   <!-- Star badge -->   <rect x=&quot;110&quot; y=&quot;8&quot; width=&quot;52&quot; height=&quot;18&quot; rx=&quot;9&quot; fill=&quot;#FFD100&quot;/><text x=&quot;136&quot; y=&quot;21&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;8&quot; font-weight=&quot;700&quot; fill=&quot;#000&quot;>⭐ STAR</text>   <!-- Jersey shape -->   <g transform=&quot;translate(85,90)&quot;>     <path d=&quot;M-35,-45 L-50,-30 L-38,-25 L-38,40 L38,40 L38,-25 L50,-30 L35,-45 L20,-38 C20,-30 -20,-30 -20,-38 Z&quot; fill=&quot;url(#jersey9)&quot; stroke=&quot;rgba(255,255,255,0.3)&quot; stroke-width=&quot;1.5&quot;/>     <!-- Collar -->     <ellipse cx=&quot;0&quot; cy=&quot;-38&quot; rx=&quot;20&quot; ry=&quot;8&quot; fill=&quot;rgba(255,255,255,0.15)&quot;/>     <!-- Shirt number -->     <text x=&quot;0&quot; y=&quot;15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;30&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.95)&quot; letter-spacing=&quot;-1&quot;>9</text>     <!-- Stars on shirt -->     <text x=&quot;0&quot; y=&quot;-15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;9&quot; fill=&quot;rgba(255,255,255,0.6)&quot;>★ ★ ★</text>   </g>   <!-- Initials circle -->   <circle cx=&quot;85&quot; cy=&quot;155&quot; r=&quot;22&quot; fill=&quot;rgba(0,0,0,0.3)&quot; stroke=&quot;rgba(255,255,255,0.2)&quot; stroke-width=&quot;1.5&quot;/>   <text x=&quot;85&quot; y=&quot;161&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;14&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.9)&quot;>F</text>   <!-- Colombia flag strip at bottom -->   <rect x=&quot;0&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#FFD100&quot;/>   <rect x=&quot;57&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#003087&quot;/>   <rect x=&quot;114&quot; y=&quot;192&quot; width=&quot;56&quot; height=&quot;8&quot; fill=&quot;#CE1126&quot;/> </svg>" alt="FALCAO"/>
-      </div>
-      <div class="photo-info">
-        <div class="photo-name">FALCAO</div>
-        <div class="photo-pos">⚡ FORWARD</div>
-        <div class="photo-club">Club Legend</div>
-      </div>
-    </div>
-    <div class="photo-card">
-      <div class="photo-wrap">
-        <img src="data:image/svg+xml,<svg viewBox=&quot;0 0 170 200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100%&quot; height=&quot;100%&quot;>   <defs>     <linearGradient id=&quot;bg6&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#e30613&quot; stop-opacity=&quot;0.9&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#cc0011&quot; stop-opacity=&quot;0.6&quot;/>     </linearGradient>     <linearGradient id=&quot;jersey6&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#e30613&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#cc0011&quot;/>     </linearGradient>   </defs>   <!-- Background -->   <rect width=&quot;170&quot; height=&quot;200&quot; fill=&quot;url(#bg6)&quot;/>   <!-- Geometric accent -->   <circle cx=&quot;160&quot; cy=&quot;-10&quot; r=&quot;80&quot; fill=&quot;rgba(255,255,255,0.04)&quot;/>   <circle cx=&quot;10&quot; cy=&quot;190&quot; r=&quot;60&quot; fill=&quot;rgba(0,0,0,0.1)&quot;/>   <!-- Star badge -->      <!-- Jersey shape -->   <g transform=&quot;translate(85,90)&quot;>     <path d=&quot;M-35,-45 L-50,-30 L-38,-25 L-38,40 L38,40 L38,-25 L50,-30 L35,-45 L20,-38 C20,-30 -20,-30 -20,-38 Z&quot; fill=&quot;url(#jersey6)&quot; stroke=&quot;rgba(255,255,255,0.3)&quot; stroke-width=&quot;1.5&quot;/>     <!-- Collar -->     <ellipse cx=&quot;0&quot; cy=&quot;-38&quot; rx=&quot;20&quot; ry=&quot;8&quot; fill=&quot;rgba(255,255,255,0.15)&quot;/>     <!-- Shirt number -->     <text x=&quot;0&quot; y=&quot;15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;30&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.95)&quot; letter-spacing=&quot;-1&quot;>6</text>     <!-- Stars on shirt -->     <text x=&quot;0&quot; y=&quot;-15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;9&quot; fill=&quot;rgba(255,255,255,0.6)&quot;>★ ★ ★</text>   </g>   <!-- Initials circle -->   <circle cx=&quot;85&quot; cy=&quot;155&quot; r=&quot;22&quot; fill=&quot;rgba(0,0,0,0.3)&quot; stroke=&quot;rgba(255,255,255,0.2)&quot; stroke-width=&quot;1.5&quot;/>   <text x=&quot;85&quot; y=&quot;161&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;14&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.9)&quot;>DS</text>   <!-- Colombia flag strip at bottom -->   <rect x=&quot;0&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#FFD100&quot;/>   <rect x=&quot;57&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#003087&quot;/>   <rect x=&quot;114&quot; y=&quot;192&quot; width=&quot;56&quot; height=&quot;8&quot; fill=&quot;#CE1126&quot;/> </svg>" alt="DÁVINSON SÁNCHEZ"/>
-      </div>
-      <div class="photo-info">
-        <div class="photo-name">DÁVINSON SÁNCHEZ</div>
-        <div class="photo-pos">🛡️ DEFENDER</div>
-        <div class="photo-club">Galatasaray</div>
-      </div>
-    </div>
-    <div class="photo-card">
-      <div class="photo-wrap">
-        <img src="data:image/svg+xml,<svg viewBox=&quot;0 0 170 200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100%&quot; height=&quot;100%&quot;>   <defs>     <linearGradient id=&quot;bg13&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#7b2d8b&quot; stop-opacity=&quot;0.9&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#5c1f6a&quot; stop-opacity=&quot;0.6&quot;/>     </linearGradient>     <linearGradient id=&quot;jersey13&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#7b2d8b&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#5c1f6a&quot;/>     </linearGradient>   </defs>   <!-- Background -->   <rect width=&quot;170&quot; height=&quot;200&quot; fill=&quot;url(#bg13)&quot;/>   <!-- Geometric accent -->   <circle cx=&quot;160&quot; cy=&quot;-10&quot; r=&quot;80&quot; fill=&quot;rgba(255,255,255,0.04)&quot;/>   <circle cx=&quot;10&quot; cy=&quot;190&quot; r=&quot;60&quot; fill=&quot;rgba(0,0,0,0.1)&quot;/>   <!-- Star badge -->      <!-- Jersey shape -->   <g transform=&quot;translate(85,90)&quot;>     <path d=&quot;M-35,-45 L-50,-30 L-38,-25 L-38,40 L38,40 L38,-25 L50,-30 L35,-45 L20,-38 C20,-30 -20,-30 -20,-38 Z&quot; fill=&quot;url(#jersey13)&quot; stroke=&quot;rgba(255,255,255,0.3)&quot; stroke-width=&quot;1.5&quot;/>     <!-- Collar -->     <ellipse cx=&quot;0&quot; cy=&quot;-38&quot; rx=&quot;20&quot; ry=&quot;8&quot; fill=&quot;rgba(255,255,255,0.15)&quot;/>     <!-- Shirt number -->     <text x=&quot;0&quot; y=&quot;15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;30&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.95)&quot; letter-spacing=&quot;-1&quot;>13</text>     <!-- Stars on shirt -->     <text x=&quot;0&quot; y=&quot;-15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;9&quot; fill=&quot;rgba(255,255,255,0.6)&quot;>★ ★ ★</text>   </g>   <!-- Initials circle -->   <circle cx=&quot;85&quot; cy=&quot;155&quot; r=&quot;22&quot; fill=&quot;rgba(0,0,0,0.3)&quot; stroke=&quot;rgba(255,255,255,0.2)&quot; stroke-width=&quot;1.5&quot;/>   <text x=&quot;85&quot; y=&quot;161&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;14&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.9)&quot;>YM</text>   <!-- Colombia flag strip at bottom -->   <rect x=&quot;0&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#FFD100&quot;/>   <rect x=&quot;57&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#003087&quot;/>   <rect x=&quot;114&quot; y=&quot;192&quot; width=&quot;56&quot; height=&quot;8&quot; fill=&quot;#CE1126&quot;/> </svg>" alt="YERRY MINA"/>
-      </div>
-      <div class="photo-info">
-        <div class="photo-name">YERRY MINA</div>
-        <div class="photo-pos">🛡️ DEFENDER</div>
-        <div class="photo-club">Fiorentina</div>
-      </div>
-    </div>
-    <div class="photo-card">
-      <div class="photo-wrap">
-        <img src="data:image/svg+xml,<svg viewBox=&quot;0 0 170 200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100%&quot; height=&quot;100%&quot;>   <defs>     <linearGradient id=&quot;bg11&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#cc0000&quot; stop-opacity=&quot;0.9&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#aa0000&quot; stop-opacity=&quot;0.6&quot;/>     </linearGradient>     <linearGradient id=&quot;jersey11&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#cc0000&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#aa0000&quot;/>     </linearGradient>   </defs>   <!-- Background -->   <rect width=&quot;170&quot; height=&quot;200&quot; fill=&quot;url(#bg11)&quot;/>   <!-- Geometric accent -->   <circle cx=&quot;160&quot; cy=&quot;-10&quot; r=&quot;80&quot; fill=&quot;rgba(255,255,255,0.04)&quot;/>   <circle cx=&quot;10&quot; cy=&quot;190&quot; r=&quot;60&quot; fill=&quot;rgba(0,0,0,0.1)&quot;/>   <!-- Star badge -->      <!-- Jersey shape -->   <g transform=&quot;translate(85,90)&quot;>     <path d=&quot;M-35,-45 L-50,-30 L-38,-25 L-38,40 L38,40 L38,-25 L50,-30 L35,-45 L20,-38 C20,-30 -20,-30 -20,-38 Z&quot; fill=&quot;url(#jersey11)&quot; stroke=&quot;rgba(255,255,255,0.3)&quot; stroke-width=&quot;1.5&quot;/>     <!-- Collar -->     <ellipse cx=&quot;0&quot; cy=&quot;-38&quot; rx=&quot;20&quot; ry=&quot;8&quot; fill=&quot;rgba(255,255,255,0.15)&quot;/>     <!-- Shirt number -->     <text x=&quot;0&quot; y=&quot;15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;30&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.95)&quot; letter-spacing=&quot;-1&quot;>11</text>     <!-- Stars on shirt -->     <text x=&quot;0&quot; y=&quot;-15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;9&quot; fill=&quot;rgba(255,255,255,0.6)&quot;>★ ★ ★</text>   </g>   <!-- Initials circle -->   <circle cx=&quot;85&quot; cy=&quot;155&quot; r=&quot;22&quot; fill=&quot;rgba(0,0,0,0.3)&quot; stroke=&quot;rgba(255,255,255,0.2)&quot; stroke-width=&quot;1.5&quot;/>   <text x=&quot;85&quot; y=&quot;161&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;14&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.9)&quot;>C</text>   <!-- Colombia flag strip at bottom -->   <rect x=&quot;0&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#FFD100&quot;/>   <rect x=&quot;57&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#003087&quot;/>   <rect x=&quot;114&quot; y=&quot;192&quot; width=&quot;56&quot; height=&quot;8&quot; fill=&quot;#CE1126&quot;/> </svg>" alt="CUADRADO"/>
-      </div>
-      <div class="photo-info">
-        <div class="photo-name">CUADRADO</div>
-        <div class="photo-pos">⚙️ MIDFIELDER</div>
-        <div class="photo-club">Internacional</div>
-      </div>
-    </div>
-    <div class="photo-card">
-      <div class="photo-wrap">
-        <img src="data:image/svg+xml,<svg viewBox=&quot;0 0 170 200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100%&quot; height=&quot;100%&quot;>   <defs>     <linearGradient id=&quot;bg8&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#006633&quot; stop-opacity=&quot;0.9&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#004d26&quot; stop-opacity=&quot;0.6&quot;/>     </linearGradient>     <linearGradient id=&quot;jersey8&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#006633&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#004d26&quot;/>     </linearGradient>   </defs>   <!-- Background -->   <rect width=&quot;170&quot; height=&quot;200&quot; fill=&quot;url(#bg8)&quot;/>   <!-- Geometric accent -->   <circle cx=&quot;160&quot; cy=&quot;-10&quot; r=&quot;80&quot; fill=&quot;rgba(255,255,255,0.04)&quot;/>   <circle cx=&quot;10&quot; cy=&quot;190&quot; r=&quot;60&quot; fill=&quot;rgba(0,0,0,0.1)&quot;/>   <!-- Star badge -->      <!-- Jersey shape -->   <g transform=&quot;translate(85,90)&quot;>     <path d=&quot;M-35,-45 L-50,-30 L-38,-25 L-38,40 L38,40 L38,-25 L50,-30 L35,-45 L20,-38 C20,-30 -20,-30 -20,-38 Z&quot; fill=&quot;url(#jersey8)&quot; stroke=&quot;rgba(255,255,255,0.3)&quot; stroke-width=&quot;1.5&quot;/>     <!-- Collar -->     <ellipse cx=&quot;0&quot; cy=&quot;-38&quot; rx=&quot;20&quot; ry=&quot;8&quot; fill=&quot;rgba(255,255,255,0.15)&quot;/>     <!-- Shirt number -->     <text x=&quot;0&quot; y=&quot;15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;30&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.95)&quot; letter-spacing=&quot;-1&quot;>8</text>     <!-- Stars on shirt -->     <text x=&quot;0&quot; y=&quot;-15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;9&quot; fill=&quot;rgba(255,255,255,0.6)&quot;>★ ★ ★</text>   </g>   <!-- Initials circle -->   <circle cx=&quot;85&quot; cy=&quot;155&quot; r=&quot;22&quot; fill=&quot;rgba(0,0,0,0.3)&quot; stroke=&quot;rgba(255,255,255,0.2)&quot; stroke-width=&quot;1.5&quot;/>   <text x=&quot;85&quot; y=&quot;161&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;14&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.9)&quot;>RR</text>   <!-- Colombia flag strip at bottom -->   <rect x=&quot;0&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#FFD100&quot;/>   <rect x=&quot;57&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#003087&quot;/>   <rect x=&quot;114&quot; y=&quot;192&quot; width=&quot;56&quot; height=&quot;8&quot; fill=&quot;#CE1126&quot;/> </svg>" alt="RICHARD RÍOS"/>
-      </div>
-      <div class="photo-info">
-        <div class="photo-name">RICHARD RÍOS</div>
-        <div class="photo-pos">⚙️ MIDFIELDER</div>
-        <div class="photo-club">Palmeiras</div>
-      </div>
-    </div>
-    <div class="photo-card">
-      <div class="photo-wrap">
-        <img src="data:image/svg+xml,<svg viewBox=&quot;0 0 170 200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100%&quot; height=&quot;100%&quot;>   <defs>     <linearGradient id=&quot;bg2&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#1B458F&quot; stop-opacity=&quot;0.9&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#c8102e&quot; stop-opacity=&quot;0.6&quot;/>     </linearGradient>     <linearGradient id=&quot;jersey2&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;>       <stop offset=&quot;0%&quot; stop-color=&quot;#1B458F&quot;/>       <stop offset=&quot;100%&quot; stop-color=&quot;#c8102e&quot;/>     </linearGradient>   </defs>   <!-- Background -->   <rect width=&quot;170&quot; height=&quot;200&quot; fill=&quot;url(#bg2)&quot;/>   <!-- Geometric accent -->   <circle cx=&quot;160&quot; cy=&quot;-10&quot; r=&quot;80&quot; fill=&quot;rgba(255,255,255,0.04)&quot;/>   <circle cx=&quot;10&quot; cy=&quot;190&quot; r=&quot;60&quot; fill=&quot;rgba(0,0,0,0.1)&quot;/>   <!-- Star badge -->      <!-- Jersey shape -->   <g transform=&quot;translate(85,90)&quot;>     <path d=&quot;M-35,-45 L-50,-30 L-38,-25 L-38,40 L38,40 L38,-25 L50,-30 L35,-45 L20,-38 C20,-30 -20,-30 -20,-38 Z&quot; fill=&quot;url(#jersey2)&quot; stroke=&quot;rgba(255,255,255,0.3)&quot; stroke-width=&quot;1.5&quot;/>     <!-- Collar -->     <ellipse cx=&quot;0&quot; cy=&quot;-38&quot; rx=&quot;20&quot; ry=&quot;8&quot; fill=&quot;rgba(255,255,255,0.15)&quot;/>     <!-- Shirt number -->     <text x=&quot;0&quot; y=&quot;15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;30&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.95)&quot; letter-spacing=&quot;-1&quot;>2</text>     <!-- Stars on shirt -->     <text x=&quot;0&quot; y=&quot;-15&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;9&quot; fill=&quot;rgba(255,255,255,0.6)&quot;>★ ★ ★</text>   </g>   <!-- Initials circle -->   <circle cx=&quot;85&quot; cy=&quot;155&quot; r=&quot;22&quot; fill=&quot;rgba(0,0,0,0.3)&quot; stroke=&quot;rgba(255,255,255,0.2)&quot; stroke-width=&quot;1.5&quot;/>   <text x=&quot;85&quot; y=&quot;161&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial Black, Arial&quot; font-size=&quot;14&quot; font-weight=&quot;900&quot; fill=&quot;rgba(255,255,255,0.9)&quot;>DM</text>   <!-- Colombia flag strip at bottom -->   <rect x=&quot;0&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#FFD100&quot;/>   <rect x=&quot;57&quot; y=&quot;192&quot; width=&quot;57&quot; height=&quot;8&quot; fill=&quot;#003087&quot;/>   <rect x=&quot;114&quot; y=&quot;192&quot; width=&quot;56&quot; height=&quot;8&quot; fill=&quot;#CE1126&quot;/> </svg>" alt="DANIEL MUÑOZ"/>
-      </div>
-      <div class="photo-info">
-        <div class="photo-name">DANIEL MUÑOZ</div>
-        <div class="photo-pos">🛡️ DEFENDER</div>
-        <div class="photo-club">Crystal Palace</div>
+    <div class="synth-box">
+      <div class="synth-lbl">RITMO VALLENATO — SYNTH</div>
+      <div class="synth-row">
+        <button class="sbtn play" onclick="startSynth('vallenato')">▶ PLAY</button>
+        <button class="sbtn stop" onclick="stopSynth()">■ STOP</button>
+        <div class="viz" id="viz">
+          <div class="vb" style="height:6px"></div><div class="vb" style="height:6px"></div>
+          <div class="vb" style="height:6px"></div><div class="vb" style="height:6px"></div>
+          <div class="vb" style="height:6px"></div><div class="vb" style="height:6px"></div>
+          <div class="vb" style="height:6px"></div><div class="vb" style="height:6px"></div>
+        </div>
       </div>
     </div>
   </div>
-  <style>
-  .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(140px,20vw,200px),1fr));gap:16px;}
-  .photo-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color 0.3s,transform 0.2s;position:relative;}
-  .photo-card:hover{border-color:var(--yellow);transform:translateY(-5px);}
-  .photo-card.star-p::before{content:'⭐ STAR';position:absolute;top:8px;right:8px;font-size:0.48rem;font-family:Arial,sans-serif;color:#000;letter-spacing:1px;z-index:2;background:var(--yellow);padding:2px 7px;border-radius:10px;font-weight:700;}
-  .photo-wrap{width:100%;aspect-ratio:1;overflow:hidden;position:relative;}
-  .photo-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;}
-  .photo-card:hover .photo-wrap img{transform:scale(1.05);}
-  .photo-info{padding:10px 12px;}
-  .photo-name{font-family:Arial Black,Arial,sans-serif;font-size:clamp(0.7rem,1.5vw,0.88rem);font-weight:900;letter-spacing:0.5px;margin-bottom:2px;color:#fff;}
-  .photo-pos{font-size:0.68rem;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-bottom:3px;}
-  .photo-club{font-size:0.68rem;color:rgba(255,209,0,0.7);font-weight:600;}
-  .photo-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--yellow),var(--blue),var(--red));}
-  </style>
+  <div class="music-box">
+    <div class="music-hd"><div class="music-icon">💃</div><div class="music-title">SALSA COLOMBIANA</div></div>
+    <div class="music-desc">Cali style — Joe Arroyo, Grupo Niche, La-33.</div>
+    <div class="music-links">
+      <a class="mlink yt" href="https://www.youtube.com/watch?v=649R5XMfLvA" target="_blank">▶ Salsa Mix · YouTube</a>
+      <a class="mlink sp" href="https://open.spotify.com/playlist/7L8zRmRs5mdeFsnnezx5TV" target="_blank">♫ Colombia 2026 · Spotify</a>
+    </div>
+    <div class="synth-box">
+      <div class="synth-lbl">RITMO SALSERO — SYNTH</div>
+      <div class="synth-row">
+        <button class="sbtn play" onclick="startSynth('salsa')">▶ PLAY</button>
+        <button class="sbtn stop" onclick="stopSynth()">■ STOP</button>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- PLAYERS -->
+<div class="sec" id="players">
+  <div class="sec-lbl">LOS CAFETEROS</div>
+  <div class="sec-title">THE <span>SQUAD</span></div>
+  <div class="player-grid" id="player-grid"></div>
+</div>
+
+<!-- STATS -->
 <div class="sec" id="stats">
-  <div class="sec-label">LOS CAFETEROS</div>
+  <div class="sec-lbl">HISTORIA</div>
   <div class="sec-title">WORLD CUP <span>HISTORY</span></div>
   <div class="stats-grid">
     <div class="stat-card"><div class="stat-num">6</div><div class="stat-lbl">WORLD CUPS</div></div>
@@ -483,235 +395,97 @@ footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);co
   </div>
 </div>
 
-
-<!-- MUSIC -->
-<div class="sec" id="music">
-  <div class="sec-label">AMBIENTE</div>
-  <div class="sec-title">MUSICA <span>COLOMBIANA</span></div>
-
-  <!-- Vallenato -->
-  <div class="music-section">
-    <div class="music-header">
-      <div class="music-icon">🪗</div>
-      <div>
-        <div class="music-title">VALLENATO</div>
-      </div>
-    </div>
-    <div class="music-desc">El sonido del alma colombiana — acordeon, caja y guacharaca. Carlos Vives, Los Diablitos, Silvestre Dangond y mas.</div>
-
-    <!-- YouTube player - injected with sound on splash tap -->
-    <div id="yt-container" style="border-radius:12px;overflow:hidden;margin-bottom:16px;border:1px solid var(--border);background:#000;min-height:clamp(200px,40vw,360px);display:flex;align-items:center;justify-content:center;">
-      <div style="font-family:'Courier New',Courier,monospace;font-size:0.7rem;color:rgba(255,209,0,0.4);letter-spacing:3px;">🪗 MUSICA LISTA — ENTRA PARA ESCUCHAR</div>
-    </div>
-
-    <div class="music-links">
-      <a class="music-link yt" href="https://www.youtube.com/watch?v=0c1XrFaOJ8c" target="_blank">▶ Carlos Vives Mix · YouTube</a>
-      <a class="music-link yt" href="https://www.youtube.com/watch?v=1F6TULQ3vb4" target="_blank">▶ Mix Colombiano · YouTube</a>
-      <a class="music-link sp" href="https://open.spotify.com/playlist/3c8cOIL9fPdlBQDQ5OINC7" target="_blank">♫ Vallenato Mix 2026 · Spotify</a>
-    </div>
-    <div class="synth-player">
-      <div class="synth-title">RITMO VALLENATO — IN-PAGE SYNTH</div>
-      <div class="synth-controls">
-        <button class="synth-btn synth-play" onclick="startSynth('vallenato')">▶ PLAY VALLENATO</button>
-        <button class="synth-btn synth-stop" onclick="stopSynth()">■ STOP</button>
-        <div class="synth-viz" id="viz1">
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Salsa -->
-  <div class="music-section">
-    <div class="music-header">
-      <div class="music-icon">💃</div>
-      <div>
-        <div class="music-title">SALSA COLOMBIANA</div>
-      </div>
-    </div>
-    <div class="music-desc">Cali style, Joe Arroyo, Grupo Niche, La-33. El ritmo que mueve a Colombia entera.</div>
-    <div class="music-links">
-      <a class="music-link yt" href="https://www.youtube.com/watch?v=649R5XMfLvA" target="_blank">▶ Salsa Colombiana Mix · YouTube</a>
-      <a class="music-link yt" href="https://www.youtube.com/playlist?list=PLkVUsN10WcitDWId-H8Pogq88eT0EuCJ2" target="_blank">▶ Colombia 2025 Mix · YouTube</a>
-      <a class="music-link sp" href="https://open.spotify.com/playlist/7L8zRmRs5mdeFsnnezx5TV" target="_blank">♫ Crossover Colombia 2026 · Spotify</a>
-    </div>
-    <div class="synth-player">
-      <div class="synth-title">RITMO SALSERO — IN-PAGE SYNTH</div>
-      <div class="synth-controls">
-        <button class="synth-btn synth-play" onclick="startSynth('salsa')">▶ PLAY SALSA</button>
-        <button class="synth-btn synth-stop" onclick="stopSynth()">■ STOP</button>
-        <div class="synth-viz" id="viz2">
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-          <div class="viz-bar" style="height:8px"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- NJ EVENTS -->
-<div class="sec" id="njevents">
-  <div class="sec-label">IF YOU ARE IN NEW JERSEY</div>
-  <div class="sec-title">WORLD CUP <span>EVENTS IN NJ</span></div>
-  <div style="font-size:0.78rem;color:rgba(255,209,0,0.5);letter-spacing:1px;margin-bottom:24px;font-family:'Courier New',monospace;">JUNE 6 – JULY 19 · NJ ONLY · ALWAYS VERIFY DATES & TIMES BEFORE GOING</div>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(280px,40vw,420px),1fr));gap:14px;">
-
-    <div class="nj-card">
-      <div class="nj-date">JUN 6</div>
-      <div class="nj-num">01</div>
-      <div class="nj-title">Family Cup & Festival</div>
-      <div class="nj-loc">📍 Old Overpeck Park – Henry Hoebel Area, Leonia</div>
-      <div class="nj-desc">5-a-side tournaments, food trucks, cultural celebrations and kids activities. A full day of soccer fun for the whole family.</div>
-    </div>
-
-    <div class="nj-card nj-ongoing">
-      <div class="nj-date">JUN 11 – JUL 19</div>
-      <div class="nj-num">02</div>
-      <div class="nj-title">World Cup Fan Fest</div>
-      <div class="nj-loc">📍 American Dream, East Rutherford</div>
-      <div class="nj-desc">Daily watch parties, live performances, celebrity appearances, giveaways and concerts throughout the entire tournament.</div>
-    </div>
-
-    <div class="nj-card nj-ongoing">
-      <div class="nj-date">JUN 11 – JUL 19</div>
-      <div class="nj-num">03</div>
-      <div class="nj-title">Millburn Hills CE Watch Events</div>
-      <div class="nj-loc">📍 Millburn area spots</div>
-      <div class="nj-desc">Watch spots around town, themed retail and dining offers, Skills Day on June 20, Final Viewing Party on July 19.</div>
-    </div>
-
-    <div class="nj-card">
-      <div class="nj-date">5 STOPS</div>
-      <div class="nj-num">04</div>
-      <div class="nj-title">Fan Festival Stops — 5 NJ Towns</div>
-      <div class="nj-loc">📍 Multiple locations</div>
-      <div class="nj-desc">
-        Pre-game fan festivals before MetLife match days:<br>
-        <span style="color:rgba(255,209,0,0.7);">Jun 12</span> Jersey City &nbsp;·&nbsp;
-        <span style="color:rgba(255,209,0,0.7);">Jun 14</span> Overpeck Park, Bergen County<br>
-        <span style="color:rgba(255,209,0,0.7);">Jun 21</span> Secaucus &nbsp;·&nbsp;
-        <span style="color:rgba(255,209,0,0.7);">Jun 24</span> Newark<br>
-        <span style="color:rgba(255,209,0,0.7);">Jun 26</span> East Rutherford + Rutherford
-      </div>
-    </div>
-
-    <div class="nj-card nj-special">
-      <div class="nj-date">JUN 13</div>
-      <div class="nj-num">05</div>
-      <div class="nj-title">World Cup Concert 🎤</div>
-      <div class="nj-loc">📍 American Dream, East Rutherford</div>
-      <div class="nj-desc">French Montana performs live after the Brazil vs. Morocco match. Concert + soccer in one night.</div>
-    </div>
-
-    <div class="nj-card">
-      <div class="nj-date">JUN 14</div>
-      <div class="nj-num">06</div>
-      <div class="nj-title">Family Day</div>
-      <div class="nj-loc">📍 Sports Illustrated Stadium, Harrison</div>
-      <div class="nj-desc">Watch parties, Red Bulls meet-and-greets, soccer challenges, photo ops and KIDZ BOP LIVE.</div>
-    </div>
-
-    <div class="nj-card nj-special">
-      <div class="nj-date">JUL 19</div>
-      <div class="nj-num">07</div>
-      <div class="nj-title">World Cup Final Viewing Party 🏆</div>
-      <div class="nj-loc">📍 Taylor Park, Millburn</div>
-      <div class="nj-desc">Massive LED screen, live music, food stands and kids entertainment for the World Cup Final.</div>
-    </div>
-
-  </div>
-
-  <div style="margin-top:20px;background:rgba(255,209,0,0.05);border:1px solid rgba(255,209,0,0.15);border-radius:10px;padding:14px 18px;font-size:0.72rem;color:rgba(255,255,255,0.4);font-family:'Courier New',monospace;letter-spacing:1px;line-height:1.6;">
-    ⚠ NJ events only · NYC events excluded · Always verify dates, times and locations before heading out · Source: MommyTheExplorer / NJ Family
-  </div>
-</div>
-
-<style>
-.nj-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:clamp(14px,3vw,22px);position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.2s;}
-.nj-card:hover{border-color:rgba(255,209,0,0.5);transform:translateY(-3px);}
-.nj-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--yellow);}
-.nj-card.nj-ongoing::before{background:var(--blue);}
-.nj-card.nj-special::before{background:var(--red);}
-.nj-num{position:absolute;top:12px;right:14px;font-family:'Arial Black',Arial,sans-serif;font-size:2rem;font-weight:900;color:rgba(255,209,0,0.08);line-height:1;}
-.nj-date{font-family:'Courier New',monospace;font-size:0.62rem;font-weight:700;color:var(--yellow);letter-spacing:3px;margin-bottom:6px;}
-.nj-card.nj-ongoing .nj-date{color:#6699ff;}
-.nj-card.nj-special .nj-date{color:#ff6666;}
-.nj-title{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(0.95rem,2.2vw,1.25rem);font-weight:900;letter-spacing:1px;margin-bottom:6px;color:#fff;}
-.nj-loc{font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-bottom:8px;}
-.nj-desc{font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.55;}
-</style>
-
 <footer>
-  <div style="font-size:2.5rem;margin-bottom:8px;">COLOMBIA · FIFA WORLD CUP 2026</div>
+  <div style="font-size:1.8rem;margin-bottom:6px;">🇨🇴 COLOMBIA · FIFA WORLD CUP 2026 🇨🇴</div>
   <div>USA · CANADA · MEXICO · JUNE 11 – JULY 19</div>
+  <div style="margin-top:6px;color:rgba(255,209,0,0.35);">ESPECIALMENTE HECHO PARA VICENTE</div>
 </footer>
 
 <script>
+// ── SPLASH ────────────────────────────────────────────────────────
+function enter() {
+  var splash = document.getElementById('splash');
+  splash.classList.add('hide');
+  setTimeout(function(){ splash.style.display='none'; }, 850);
 
-// stars
-(function(){var s=document.getElementById('stars');for(var i=0;i<80;i++){var e=document.createElement('div');e.className='star';e.style.cssText='left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+(Math.random()*2+0.5)+'px;height:'+(Math.random()*2+0.5)+'px;animation-delay:'+Math.random()*4+'s;animation-duration:'+(1.5+Math.random()*3)+'s';s.appendChild(e);}})();
+  // Play MP3 - inside click handler = guaranteed
+  var aud = document.getElementById('aud');
+  if (aud) { aud.volume = 0.9; aud.play(); }
 
-// smooth scroll
-document.querySelectorAll('.nav-link').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
+  // Inject YouTube player
+  var ytc = document.getElementById('yt-container');
+  if (ytc) {
+    ytc.innerHTML = '<iframe width="100%" src="https://www.youtube.com/embed/yry3rgGlRUw?autoplay=1&mute=0&rel=0&loop=1&playlist=yry3rgGlRUw" style="height:clamp(180px,36vw,320px);display:block;border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  }
+}
+document.getElementById('sp-btn').addEventListener('click', function(e){ e.stopPropagation(); enter(); });
+document.getElementById('splash').addEventListener('click', enter);
 
-// countdown
-// Match times in UTC (ET + 4 hours)
-var M1=new Date(Date.UTC(2026,5,18,2,0,0));   // Jun 17 10PM ET = Jun 18 02:00 UTC
-var M2=new Date(Date.UTC(2026,5,24,2,0,0));   // Jun 23 10PM ET = Jun 24 02:00 UTC
-var M3=new Date(Date.UTC(2026,5,27,23,30,0)); // Jun 27 7:30PM ET = Jun 27 23:30 UTC
-var WCS=new Date(Date.UTC(2026,5,11,19,0,0)); // Jun 11 3PM ET = Jun 11 19:00 UTC
-var WCE=new Date(Date.UTC(2026,6,19,19,0,0));  // Jul 19 3PM ET = Jul 19 19:00 UTC
+// ── STARS ─────────────────────────────────────────────────────────
+(function(){
+  var s = document.getElementById('stars');
+  for (var i = 0; i < 80; i++) {
+    var e = document.createElement('div');
+    e.className = 'star';
+    e.style.cssText = 'left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+(Math.random()*2+0.5)+'px;height:'+(Math.random()*2+0.5)+'px;animation-delay:'+Math.random()*4+'s;animation-duration:'+(1.5+Math.random()*3)+'s';
+    s.appendChild(e);
+  }
+})();
 
-function pad(n){return String(Math.floor(n)).padStart(2,'0');}
-function fmt(ms){if(ms<=0)return'LIVE';var d=Math.floor(ms/86400000),h=Math.floor((ms%86400000)/3600000),m=Math.floor((ms%3600000)/60000);return d+'d '+pad(h)+'h '+pad(m)+'m';}
+// ── SMOOTH SCROLL ─────────────────────────────────────────────────
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    var t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior:'smooth' });
+  });
+});
+
+// ── COUNTDOWN ────────────────────────────────────────────────────
+var M1 = new Date(Date.UTC(2026,5,18,2,0,0));
+var M2 = new Date(Date.UTC(2026,5,24,2,0,0));
+var M3 = new Date(Date.UTC(2026,5,27,23,30,0));
+var WCS = new Date(Date.UTC(2026,5,11,19,0,0));
+var WCE = new Date(Date.UTC(2026,6,19,19,0,0));
+
+function pad(n){ return String(Math.floor(n)).padStart(2,'0'); }
+function fmtCD(ms){
+  if (ms <= 0) return 'LIVE';
+  var d=Math.floor(ms/86400000), h=Math.floor((ms%86400000)/3600000), m=Math.floor((ms%3600000)/60000);
+  return d+'d '+pad(h)+'h '+pad(m)+'m';
+}
 
 function tick(){
-  var now=Date.now();
-  var diff=M1-now;
-  if(diff>0){
-    document.getElementById('cd-d').textContent=Math.floor(diff/86400000);
-    document.getElementById('cd-h').textContent=pad(Math.floor((diff%86400000)/3600000));
-    document.getElementById('cd-m').textContent=pad(Math.floor((diff%3600000)/60000));
-    document.getElementById('cd-s').textContent=pad(Math.floor((diff%60000)/1000));
+  var now = Date.now();
+  var diff = M1 - now;
+  if (diff > 0) {
+    document.getElementById('cd-d').textContent = Math.floor(diff/86400000);
+    document.getElementById('cd-h').textContent = pad(Math.floor((diff%86400000)/3600000));
+    document.getElementById('cd-m').textContent = pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('cd-s').textContent = pad(Math.floor((diff%60000)/1000));
   } else {
-    document.getElementById('cd-d').textContent='GO';
-    document.getElementById('cd-h').textContent='GO';
-    document.getElementById('cd-m').textContent='GO';
-    document.getElementById('cd-s').textContent='GO';
+    document.getElementById('cd-d').textContent = 'GO';
+    document.getElementById('cd-h').textContent = 'GO';
+    document.getElementById('cd-m').textContent = 'GO';
+    document.getElementById('cd-s').textContent = 'GO';
   }
-  document.getElementById('t1').textContent=fmt(M1-now);
-  document.getElementById('t2').textContent=fmt(M2-now);
-  document.getElementById('t3').textContent=fmt(M3-now);
-  var pct=Math.max(0,Math.min(100,Math.round((now-WCS)/(WCE-WCS)*100)));
-  document.getElementById('pfill').style.width=pct+'%';
-  document.getElementById('pct').textContent=pct+'%';
-  if(now>M1){
-    document.getElementById('b1').textContent='PLAYED';
-    document.getElementById('b1').className='mbadge';
-    document.getElementById('mc1').classList.remove('next');
-    if(now<M2){document.getElementById('mc2').classList.add('next');}
+  document.getElementById('t1').textContent = fmtCD(M1-now);
+  document.getElementById('t2').textContent = fmtCD(M2-now);
+  document.getElementById('t3').textContent = fmtCD(M3-now);
+  var pct = Math.max(0, Math.min(100, Math.round((now-WCS)/(WCE-WCS)*100)));
+  document.getElementById('pfill').style.width = pct+'%';
+  document.getElementById('pct').textContent = pct+'%';
+  if (now > M1) {
+    document.getElementById('b1').textContent = 'PLAYED';
+    document.getElementById('b1').style.background = 'rgba(255,255,255,0.15)';
+    if (now < M2) document.getElementById('mc2').classList.add('next-up');
   }
 }
 tick();
-setInterval(tick,1000);
+setInterval(tick, 1000);
 
-// schedule data
-var GS=[
+// ── SCHEDULE ─────────────────────────────────────────────────────
+var GS = [
   {g:'GROUP A',d:'Thu Jun 11',t:'3:00 PM ET',m:'Mexico vs South Africa',v:'Mexico City'},
   {g:'GROUP A',d:'Thu Jun 11',t:'10:00 PM ET',m:'Korea Republic vs Czechia',v:'Guadalajara'},
   {g:'GROUP A',d:'Thu Jun 18',t:'12:00 PM ET',m:'Czechia vs South Africa',v:'Atlanta'},
@@ -719,7 +493,7 @@ var GS=[
   {g:'GROUP A',d:'Wed Jun 24',t:'9:00 PM ET',m:'Czechia vs Mexico',v:'Mexico City'},
   {g:'GROUP A',d:'Wed Jun 24',t:'9:00 PM ET',m:'South Africa vs Korea Republic',v:'Monterrey'},
   {g:'GROUP B',d:'Fri Jun 12',t:'3:00 PM ET',m:'Canada vs Bosnia & Herzegovina',v:'Toronto'},
-  {g:'GROUP B',d:'Sat Jun 13',t:'3:00 PM ET',m:'Qatar vs Switzerland',v:'San Francisco Bay Area'},
+  {g:'GROUP B',d:'Sat Jun 13',t:'3:00 PM ET',m:'Qatar vs Switzerland',v:'San Francisco'},
   {g:'GROUP B',d:'Thu Jun 18',t:'3:00 PM ET',m:'Switzerland vs Bosnia & Herzegovina',v:'Los Angeles'},
   {g:'GROUP B',d:'Thu Jun 18',t:'6:00 PM ET',m:'Canada vs Qatar',v:'Vancouver'},
   {g:'GROUP B',d:'Wed Jun 24',t:'3:00 PM ET',m:'Switzerland vs Canada',v:'Vancouver'},
@@ -733,9 +507,9 @@ var GS=[
   {g:'GROUP D',d:'Fri Jun 12',t:'6:00 PM ET',m:'USA vs Paraguay',v:'Los Angeles'},
   {g:'GROUP D',d:'Sun Jun 14',t:'3:00 PM ET',m:'Australia vs Turkiye',v:'Kansas City'},
   {g:'GROUP D',d:'Fri Jun 19',t:'3:00 PM ET',m:'USA vs Australia',v:'Seattle'},
-  {g:'GROUP D',d:'Sun Jun 22',t:'3:00 PM ET',m:'Paraguay vs Turkiye',v:'San Francisco Bay Area'},
+  {g:'GROUP D',d:'Sun Jun 22',t:'3:00 PM ET',m:'Paraguay vs Turkiye',v:'San Francisco'},
   {g:'GROUP D',d:'Thu Jun 25',t:'3:00 PM ET',m:'USA vs Turkiye',v:'Dallas'},
-  {g:'GROUP D',d:'Thu Jun 25',t:'3:00 PM ET',m:'Paraguay vs Australia',v:'San Francisco Bay Area'},
+  {g:'GROUP D',d:'Thu Jun 25',t:'3:00 PM ET',m:'Paraguay vs Australia',v:'San Francisco'},
   {g:'GROUP E',d:'Sun Jun 14',t:'6:00 PM ET',m:'Germany vs Curacao',v:'Philadelphia'},
   {g:'GROUP E',d:'Mon Jun 15',t:'3:00 PM ET',m:'Ivory Coast vs Ecuador',v:'Dallas'},
   {g:'GROUP E',d:'Fri Jun 20',t:'6:00 PM ET',m:'Ecuador vs Germany',v:'New York/New Jersey'},
@@ -761,13 +535,13 @@ var GS=[
   {g:'GROUP H',d:'Fri Jun 26',t:'9:00 PM ET',m:'Spain vs Uruguay',v:'Dallas'},
   {g:'GROUP H',d:'Fri Jun 26',t:'9:00 PM ET',m:'Cabo Verde vs Saudi Arabia',v:'Seattle'},
   {g:'GROUP I',d:'Wed Jun 17',t:'3:00 PM ET',m:'France vs Senegal',v:'New York/New Jersey'},
-  {g:'GROUP I',d:'Wed Jun 17',t:'6:00 PM ET',m:'Norway vs Iraq',v:'San Francisco Bay Area'},
+  {g:'GROUP I',d:'Wed Jun 17',t:'6:00 PM ET',m:'Norway vs Iraq',v:'San Francisco'},
   {g:'GROUP I',d:'Mon Jun 22',t:'6:00 PM ET',m:'France vs Norway',v:'Boston'},
   {g:'GROUP I',d:'Mon Jun 22',t:'9:00 PM ET',m:'Senegal vs Iraq',v:'Toronto'},
   {g:'GROUP I',d:'Sat Jun 27',t:'3:00 PM ET',m:'France vs Iraq',v:'Atlanta'},
   {g:'GROUP I',d:'Sat Jun 27',t:'3:00 PM ET',m:'Senegal vs Norway',v:'Kansas City'},
   {g:'GROUP J',d:'Wed Jun 17',t:'9:00 PM ET',m:'Argentina vs Algeria',v:'Dallas'},
-  {g:'GROUP J',d:'Thu Jun 18',t:'12:00 AM ET',m:'Austria vs Jordan',v:'San Francisco Bay Area'},
+  {g:'GROUP J',d:'Thu Jun 18',t:'12:00 AM ET',m:'Austria vs Jordan',v:'San Francisco'},
   {g:'GROUP J',d:'Mon Jun 22',t:'3:00 PM ET',m:'Argentina vs Austria',v:'Atlanta'},
   {g:'GROUP J',d:'Mon Jun 22',t:'9:00 PM ET',m:'Algeria vs Jordan',v:'Seattle'},
   {g:'GROUP J',d:'Sat Jun 27',t:'7:30 PM ET',m:'Argentina vs Jordan',v:'Miami'},
@@ -785,50 +559,45 @@ var GS=[
   {g:'GROUP L',d:'Sat Jun 27',t:'5:00 PM ET',m:'Panama vs England',v:'New York/New Jersey'},
   {g:'GROUP L',d:'Sat Jun 27',t:'5:00 PM ET',m:'Croatia vs Ghana',v:'Philadelphia'}
 ];
-
 var R32=[
   {d:'Sun Jun 28',t:'12:00 PM ET',m:'1A vs 2B',v:'New York/New Jersey'},
-  {d:'Sun Jun 28',t:'3:00 PM ET',m:'2A vs 2B',v:'Los Angeles'},
+  {d:'Sun Jun 28',t:'3:00 PM ET',m:'2A vs 1B',v:'Los Angeles'},
   {d:'Mon Jun 29',t:'1:00 PM ET',m:'1C vs 2F',v:'Houston'},
-  {d:'Mon Jun 29',t:'4:30 PM ET',m:'1E vs best 3rd (ABCDF)',v:'Boston'},
+  {d:'Mon Jun 29',t:'4:30 PM ET',m:'1E vs best 3rd',v:'Boston'},
   {d:'Mon Jun 29',t:'9:00 PM ET',m:'1F vs 2C',v:'Monterrey'},
   {d:'Tue Jun 30',t:'1:00 PM ET',m:'2E vs 2I',v:'Dallas'},
-  {d:'Tue Jun 30',t:'5:00 PM ET',m:'1I vs best 3rd (CDFGH)',v:'New York/New Jersey'},
-  {d:'Tue Jun 30',t:'9:00 PM ET',m:'1A vs best 3rd (CEFHI)',v:'Mexico City'},
-  {d:'Wed Jul 1',t:'12:00 PM ET',m:'1L vs best 3rd (EHIJK)',v:'Atlanta'},
-  {d:'Wed Jul 1',t:'4:00 PM ET',m:'1G vs best 3rd (AEHIJ)',v:'Seattle'},
-  {d:'Wed Jul 1',t:'8:00 PM ET',m:'1D vs best 3rd (BEFIJ)',v:'San Francisco Bay Area'},
+  {d:'Tue Jun 30',t:'5:00 PM ET',m:'1I vs best 3rd',v:'New York/New Jersey'},
+  {d:'Tue Jun 30',t:'9:00 PM ET',m:'1A vs best 3rd',v:'Mexico City'},
+  {d:'Wed Jul 1',t:'12:00 PM ET',m:'1L vs best 3rd',v:'Atlanta'},
+  {d:'Wed Jul 1',t:'4:00 PM ET',m:'1G vs best 3rd',v:'Seattle'},
+  {d:'Wed Jul 1',t:'8:00 PM ET',m:'1D vs best 3rd',v:'San Francisco'},
   {d:'Thu Jul 2',t:'3:00 PM ET',m:'1H vs 2J',v:'Los Angeles'},
   {d:'Thu Jul 2',t:'7:00 PM ET',m:'2K vs 2L',v:'Toronto'},
-  {d:'Thu Jul 2',t:'11:00 PM ET',m:'1B vs best 3rd (EFGIJ)',v:'Vancouver'},
+  {d:'Thu Jul 2',t:'11:00 PM ET',m:'1B vs best 3rd',v:'Vancouver'},
   {d:'Fri Jul 3',t:'2:00 PM ET',m:'2D vs 2G',v:'Dallas'},
   {d:'Fri Jul 3',t:'6:00 PM ET',m:'1J vs 2H',v:'Miami'},
-  {d:'Fri Jul 3',t:'9:30 PM ET',m:'1K vs best 3rd (DEIJL)',v:'Kansas City',c:1}
+  {d:'Fri Jul 3',t:'9:30 PM ET',m:'1K vs best 3rd',v:'Kansas City',c:1}
 ];
-
 var R16=[
-  {d:'Sat Jul 4',t:'1:00 PM ET',m:'W73 vs W75',v:'Houston'},
-  {d:'Sat Jul 4',t:'5:00 PM ET',m:'W74 vs W77',v:'Philadelphia'},
-  {d:'Sun Jul 5',t:'4:00 PM ET',m:'W76 vs W78',v:'New York/New Jersey'},
-  {d:'Sun Jul 5',t:'8:00 PM ET',m:'W79 vs W80',v:'Mexico City'},
-  {d:'Mon Jul 6',t:'3:00 PM ET',m:'W83 vs W84',v:'Dallas'},
-  {d:'Mon Jul 6',t:'8:00 PM ET',m:'W81 vs W82',v:'Seattle'},
-  {d:'Tue Jul 7',t:'12:00 PM ET',m:'W86 vs W88',v:'Atlanta'},
-  {d:'Tue Jul 7',t:'4:00 PM ET',m:'W85 vs W87',v:'Vancouver'}
+  {d:'Sat Jul 4',t:'1:00 PM ET',m:'R32 W1 vs R32 W3',v:'Houston'},
+  {d:'Sat Jul 4',t:'5:00 PM ET',m:'R32 W2 vs R32 W5',v:'Philadelphia'},
+  {d:'Sun Jul 5',t:'4:00 PM ET',m:'R32 W4 vs R32 W6',v:'New York/New Jersey'},
+  {d:'Sun Jul 5',t:'8:00 PM ET',m:'R32 W7 vs R32 W8',v:'Mexico City'},
+  {d:'Mon Jul 6',t:'3:00 PM ET',m:'R32 W11 vs R32 W12',v:'Dallas'},
+  {d:'Mon Jul 6',t:'8:00 PM ET',m:'R32 W9 vs R32 W10',v:'Seattle'},
+  {d:'Tue Jul 7',t:'12:00 PM ET',m:'R32 W14 vs R32 W16',v:'Atlanta'},
+  {d:'Tue Jul 7',t:'4:00 PM ET',m:'R32 W13 vs R32 W15',v:'Vancouver'}
 ];
-
 var QF=[
-  {d:'Thu Jul 9',t:'4:00 PM ET',m:'QF1',v:'Boston'},
-  {d:'Fri Jul 10',t:'3:00 PM ET',m:'QF2',v:'Los Angeles'},
-  {d:'Sat Jul 11',t:'5:00 PM ET',m:'QF3',v:'Miami'},
-  {d:'Sat Jul 11',t:'9:00 PM ET',m:'QF4',v:'Kansas City'}
+  {d:'Thu Jul 9',t:'4:00 PM ET',m:'Quarter-Final 1',v:'Boston'},
+  {d:'Fri Jul 10',t:'3:00 PM ET',m:'Quarter-Final 2',v:'Los Angeles'},
+  {d:'Sat Jul 11',t:'5:00 PM ET',m:'Quarter-Final 3',v:'Miami'},
+  {d:'Sat Jul 11',t:'9:00 PM ET',m:'Quarter-Final 4',v:'Kansas City'}
 ];
-
 var SF=[
   {d:'Tue Jul 14',t:'3:00 PM ET',m:'Semi-Final 1',v:'Dallas'},
   {d:'Wed Jul 15',t:'3:00 PM ET',m:'Semi-Final 2',v:'Atlanta'}
 ];
-
 var FI=[
   {d:'Sat Jul 18',t:'5:00 PM ET',m:'3rd Place Match',v:'Miami'},
   {d:'Sun Jul 19',t:'3:00 PM ET',m:'WORLD CUP FINAL',v:'New York/New Jersey · MetLife Stadium'}
@@ -837,1213 +606,91 @@ var FI=[
 function buildGrid(data, id) {
   var el = document.getElementById(id);
   if (!el) return;
-  var html = '';
+  var h = '';
   for (var i = 0; i < data.length; i++) {
     var m = data[i];
-    html += '<div class="sc' + (m.c ? ' col' : '') + '">';
-    if (m.g) html += '<div class="sc-grp">' + m.g + '</div>';
-    html += '<div class="sc-dt"><span>' + m.d + '</span><span>' + m.t + '</span></div>';
-    html += '<div class="sc-m">' + m.m + '</div>';
-    html += '<div class="sc-v">' + m.v + '</div>';
-    html += '</div>';
+    h += '<div class="sc'+(m.c?' col':'')+'">';
+    if (m.g) h += '<div class="sc-grp">'+m.g+'</div>';
+    h += '<div class="sc-dt"><span>'+m.d+'</span><span>'+m.t+'</span></div>';
+    h += '<div class="sc-m">'+m.m+'</div>';
+    h += '<div class="sc-v">'+m.v+'</div></div>';
   }
-  el.innerHTML = html;
+  el.innerHTML = h;
 }
-
-buildGrid(GS, 'gs-grid');
-buildGrid(R32, 'r32-grid');
-buildGrid(R16, 'r16-grid');
-buildGrid(QF, 'qf-grid');
-buildGrid(SF, 'sf-grid');
-buildGrid(FI, 'fi-grid');
+buildGrid(GS,'gs-grid');
+buildGrid(R32,'r32-grid');
+buildGrid(R16,'r16-grid');
+buildGrid(QF,'qf-grid');
+buildGrid(SF,'sf-grid');
+buildGrid(FI,'fi-grid');
 
 function showTab(id) {
   var tabs = ['gs','r32','r16','qf','sf','fi'];
   for (var i = 0; i < tabs.length; i++) {
-    document.getElementById('tab-' + tabs[i]).style.display = tabs[i] === id ? 'block' : 'none';
+    document.getElementById('tab-'+tabs[i]).style.display = tabs[i]===id ? 'block' : 'none';
   }
   var btns = document.querySelectorAll('.tab-btn');
-  var labels = ['gs','r32','r16','qf','sf','fi'];
   for (var i = 0; i < btns.length; i++) {
-    btns[i].classList.toggle('on', labels[i] === id);
+    btns[i].classList.toggle('on', tabs[i]===id);
   }
 }
 
-// ── MUSIC SYNTH ──
-var MAC = null, MMG = null, mIntervals = [], mOscs = [], vizInterval = null;
+// ── PLAYERS ───────────────────────────────────────────────────────
+var PLAYERS = [
+  {n:'7', name:'LUIS DÍAZ',         pos:'FORWARD',    club:'Bayern Munich',  star:true,  c1:'#DC052D',c2:'#8B0000'},
+  {n:'10',name:'JAMES RODRÍGUEZ',   pos:'MIDFIELDER', club:'Rayo Vallecano', star:true,  c1:'#003087',c2:'#001a4d'},
+  {n:'9', name:'FALCAO',            pos:'FORWARD',    club:'Club Legend',    star:true,  c1:'#FFD100',c2:'#cc9900'},
+  {n:'6', name:'DÁVINSON SÁNCHEZ',  pos:'DEFENDER',   club:'Galatasaray',    star:false, c1:'#CE1126',c2:'#8B0000'},
+  {n:'13',name:'YERRY MINA',        pos:'DEFENDER',   club:'Fiorentina',     star:false, c1:'#6B2D8B',c2:'#3d1050'},
+  {n:'11',name:'CUADRADO',          pos:'MIDFIELDER', club:'Internacional',  star:false, c1:'#CC0000',c2:'#880000'},
+  {n:'8', name:'RICHARD RÍOS',      pos:'MIDFIELDER', club:'Palmeiras',      star:false, c1:'#006633',c2:'#003d1f'},
+  {n:'2', name:'DANIEL MUÑOZ',      pos:'DEFENDER',   club:'Crystal Palace', star:false, c1:'#1B458F',c2:'#C8102E'},
+];
 
-function getMAC() {
-  if (!MAC) {
-    MAC = new (window.AudioContext || window.webkitAudioContext)();
-    MMG = MAC.createGain(); MMG.gain.value = 0.5; MMG.connect(MAC.destination);
-  }
-  return MAC;
+function makeJersey(p) {
+  var c1=p.c1, c2=p.c2, n=p.n;
+  return '<svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">'
+    +'<defs><linearGradient id="jg'+n+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+c1+'"/><stop offset="100%" stop-color="'+c2+'"/></linearGradient></defs>'
+    +'<rect width="100" height="110" fill="'+c1+'" opacity="0.15" rx="4"/>'
+    +'<circle cx="88" cy="15" r="35" fill="rgba(255,255,255,0.04)"/>'
+    +'<path d="M28 18 L18 30 L28 34 L28 85 L72 85 L72 34 L82 30 L72 18 L60 24 C60 30 40 30 40 24 Z" fill="url(#jg'+n+')" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>'
+    +'<text x="50" y="70" text-anchor="middle" font-family="Arial Black,Arial" font-size="26" font-weight="900" fill="rgba(255,255,255,0.9)">'+n+'</text>'
+    +'<text x="50" y="46" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.5)">★  ★  ★</text>'
+    +'<rect x="0" y="102" width="34" height="8" fill="#FFD100"/>'
+    +'<rect x="34" y="102" width="32" height="8" fill="#003087"/>'
+    +'<rect x="66" y="102" width="34" height="8" fill="#CE1126"/>'
+    +'</svg>';
 }
 
-function stopSynth() {
-  mIntervals.forEach(function(id){ clearInterval(id); });
-  mIntervals = [];
-  mOscs.forEach(function(o){ try{ o.stop(); }catch(e){} });
-  mOscs = [];
-  if(vizInterval){ clearInterval(vizInterval); vizInterval=null; }
-  document.querySelectorAll('.viz-bar').forEach(function(b){ b.style.height='8px'; });
+var pg = document.getElementById('player-grid');
+var ph = '';
+for (var i = 0; i < PLAYERS.length; i++) {
+  var p = PLAYERS[i];
+  var posIcon = p.pos==='FORWARD'?'⚡':p.pos==='MIDFIELDER'?'⚙️':'🛡️';
+  ph += '<div class="pcard'+(p.star?' star':'')+'">'
+    +'<div class="pjerseybox" style="background:linear-gradient(135deg,'+p.c1+'22,'+p.c2+'44)">'+makeJersey(p)+'</div>'
+    +'<div class="pinfo"><div class="pname">'+p.name+'</div>'
+    +'<div class="ppos">'+posIcon+' '+p.pos+'</div>'
+    +'<div class="pclub">'+p.club+'</div></div></div>';
 }
+pg.innerHTML = ph;
 
-function mNote(freq, when, dur, vol, type) {
-  try {
-    var ac=getMAC(), o=ac.createOscillator(), g=ac.createGain();
-    o.type=type||'sine'; o.frequency.value=freq;
-    g.gain.setValueAtTime(vol, when); g.gain.exponentialRampToValueAtTime(0.0001, when+dur);
-    o.connect(g); g.connect(MMG); o.start(when); o.stop(when+dur+0.05);
-  } catch(e){}
-}
-
-function mNoise(when, dur, vol, lo, hi) {
-  try {
-    var ac=getMAC();
-    var len=Math.ceil(ac.sampleRate*dur), buf=ac.createBuffer(1,len,ac.sampleRate), da=buf.getChannelData(0);
-    for(var i=0;i<len;i++) da[i]=Math.random()*2-1;
-    var src=ac.createBufferSource(); src.buffer=buf;
-    var flt=ac.createBiquadFilter(); flt.type='bandpass'; flt.frequency.value=(lo+hi)/2;
-    var g=ac.createGain(); g.gain.setValueAtTime(vol,when); g.gain.exponentialRampToValueAtTime(0.0001,when+dur);
-    src.connect(flt); flt.connect(g); g.connect(MMG); src.start(when); src.stop(when+dur+0.05);
-  } catch(e){}
-}
-
-function startViz() {
-  vizInterval = setInterval(function(){
-    document.querySelectorAll('.viz-bar').forEach(function(b){
-      b.style.height = (6 + Math.random()*26) + 'px';
-    });
-  }, 120);
-}
-
-function startSynth(mode) {
+// ── SYNTH ─────────────────────────────────────────────────────────
+var MAC=null,MMG=null,mInts=[],mOscs=[],vizInt=null;
+function getAC(){if(!MAC){MAC=new(window.AudioContext||window.webkitAudioContext)();MMG=MAC.createGain();MMG.gain.value=0.5;MMG.connect(MAC.destination);}return MAC;}
+function stopSynth(){mInts.forEach(function(id){clearInterval(id);});mInts=[];mOscs.forEach(function(o){try{o.stop();}catch(e){}});mOscs=[];if(vizInt){clearInterval(vizInt);vizInt=null;}document.querySelectorAll('.vb').forEach(function(b){b.style.height='6px';});}
+function mN(f,w,d,v,tp){try{var ac=getAC(),o=ac.createOscillator(),g=ac.createGain();o.type=tp||'sine';o.frequency.value=f;g.gain.setValueAtTime(v,w);g.gain.exponentialRampToValueAtTime(0.0001,w+d);o.connect(g);g.connect(MMG);o.start(w);o.stop(w+d+0.05);}catch(e){}}
+function mZ(w,d,v,lo,hi){try{var ac=getAC(),len=Math.ceil(ac.sampleRate*d),buf=ac.createBuffer(1,len,ac.sampleRate),da=buf.getChannelData(0);for(var i=0;i<len;i++)da[i]=Math.random()*2-1;var src=ac.createBufferSource();src.buffer=buf;var f=ac.createBiquadFilter();f.type='bandpass';f.frequency.value=(lo+hi)/2;var g=ac.createGain();g.gain.setValueAtTime(v,w);g.gain.exponentialRampToValueAtTime(0.0001,w+d);src.connect(f);f.connect(g);g.connect(MMG);src.start(w);src.stop(w+d+0.05);}catch(e){}}
+function startSynth(mode){
   stopSynth();
-  var ac = getMAC();
+  var ac=getAC();
   ac.resume().then(function(){
-    startViz();
-    if (mode === 'vallenato') playVallenato();
-    else playSalsa();
+    vizInt=setInterval(function(){document.querySelectorAll('.vb').forEach(function(b){b.style.height=(5+Math.random()*22)+'px';});},120);
+    if(mode==='vallenato') playVal(); else playSalsa();
   });
 }
-
-function playVallenato() {
-  var ac = getMAC();
-  // Vallenato: accordion-like melody in D major + caja drum pattern
-  // Scale: D E F# G A B C# D (D major)
-  var SCALE = [146.83, 164.81, 185.00, 196.00, 220.00, 246.94, 277.18, 293.66];
-  var MELODY = [4,4,5,4,3,2,0,0, 4,4,5,6,5,4,3,3];
-  var step = 0;
-  var bpm = 132;
-  var beat = 60/bpm;
-
-  // Drone bass
-  var bass = ac.createOscillator(), bassG = ac.createGain();
-  bass.type='sawtooth'; bass.frequency.value=73.42; bassG.gain.value=0.06;
-  bass.connect(bassG); bassG.connect(MMG); bass.start(); mOscs.push(bass);
-
-  // Melody (accordion feel - square wave)
-  var melId = setInterval(function(){
-    if(!MAC) return;
-    var t = MAC.currentTime;
-    var freq = SCALE[MELODY[step % MELODY.length]];
-    mNote(freq, t, beat*0.7, 0.12, 'square');
-    mNote(freq*2, t+0.02, beat*0.5, 0.04, 'sine');
-    step++;
-  }, beat*1000);
-  mIntervals.push(melId);
-
-  // Caja drum (low thump)
-  var drumStep = 0;
-  // Vallenato caja pattern: 1 . . 1 . 1 . .
-  var cajaPattern = [1,0,0,1,0,1,0,0];
-  var cajaId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    if(cajaPattern[drumStep % cajaPattern.length]) {
-      mNoise(t, 0.08, 0.18, 80, 200);
-      mNote(90, t, 0.12, 0.14, 'sine');
-    }
-    drumStep++;
-  }, beat*500);
-  mIntervals.push(cajaId);
-
-  // Guacharaca (scraper - high ticking)
-  var guaStep = 0;
-  var guaId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    mNoise(t, 0.03, 0.06, 3000, 8000);
-    guaStep++;
-  }, beat*250);
-  mIntervals.push(guaId);
-
-  // Walking bass line
-  var bassSeq = [73.42, 82.41, 92.50, 73.42, 65.41, 73.42, 82.41, 73.42];
-  var bassStep2 = 0;
-  var bassId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    mNote(bassSeq[bassStep2 % bassSeq.length], t, beat*0.8, 0.1, 'triangle');
-    bassStep2++;
-  }, beat*500);
-  mIntervals.push(bassId);
-}
-
-function playSalsa() {
-  var ac = getMAC();
-  // Salsa: clave pattern + timbales + bass + piano montuno
-  var bpm = 180;
-  var beat = 60/bpm;
-
-  // Bass drone
-  var bass = ac.createOscillator(), bassG = ac.createGain();
-  bass.type='sawtooth'; bass.frequency.value=73.42; bassG.gain.value=0.05;
-  bass.connect(bassG); bassG.connect(MMG); bass.start(); mOscs.push(bass);
-
-  // 3-2 Clave pattern (6 steps in 2 bars of 4/4)
-  var claveHits = [1,0,0,1,0,0,1,0,1,0,1,0,0,0,0,0];
-  var claveStep = 0;
-  var claveId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    if(claveHits[claveStep % claveHits.length]) {
-      mNoise(t, 0.04, 0.12, 2000, 5000);
-      mNote(1200, t, 0.04, 0.08, 'square');
-    }
-    claveStep++;
-  }, beat*250);
-  mIntervals.push(claveId);
-
-  // Timbale rim shots on 2 and 4
-  var timStep = 0;
-  var timPat = [0,0,1,0,0,0,1,0];
-  var timId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    if(timPat[timStep % timPat.length]) {
-      mNoise(t, 0.05, 0.2, 800, 3000);
-    }
-    timStep++;
-  }, beat*250);
-  mIntervals.push(timId);
-
-  // Kick on beat 1
-  var kickStep = 0;
-  var kickPat = [1,0,0,1,0,0,0,0];
-  var kickId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    if(kickPat[kickStep % kickPat.length]) {
-      mNoise(t, 0.08, 0.2, 40, 120);
-      mNote(80, t, 0.1, 0.15, 'sine');
-    }
-    kickStep++;
-  }, beat*250);
-  mIntervals.push(kickId);
-
-  // Piano montuno (Am - Dm - E7 - Am)
-  var MONTUNO = [
-    [220.00, 261.63, 329.63],  // Am
-    [174.61, 220.00, 293.66],  // Dm
-    [164.81, 207.65, 329.63],  // E7
-    [220.00, 261.63, 329.63],  // Am
-  ];
-  var pianoStep = 0;
-  var pianoId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    var chord = MONTUNO[Math.floor(pianoStep/2) % MONTUNO.length];
-    chord.forEach(function(freq){
-      mNote(freq, t, beat*0.4, 0.06, 'triangle');
-      mNote(freq*2, t+beat*0.5, beat*0.35, 0.04, 'triangle');
-    });
-    pianoStep++;
-  }, beat*1000);
-  mIntervals.push(pianoId);
-
-  // Bass line
-  var bassNotes = [110, 110, 123.47, 130.81, 110, 98, 110, 110];
-  var bassStep2 = 0;
-  var bassId2 = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    mNote(bassNotes[bassStep2 % bassNotes.length], t, beat*0.7, 0.12, 'sawtooth');
-    bassStep2++;
-  }, beat*500);
-  mIntervals.push(bassId2);
-
-  // Cowbell
-  var cowStep = 0;
-  var cowPat = [1,0,1,0,1,0,1,0,1,0,1,1,0,1,0,0];
-  var cowId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    if(cowPat[cowStep % cowPat.length]) {
-      mNote(800, t, 0.04, 0.07, 'square');
-      mNoise(t, 0.03, 0.05, 600, 1200);
-    }
-    cowStep++;
-  }, beat*250);
-  mIntervals.push(cowId);
-}
-
-
-// Unmute YouTube player
-function unmuteYT() {
-  var iframe = document.getElementById('yt-vallenato');
-  if (iframe) {
-    // Replace src without mute=1
-    iframe.src = iframe.src.replace('mute=1','mute=0');
-    var bar = document.getElementById('unmute-bar');
-    if (bar) bar.style.display = 'none';
-  }
-}
-
-
-// Entry splash + autoplay
-(function(){
-  // stars on splash
-  var sb = document.getElementById('es-stars');
-  if(sb){for(var i=0;i<60;i++){var s=document.createElement('div');s.className='star';s.style.cssText='left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+(Math.random()*2+0.5)+'px;height:'+(Math.random()*2+0.5)+'px;animation-delay:'+Math.random()*4+'s;animation-duration:'+(1.5+Math.random()*3)+'s';sb.appendChild(s);}}
-
-  function enter(){
-    var splash = document.getElementById('entry-splash');
-    splash.classList.add('hide');
-    setTimeout(function(){ splash.style.display='none'; }, 800);
-
-    // Play Cali Pachanguero — works because this is inside a user click
-    var audio = document.getElementById('cali-audio');
-    if(audio){
-      audio.volume = 0.9;
-      audio.play().catch(function(){
-        // fallback: synth if browser blocks audio file
-        var ac = new (window.AudioContext || window.webkitAudioContext)();
-        MAC = ac; MMG = ac.createGain(); MMG.gain.value = 0.55; MMG.connect(ac.destination);
-        ac.resume().then(function(){ startViz(); playVallenato(); });
-      });
-      startViz();
-    }
-
-    // Inject hidden YouTube in hero so it starts immediately
-    var hero = document.getElementById('yt-hero-container');
-    if(hero){
-      hero.innerHTML = '<iframe src="https://www.youtube.com/embed/yry3rgGlRUw?autoplay=1&mute=0&rel=0&loop=1&playlist=yry3rgGlRUw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:1px;height:1px;border:none;"></iframe>';
-    }
-    // Also inject YouTube player in music section
-    var container = document.getElementById('yt-container');
-    if(container){
-      container.innerHTML = '<iframe width="100%" src="https://www.youtube.com/embed/yry3rgGlRUw?autoplay=1&mute=0&rel=0&loop=1&playlist=yry3rgGlRUw" style="height:clamp(200px,40vw,360px);display:block;border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-    }
-  }
-
-    document.getElementById('es-btn').addEventListener('click', function(e){
-    e.stopPropagation();
-    enter();
-  });
-  document.getElementById('entry-splash').addEventListener('click', enter);
-})();
-
-
-// ── LIVE SCORES & STANDINGS ──────────────────────────────────────
-// Uses openfootball open data (no API key needed) + fallback to ESPN
-var GROUP_K_TEAMS = ['Colombia','Portugal','DR Congo','Uzbekistan'];
-var FLAGS = {'Colombia':'🇨🇴','Portugal':'🇵🇹','DR Congo':'🇨🇩','Uzbekistan':'🇺🇿'};
-var TEAM_NORM = {
-  'Colombia':'Colombia','colombia':'Colombia',
-  'Portugal':'Portugal','portugal':'Portugal',
-  'DR Congo':'DR Congo','dr congo':'DR Congo','Congo DR':'DR Congo',
-  'Uzbekistan':'Uzbekistan','uzbekistan':'Uzbekistan'
-};
-
-function normTeam(name) {
-  if (!name) return name;
-  return TEAM_NORM[name] || TEAM_NORM[name.toLowerCase()] || name;
-}
-
-function fetchLiveData() {
-  // Try openfootball GitHub raw JSON - free, no key
-  var url = 'https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json';
-  fetch(url)
-    .then(function(r){ return r.json(); })
-    .then(function(data){ processMatches(data); })
-    .catch(function(){ showOffline(); });
-}
-
-function processMatches(data) {
-  var matches = data.matches || [];
-  var groupK = [];
-  var live = [];
-  var recent = [];
-  var now = new Date();
-
-  // Standings tracker
-  var standings = {};
-  GROUP_K_TEAMS.forEach(function(t){ standings[t]={p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0}; });
-
-  matches.forEach(function(m) {
-    var t1 = normTeam(m.team1); var t2 = normTeam(m.team2);
-    var isK = GROUP_K_TEAMS.indexOf(t1)>=0 || GROUP_K_TEAMS.indexOf(t2)>=0;
-    if (!isK) return;
-
-    groupK.push(m);
-    var mDate = new Date(m.date + 'T' + (m.time||'00:00') + ':00');
-    var diff = now - mDate;
-    var isFinished = m.score && m.score.ft;
-    var isLive = !isFinished && diff > 0 && diff < 120*60*1000;
-    var isUpcoming = !isFinished && !isLive;
-
-    if (isLive) live.push(m);
-    else if (isFinished) recent.push(m);
-
-    // Update standings if finished
-    if (isFinished && standings[t1] && standings[t2]) {
-      var g1 = m.score.ft[0], g2 = m.score.ft[1];
-      standings[t1].p++; standings[t2].p++;
-      standings[t1].gf+=g1; standings[t1].ga+=g2;
-      standings[t2].gf+=g2; standings[t2].ga+=g1;
-      if(g1>g2){standings[t1].w++;standings[t1].pts+=3;standings[t2].l++;}
-      else if(g2>g1){standings[t2].w++;standings[t2].pts+=3;standings[t1].l++;}
-      else{standings[t1].d++;standings[t1].pts++;standings[t2].d++;standings[t2].pts++;}
-    }
-  });
-
-  // Render live matches
-  var toShow = live.concat(recent.slice(-3));
-  renderMatches(toShow, live.length > 0);
-
-  // Render standings
-  renderStandings(standings);
-
-  // Status
-  var dot = document.getElementById('live-dot');
-  var status = document.getElementById('live-status');
-  var updated = document.getElementById('live-updated');
-  if (live.length > 0) {
-    dot.style.background = '#ff2222';
-    dot.style.animation = 'livepulse 1s ease-in-out infinite';
-    status.textContent = live.length + ' MATCH' + (live.length>1?'ES':'') + ' LIVE NOW';
-    status.style.color = '#ff6666';
-  } else if (recent.length > 0) {
-    dot.style.background = '#22cc44';
-    status.textContent = 'LIVE DATA · ' + recent.length + ' GROUP K MATCHES PLAYED';
-    status.style.color = 'rgba(255,255,255,0.5)';
-  } else {
-    dot.style.background = '#ffdd44';
-    status.textContent = 'LIVE DATA CONNECTED · TOURNAMENT STARTS JUN 11';
-    status.style.color = 'rgba(255,255,255,0.4)';
-  }
-  updated.textContent = 'UPDATED ' + new Date().toLocaleTimeString();
-}
-
-function renderMatches(matches, hasLive) {
-  var el = document.getElementById('live-matches');
-  if (!matches.length) {
-    el.innerHTML = '<div style="font-family:\'Courier New\',monospace;font-size:0.72rem;color:rgba(255,255,255,0.25);letter-spacing:2px;padding:20px 0;">NO GROUP K MATCHES PLAYED YET · FIRST MATCH JUN 17</div>';
-    return;
-  }
-  var html = '';
-  matches.forEach(function(m) {
-    var t1 = normTeam(m.team1); var t2 = normTeam(m.team2);
-    var isCol = t1==='Colombia'||t2==='Colombia';
-    var isFinished = m.score && m.score.ft;
-    var mDate = new Date(m.date + 'T' + (m.time||'00:00') + ':00');
-    var diff = new Date() - mDate;
-    var isLive = !isFinished && diff > 0 && diff < 120*60*1000;
-    var score = isFinished ? m.score.ft[0]+' — '+m.score.ft[1] : isLive ? '⚽ LIVE' : '--';
-    var badge = isLive ? '<span class="lm-badge badge-live">LIVE</span>' : isFinished ? '<span class="lm-badge badge-ft">FT</span>' : '<span class="lm-badge badge-ns">UPCOMING</span>';
-    html += '<div class="live-match'+(isLive?' is-live':'')+(isCol?' col-match':'')+'">';
-    html += '<div class="lm-top">';
-    html += '<div class="lm-teams">'+(FLAGS[t1]||'')+'&nbsp;'+t1+' <span style="color:rgba(255,255,255,0.3)">vs</span> '+t2+'&nbsp;'+(FLAGS[t2]||'')+'</div>';
-    html += '<div class="lm-score'+(isLive?' is-live':'')+'">'+score+'</div>';
-    html += badge;
-    html += '</div>';
-    html += '<div class="lm-meta"><span>'+m.date+'</span><span>'+(m.group||'Group K')+'</span>'+(m.ground?'<span>📍 '+m.ground+'</span>':'')+'</div>';
-    html += '</div>';
-  });
-  el.innerHTML = html;
-}
-
-function renderStandings(standings) {
-  // Sort by pts desc, then GD, then GF
-  var sorted = GROUP_K_TEAMS.slice().sort(function(a,b){
-    var pa=standings[a],pb=standings[b];
-    if(pb.pts!==pa.pts)return pb.pts-pa.pts;
-    var gda=pa.gf-pa.ga, gdb=pb.gf-pb.ga;
-    if(gdb!==gda)return gdb-gda;
-    return pb.gf-pa.gf;
-  });
-  var body = document.getElementById('live-standings-body');
-  if(!body)return;
-  body.innerHTML = sorted.map(function(t,i){
-    var s=standings[t];
-    var isCol=t==='Colombia';
-    var qualify=i<2;
-    return '<tr'+(isCol?' class="col-row"':'')+'>'+
-      '<td class="pos'+(qualify?' q':'')+'>'+(i+1)+'</td>'+
-      '<td>'+(FLAGS[t]||'')+' '+t+'</td>'+
-      '<td>'+s.p+'</td><td>'+s.w+'</td><td>'+s.d+'</td><td>'+s.l+'</td>'+
-      '<td>'+(s.gf-s.ga>=0?'+':'')+(s.gf-s.ga)+'</td>'+
-      '<td class="pts">'+s.pts+'</td>'+
-    '</tr>';
-  }).join('');
-}
-
-function showOffline() {
-  var dot = document.getElementById('live-dot');
-  var status = document.getElementById('live-status');
-  dot.style.background = '#888';
-  status.textContent = 'LIVE DATA UNAVAILABLE · CHECK CONNECTION';
-}
-
-// Fetch on load, then every 60 seconds
-fetchLiveData();
-setInterval(fetchLiveData, 60000);
-
-
-// ── LIVE DATA ──────────────────────────────────────────────────────
-// Uses api-football.com free tier — sign up at dashboard.api-football.com
-// Replace YOUR_API_KEY below with your free key (100 req/day, no CC needed)
-var API_KEY = 'YOUR_API_KEY';
-var API_BASE = 'https://v3.football.api-sports.io';
-var WC_LEAGUE = 1;
-var WC_SEASON = 2026;
-var COLOMBIA_ID = 6;
-
-function fetchLiveData() {
-  if (API_KEY === 'YOUR_API_KEY') {
-    showLiveStatus('⚡ LIVE DATA: Add your free API key to activate auto-updates');
-    return;
-  }
-
-  // Fetch Group K standings
-  fetch(API_BASE + '/standings?league=' + WC_LEAGUE + '&season=' + WC_SEASON, {
-    headers: { 'x-apisports-key': API_KEY }
-  })
-  .then(function(r){ return r.json(); })
-  .then(function(data){
-    if (!data.response || !data.response[0]) return;
-    var groups = data.response[0].league.standings;
-    // Find Group K
-    var groupK = null;
-    for (var i = 0; i < groups.length; i++) {
-      for (var j = 0; j < groups[i].length; j++) {
-        if (groups[i][j].team && (groups[i][j].team.name === 'Colombia' || groups[i][j].group === 'Group K')) {
-          groupK = groups[i];
-          break;
-        }
-      }
-      if (groupK) break;
-    }
-    if (groupK) updateGroupTable(groupK);
-  })
-  .catch(function(){ showLiveStatus('Live data temporarily unavailable'); });
-
-  // Fetch Colombia recent/upcoming fixtures
-  fetch(API_BASE + '/fixtures?team=' + COLOMBIA_ID + '&league=' + WC_LEAGUE + '&season=' + WC_SEASON, {
-    headers: { 'x-apisports-key': API_KEY }
-  })
-  .then(function(r){ return r.json(); })
-  .then(function(data){
-    if (!data.response) return;
-    updateMatchCards(data.response);
-  })
-  .catch(function(){});
-}
-
-function updateGroupTable(standings) {
-  var tbody = document.getElementById('live-group-tbody');
-  if (!tbody) return;
-  var html = '';
-  standings.sort(function(a,b){ return b.points - a.points || (b.goalsDiff - a.goalsDiff); });
-  standings.forEach(function(team, i){
-    var isCol = team.team.name === 'Colombia';
-    var qualify = i < 2;
-    html += '<tr' + (isCol ? ' class="col-row"' : '') + '>';
-    html += '<td class="pos' + (qualify ? ' q' : '') + '">' + (i+1) + '</td>';
-    html += '<td>' + getFlagEmoji(team.team.name) + ' ' + team.team.name.toUpperCase() + '</td>';
-    html += '<td>' + team.all.played + '</td>';
-    html += '<td>' + team.all.win + '</td>';
-    html += '<td>' + team.all.draw + '</td>';
-    html += '<td>' + team.all.lose + '</td>';
-    html += '<td>' + (team.goalsDiff >= 0 ? '+' : '') + team.goalsDiff + '</td>';
-    html += '<td class="pts">' + team.points + '</td>';
-    html += '</tr>';
-  });
-  tbody.innerHTML = html;
-  document.getElementById('live-badge').textContent = 'LIVE';
-  document.getElementById('live-badge').style.background = 'rgba(34,197,94,0.2)';
-  document.getElementById('live-badge').style.color = '#22c55e';
-  document.getElementById('live-badge').style.borderColor = 'rgba(34,197,94,0.4)';
-}
-
-function updateMatchCards(fixtures) {
-  fixtures.forEach(function(f){
-    var date = new Date(f.fixture.date);
-    var status = f.fixture.status.short;
-    var isLive = ['1H','HT','2H','ET','PEN'].indexOf(status) !== -1;
-    var isDone = status === 'FT';
-    var home = f.teams.home.name;
-    var away = f.teams.away.name;
-    var isCol1 = home === 'Colombia' || away === 'Colombia';
-    if (!isCol1) return;
-
-    // Find which match card this is
-    var matchDay = f.league.round;
-    var scoreHtml = '';
-    if (isDone || isLive) {
-      scoreHtml = '<div style="font-family:'Courier New',monospace;font-size:clamp(1.2rem,3vw,2rem);font-weight:900;color:' + (isLive ? '#22c55e' : 'var(--yellow)') + ';margin:6px 0;">' +
-        f.goals.home + ' — ' + f.goals.away +
-        (isLive ? ' <span style="font-size:0.5em;animation:blink 1s step-end infinite;color:#22c55e;">● LIVE</span>' : ' <span style="font-size:0.45em;color:rgba(255,255,255,0.3);">FT</span>') +
-        '</div>';
-    }
-
-    // Update match card score display
-    var md = matchDay.includes('1') ? 1 : matchDay.includes('2') ? 2 : 3;
-    var scoreEl = document.getElementById('score-md' + md);
-    if (scoreEl && (isDone || isLive)) {
-      scoreEl.innerHTML = scoreHtml;
-      scoreEl.style.display = 'block';
-    }
-  });
-}
-
-function getFlagEmoji(name) {
-  var flags = {'Colombia':'🇨🇴','Portugal':'🇵🇹','DR Congo':'🇨🇩','Congo DR':'🇨🇩','Uzbekistan':'🇺🇿'};
-  return flags[name] || '🏳️';
-}
-
-function showLiveStatus(msg) {
-  var el = document.getElementById('live-status');
-  if (el) el.textContent = msg;
-}
-
-// Fetch on load and every 2 minutes
-fetchLiveData();
-setInterval(fetchLiveData, 120000);
-
-
-
-// ── COLOMBIA MUSIC ENGINE ──
-// Vallenato/Salsa feel using Web Audio API
-// Triggered by user click on music button
-
-var MAC, MMG, MUTED_M = false, MPLAYING = false;
-var mOscs = [], mInts = [];
-
-function startMusic() {
-  if (MPLAYING) return;
-  MPLAYING = true;
-
-  MAC = new (window.AudioContext || window.webkitAudioContext)();
-  MMG = MAC.createGain(); MMG.gain.value = 0.45; MMG.connect(MAC.destination);
-
-  MAC.resume().then(function() {
-
-    // ── helpers ──
-    function N(f,w,d,v,tp,det){
-      try{
-        var o=MAC.createOscillator(),g=MAC.createGain();
-        o.type=tp||'sine'; o.frequency.value=f;
-        if(det) o.detune.value=det;
-        g.gain.setValueAtTime(v,w);
-        g.gain.exponentialRampToValueAtTime(0.0001,w+d);
-        o.connect(g); g.connect(MMG); o.start(w); o.stop(w+d+0.05);
-      }catch(e){}
-    }
-    function NS(w,d,v,lo,hi){
-      try{
-        var len=Math.ceil(MAC.sampleRate*d),buf=MAC.createBuffer(1,len,MAC.sampleRate),da=buf.getChannelData(0);
-        for(var i=0;i<len;i++) da[i]=Math.random()*2-1;
-        var src=MAC.createBufferSource(); src.buffer=buf;
-        var fl=MAC.createBiquadFilter(); fl.type='bandpass'; fl.frequency.value=(lo+hi)/2;
-        var g=MAC.createGain(); g.gain.setValueAtTime(v,w); g.gain.exponentialRampToValueAtTime(0.0001,w+d);
-        src.connect(fl); fl.connect(g); g.connect(MMG); src.start(w); src.stop(w+d+0.05);
-      }catch(e){}
-    }
-
-    // ── Vallenato scale: D major ──
-    // D3=146.83 E3=164.81 F#3=185 G3=196 A3=220 B3=246.94 C#4=277.18 D4=293.66
-    var SCALE = [146.83, 164.81, 185, 196, 220, 246.94, 277.18, 293.66, 329.63, 369.99, 392, 440];
-
-    // ── Accordion-style melody (vallenato feel) ──
-    // Repeating 8-bar phrase in D major
-    var MELODY = [
-      // bar 1
-      [293.66,0.18],[329.63,0.18],[369.99,0.18],[392,0.36],
-      [369.99,0.18],[329.63,0.36],
-      // bar 2
-      [293.66,0.18],[277.18,0.18],[246.94,0.18],[220,0.36],
-      [246.94,0.18],[277.18,0.36],
-      // bar 3
-      [293.66,0.18],[329.63,0.18],[392,0.18],[440,0.36],
-      [392,0.18],[369.99,0.36],
-      // bar 4
-      [329.63,0.18],[293.66,0.18],[277.18,0.18],[246.94,0.54],
-      [220,0.36],
-      // bar 5 - call
-      [440,0.18],[392,0.18],[369.99,0.18],[392,0.36],
-      [440,0.18],[493.88,0.36],
-      // bar 6 - response
-      [440,0.18],[392,0.18],[369.99,0.18],[329.63,0.36],
-      [293.66,0.18],[277.18,0.36],
-      // bar 7
-      [293.66,0.18],[329.63,0.18],[369.99,0.18],[440,0.36],
-      [392,0.18],[369.99,0.18],[329.63,0.18],
-      // bar 8 - resolve
-      [293.66,0.36],[246.94,0.18],[220,0.36],[196,0.18],[146.83,0.54]
-    ];
-
-    var BPM = 130; // vallenato tempo
-    var BEAT = 60/BPM;
-
-    function playMelody(startTime) {
-      var t = startTime;
-      for (var i = 0; i < MELODY.length; i++) {
-        var note = MELODY[i];
-        N(note[0], t, note[1]*0.85, 0.1, 'sawtooth', -10);
-        N(note[0]*2, t+0.01, note[1]*0.7, 0.04, 'sine');
-        t += note[1];
-      }
-      return t;
-    }
-
-    // ── Bass (tumbao pattern) ──
-    var BASS = [
-      [73.42,0.18],[73.42,0.18],[87.31,0.36],  // D2 D2 E2
-      [73.42,0.18],[73.42,0.18],[82.41,0.36],  // D2 D2 E2b
-      [73.42,0.18],[73.42,0.18],[87.31,0.18],[98,0.54], // turnaround
-      [73.42,0.36],[73.42,0.18],[65.41,0.18],[73.42,0.36] // resolve
-    ];
-
-    function playBass(st) {
-      var t = st;
-      for (var i = 0; i < BASS.length; i++) {
-        var b = BASS[i];
-        N(b[0], t, b[1]*0.9, 0.14, 'triangle');
-        t += b[1];
-      }
-    }
-
-    // ── Clave rhythm (2-3 son clave) ──
-    var CLAVE_2 = [0, BEAT*0.75, BEAT*1.5]; // 2 side
-    var CLAVE_3 = [BEAT*2, BEAT*2.5, BEAT*3.25]; // 3 side
-
-    function playClave(st) {
-      var pattern = CLAVE_2.concat(CLAVE_3);
-      for (var i = 0; i < pattern.length; i++) {
-        var t = st + pattern[i];
-        NS(t, 0.04, 0.18, 1800, 3000); // wood block click
-        N(1200, t, 0.03, 0.08, 'sine');
-      }
-    }
-
-    // ── Guiro (scraped gourd sound) ──
-    function playGuiro(st, bars) {
-      for (var bar = 0; bar < bars; bar++) {
-        var bt = st + bar * BEAT * 4;
-        // scrape down
-        for (var i = 0; i < 6; i++) {
-          NS(bt + i*0.05, 0.04, 0.06, 600, 1400);
-        }
-        // scrape up
-        bt += BEAT*2;
-        for (var i = 0; i < 3; i++) {
-          NS(bt + i*0.04, 0.03, 0.04, 800, 1600);
-        }
-      }
-    }
-
-    // ── Congas ──
-    function playCongas(st, bars) {
-      var BEAT4 = BEAT * 4; // one bar
-      for (var bar = 0; bar < bars; bar++) {
-        var b = st + bar * BEAT4;
-        // low tumba
-        NS(b,           0.12, 0.16, 80, 180);
-        N(90, b, 0.15, 0.08, 'sine');
-        // open tone
-        NS(b+BEAT,      0.08, 0.14, 150, 300);
-        N(180, b+BEAT, 0.1, 0.07, 'sine');
-        // slap
-        NS(b+BEAT*1.5,  0.05, 0.12, 200, 500);
-        // open tone
-        NS(b+BEAT*2,    0.08, 0.13, 150, 300);
-        // tumba
-        NS(b+BEAT*3,    0.1, 0.15, 80, 180);
-        N(90, b+BEAT*3, 0.12, 0.07, 'sine');
-        // slap
-        NS(b+BEAT*3.5,  0.05, 0.1, 200, 500);
-      }
-    }
-
-    // ── Brass stab (salsa horn) ──
-    function playHorns(st) {
-      // D major chord stab
-      var CHORD = [293.66, 369.99, 440, 587.33];
-      var STABS = [0, BEAT*4, BEAT*8, BEAT*12];
-      for (var s = 0; s < STABS.length; s++) {
-        var t = st + STABS[s];
-        for (var i = 0; i < CHORD.length; i++) {
-          N(CHORD[i], t, 0.22, 0.055, 'sawtooth', i*8);
-        }
-        // staccato cut
-        for (var i = 0; i < CHORD.length; i++) {
-          N(CHORD[i]*2, t+0.08, 0.12, 0.02, 'sine');
-        }
-      }
-    }
-
-    // ── Schedule one full loop ──
-    var BARS = 8;
-    var BAR_DUR = BEAT * 4;
-    var LOOP_DUR = BARS * BAR_DUR;
-
-    function scheduleLoop(st) {
-      var melEnd = playMelody(st);
-      // bass loops every 2 bars
-      for (var b = 0; b < BARS; b += 2) {
-        playBass(st + b * BAR_DUR);
-      }
-      // clave every bar
-      for (var b = 0; b < BARS; b++) {
-        playClave(st + b * BAR_DUR);
-      }
-      // guiro
-      playGuiro(st, BARS);
-      // congas
-      playCongas(st, BARS);
-      // horns every 4 bars
-      playHorns(st);
-      playHorns(st + 4 * BAR_DUR);
-      return st + LOOP_DUR;
-    }
-
-    // Start first loop immediately, queue next
-    var loopStart = MAC.currentTime + 0.1;
-    scheduleLoop(loopStart);
-
-    // Keep looping
-    var loopTimer = setInterval(function() {
-      if (MUTED_M || !MAC) return;
-      loopStart += LOOP_DUR;
-      scheduleLoop(loopStart);
-    }, LOOP_DUR * 1000 - 200);
-
-    mInts.push(loopTimer);
-  });
-}
-
-function toggleMusic() {
-  var btn = document.getElementById('music-btn');
-  if (!MPLAYING) {
-    startMusic();
-    btn.textContent = 'PAUSE MUSIC';
-    btn.style.background = 'linear-gradient(135deg,#003087,#001a4d)';
-    btn.style.borderColor = '#003087';
-  } else {
-    MUTED_M = !MUTED_M;
-    if (MMG) MMG.gain.value = MUTED_M ? 0 : 0.45;
-    btn.textContent = MUTED_M ? 'PLAY MUSIC' : 'PAUSE MUSIC';
-  }
-}
-
-// ── MUSIC SYNTH ──
-var MAC = null, MMG = null, mIntervals = [], mOscs = [], vizInterval = null;
-
-function getMAC() {
-  if (!MAC) {
-    MAC = new (window.AudioContext || window.webkitAudioContext)();
-    MMG = MAC.createGain(); MMG.gain.value = 0.5; MMG.connect(MAC.destination);
-  }
-  return MAC;
-}
-
-function stopSynth() {
-  mIntervals.forEach(function(id){ clearInterval(id); });
-  mIntervals = [];
-  mOscs.forEach(function(o){ try{ o.stop(); }catch(e){} });
-  mOscs = [];
-  if(vizInterval){ clearInterval(vizInterval); vizInterval=null; }
-  document.querySelectorAll('.viz-bar').forEach(function(b){ b.style.height='8px'; });
-}
-
-function mNote(freq, when, dur, vol, type) {
-  try {
-    var ac=getMAC(), o=ac.createOscillator(), g=ac.createGain();
-    o.type=type||'sine'; o.frequency.value=freq;
-    g.gain.setValueAtTime(vol, when); g.gain.exponentialRampToValueAtTime(0.0001, when+dur);
-    o.connect(g); g.connect(MMG); o.start(when); o.stop(when+dur+0.05);
-  } catch(e){}
-}
-
-function mNoise(when, dur, vol, lo, hi) {
-  try {
-    var ac=getMAC();
-    var len=Math.ceil(ac.sampleRate*dur), buf=ac.createBuffer(1,len,ac.sampleRate), da=buf.getChannelData(0);
-    for(var i=0;i<len;i++) da[i]=Math.random()*2-1;
-    var src=ac.createBufferSource(); src.buffer=buf;
-    var flt=ac.createBiquadFilter(); flt.type='bandpass'; flt.frequency.value=(lo+hi)/2;
-    var g=ac.createGain(); g.gain.setValueAtTime(vol,when); g.gain.exponentialRampToValueAtTime(0.0001,when+dur);
-    src.connect(flt); flt.connect(g); g.connect(MMG); src.start(when); src.stop(when+dur+0.05);
-  } catch(e){}
-}
-
-function startViz() {
-  vizInterval = setInterval(function(){
-    document.querySelectorAll('.viz-bar').forEach(function(b){
-      b.style.height = (6 + Math.random()*26) + 'px';
-    });
-  }, 120);
-}
-
-function startSynth(mode) {
-  stopSynth();
-  var ac = getMAC();
-  ac.resume().then(function(){
-    startViz();
-    if (mode === 'vallenato') playVallenato();
-    else playSalsa();
-  });
-}
-
-function playVallenato() {
-  var ac = getMAC();
-  // Vallenato: accordion-like melody in D major + caja drum pattern
-  // Scale: D E F# G A B C# D (D major)
-  var SCALE = [146.83, 164.81, 185.00, 196.00, 220.00, 246.94, 277.18, 293.66];
-  var MELODY = [4,4,5,4,3,2,0,0, 4,4,5,6,5,4,3,3];
-  var step = 0;
-  var bpm = 132;
-  var beat = 60/bpm;
-
-  // Drone bass
-  var bass = ac.createOscillator(), bassG = ac.createGain();
-  bass.type='sawtooth'; bass.frequency.value=73.42; bassG.gain.value=0.06;
-  bass.connect(bassG); bassG.connect(MMG); bass.start(); mOscs.push(bass);
-
-  // Melody (accordion feel - square wave)
-  var melId = setInterval(function(){
-    if(!MAC) return;
-    var t = MAC.currentTime;
-    var freq = SCALE[MELODY[step % MELODY.length]];
-    mNote(freq, t, beat*0.7, 0.12, 'square');
-    mNote(freq*2, t+0.02, beat*0.5, 0.04, 'sine');
-    step++;
-  }, beat*1000);
-  mIntervals.push(melId);
-
-  // Caja drum (low thump)
-  var drumStep = 0;
-  // Vallenato caja pattern: 1 . . 1 . 1 . .
-  var cajaPattern = [1,0,0,1,0,1,0,0];
-  var cajaId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    if(cajaPattern[drumStep % cajaPattern.length]) {
-      mNoise(t, 0.08, 0.18, 80, 200);
-      mNote(90, t, 0.12, 0.14, 'sine');
-    }
-    drumStep++;
-  }, beat*500);
-  mIntervals.push(cajaId);
-
-  // Guacharaca (scraper - high ticking)
-  var guaStep = 0;
-  var guaId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    mNoise(t, 0.03, 0.06, 3000, 8000);
-    guaStep++;
-  }, beat*250);
-  mIntervals.push(guaId);
-
-  // Walking bass line
-  var bassSeq = [73.42, 82.41, 92.50, 73.42, 65.41, 73.42, 82.41, 73.42];
-  var bassStep2 = 0;
-  var bassId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    mNote(bassSeq[bassStep2 % bassSeq.length], t, beat*0.8, 0.1, 'triangle');
-    bassStep2++;
-  }, beat*500);
-  mIntervals.push(bassId);
-}
-
-function playSalsa() {
-  var ac = getMAC();
-  // Salsa: clave pattern + timbales + bass + piano montuno
-  var bpm = 180;
-  var beat = 60/bpm;
-
-  // Bass drone
-  var bass = ac.createOscillator(), bassG = ac.createGain();
-  bass.type='sawtooth'; bass.frequency.value=73.42; bassG.gain.value=0.05;
-  bass.connect(bassG); bassG.connect(MMG); bass.start(); mOscs.push(bass);
-
-  // 3-2 Clave pattern (6 steps in 2 bars of 4/4)
-  var claveHits = [1,0,0,1,0,0,1,0,1,0,1,0,0,0,0,0];
-  var claveStep = 0;
-  var claveId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    if(claveHits[claveStep % claveHits.length]) {
-      mNoise(t, 0.04, 0.12, 2000, 5000);
-      mNote(1200, t, 0.04, 0.08, 'square');
-    }
-    claveStep++;
-  }, beat*250);
-  mIntervals.push(claveId);
-
-  // Timbale rim shots on 2 and 4
-  var timStep = 0;
-  var timPat = [0,0,1,0,0,0,1,0];
-  var timId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    if(timPat[timStep % timPat.length]) {
-      mNoise(t, 0.05, 0.2, 800, 3000);
-    }
-    timStep++;
-  }, beat*250);
-  mIntervals.push(timId);
-
-  // Kick on beat 1
-  var kickStep = 0;
-  var kickPat = [1,0,0,1,0,0,0,0];
-  var kickId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    if(kickPat[kickStep % kickPat.length]) {
-      mNoise(t, 0.08, 0.2, 40, 120);
-      mNote(80, t, 0.1, 0.15, 'sine');
-    }
-    kickStep++;
-  }, beat*250);
-  mIntervals.push(kickId);
-
-  // Piano montuno (Am - Dm - E7 - Am)
-  var MONTUNO = [
-    [220.00, 261.63, 329.63],  // Am
-    [174.61, 220.00, 293.66],  // Dm
-    [164.81, 207.65, 329.63],  // E7
-    [220.00, 261.63, 329.63],  // Am
-  ];
-  var pianoStep = 0;
-  var pianoId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    var chord = MONTUNO[Math.floor(pianoStep/2) % MONTUNO.length];
-    chord.forEach(function(freq){
-      mNote(freq, t, beat*0.4, 0.06, 'triangle');
-      mNote(freq*2, t+beat*0.5, beat*0.35, 0.04, 'triangle');
-    });
-    pianoStep++;
-  }, beat*1000);
-  mIntervals.push(pianoId);
-
-  // Bass line
-  var bassNotes = [110, 110, 123.47, 130.81, 110, 98, 110, 110];
-  var bassStep2 = 0;
-  var bassId2 = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    mNote(bassNotes[bassStep2 % bassNotes.length], t, beat*0.7, 0.12, 'sawtooth');
-    bassStep2++;
-  }, beat*500);
-  mIntervals.push(bassId2);
-
-  // Cowbell
-  var cowStep = 0;
-  var cowPat = [1,0,1,0,1,0,1,0,1,0,1,1,0,1,0,0];
-  var cowId = setInterval(function(){
-    if(!MAC) return;
-    var t=MAC.currentTime;
-    if(cowPat[cowStep % cowPat.length]) {
-      mNote(800, t, 0.04, 0.07, 'square');
-      mNoise(t, 0.03, 0.05, 600, 1200);
-    }
-    cowStep++;
-  }, beat*250);
-  mIntervals.push(cowId);
-}
-
-
-// Unmute YouTube player
-function unmuteYT() {
-  var iframe = document.getElementById('yt-vallenato');
-  if (iframe) {
-    // Replace src without mute=1
-    iframe.src = iframe.src.replace('mute=1','mute=0');
-    var bar = document.getElementById('unmute-bar');
-    if (bar) bar.style.display = 'none';
-  }
-}
-
-
-// Entry splash + autoplay
-(function(){
-  // stars on splash
-  var sb = document.getElementById('es-stars');
-  if(sb){for(var i=0;i<60;i++){var s=document.createElement('div');s.className='star';s.style.cssText='left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+(Math.random()*2+0.5)+'px;height:'+(Math.random()*2+0.5)+'px;animation-delay:'+Math.random()*4+'s;animation-duration:'+(1.5+Math.random()*3)+'s';sb.appendChild(s);}}
-
-  
-
-// ── LIVE SCORES & STANDINGS ──────────────────────────────────────
-// Uses openfootball open data (no API key needed) + fallback to ESPN
-var GROUP_K_TEAMS = ['Colombia','Portugal','DR Congo','Uzbekistan'];
-var FLAGS = {'Colombia':'🇨🇴','Portugal':'🇵🇹','DR Congo':'🇨🇩','Uzbekistan':'🇺🇿'};
-var TEAM_NORM = {
-  'Colombia':'Colombia','colombia':'Colombia',
-  'Portugal':'Portugal','portugal':'Portugal',
-  'DR Congo':'DR Congo','dr congo':'DR Congo','Congo DR':'DR Congo',
-  'Uzbekistan':'Uzbekistan','uzbekistan':'Uzbekistan'
-};
-
-function normTeam(name) {
-  if (!name) return name;
-  return TEAM_NORM[name] || TEAM_NORM[name.toLowerCase()] || name;
-}
-
-function fetchLiveData() {
-  // Try openfootball GitHub raw JSON - free, no key
-  var url = 'https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json';
-  fetch(url)
-    .then(function(r){ return r.json(); })
-    .then(function(data){ processMatches(data); })
-    .catch(function(){ showOffline(); });
-}
-
-function processMatches(data) {
-  var matches = data.matches || [];
-  var groupK = [];
-  var live = [];
-  var recent = [];
-  var now = new Date();
-
-  // Standings tracker
-  var standings = {};
-  GROUP_K_TEAMS.forEach(function(t){ standings[t]={p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0}; });
-
-  matches.forEach(function(m) {
-    var t1 = normTeam(m.team1); var t2 = normTeam(m.team2);
-    var isK = GROUP_K_TEAMS.indexOf(t1)>=0 || GROUP_K_TEAMS.indexOf(t2)>=0;
-    if (!isK) return;
-
-    groupK.push(m);
-    var mDate = new Date(m.date + 'T' + (m.time||'00:00') + ':00');
-    var diff = now - mDate;
-    var isFinished = m.score && m.score.ft;
-    var isLive = !isFinished && diff > 0 && diff < 120*60*1000;
-    var isUpcoming = !isFinished && !isLive;
-
-    if (isLive) live.push(m);
-    else if (isFinished) recent.push(m);
-
-    // Update standings if finished
-    if (isFinished && standings[t1] && standings[t2]) {
-      var g1 = m.score.ft[0], g2 = m.score.ft[1];
-      standings[t1].p++; standings[t2].p++;
-      standings[t1].gf+=g1; standings[t1].ga+=g2;
-      standings[t2].gf+=g2; standings[t2].ga+=g1;
-      if(g1>g2){standings[t1].w++;standings[t1].pts+=3;standings[t2].l++;}
-      else if(g2>g1){standings[t2].w++;standings[t2].pts+=3;standings[t1].l++;}
-      else{standings[t1].d++;standings[t1].pts++;standings[t2].d++;standings[t2].pts++;}
-    }
-  });
-
-  // Render live matches
-  var toShow = live.concat(recent.slice(-3));
-  renderMatches(toShow, live.length > 0);
-
-  // Render standings
-  renderStandings(standings);
-
-  // Status
-  var dot = document.getElementById('live-dot');
-  var status = document.getElementById('live-status');
-  var updated = document.getElementById('live-updated');
-  if (live.length > 0) {
-    dot.style.background = '#ff2222';
-    dot.style.animation = 'livepulse 1s ease-in-out infinite';
-    status.textContent = live.length + ' MATCH' + (live.length>1?'ES':'') + ' LIVE NOW';
-    status.style.color = '#ff6666';
-  } else if (recent.length > 0) {
-    dot.style.background = '#22cc44';
-    status.textContent = 'LIVE DATA · ' + recent.length + ' GROUP K MATCHES PLAYED';
-    status.style.color = 'rgba(255,255,255,0.5)';
-  } else {
-    dot.style.background = '#ffdd44';
-    status.textContent = 'LIVE DATA CONNECTED · TOURNAMENT STARTS JUN 11';
-    status.style.color = 'rgba(255,255,255,0.4)';
-  }
-  updated.textContent = 'UPDATED ' + new Date().toLocaleTimeString();
-}
-
-function renderMatches(matches, hasLive) {
-  var el = document.getElementById('live-matches');
-  if (!matches.length) {
-    el.innerHTML = '<div style="font-family:\'Courier New\',monospace;font-size:0.72rem;color:rgba(255,255,255,0.25);letter-spacing:2px;padding:20px 0;">NO GROUP K MATCHES PLAYED YET · FIRST MATCH JUN 17</div>';
-    return;
-  }
-  var html = '';
-  matches.forEach(function(m) {
-    var t1 = normTeam(m.team1); var t2 = normTeam(m.team2);
-    var isCol = t1==='Colombia'||t2==='Colombia';
-    var isFinished = m.score && m.score.ft;
-    var mDate = new Date(m.date + 'T' + (m.time||'00:00') + ':00');
-    var diff = new Date() - mDate;
-    var isLive = !isFinished && diff > 0 && diff < 120*60*1000;
-    var score = isFinished ? m.score.ft[0]+' — '+m.score.ft[1] : isLive ? '⚽ LIVE' : '--';
-    var badge = isLive ? '<span class="lm-badge badge-live">LIVE</span>' : isFinished ? '<span class="lm-badge badge-ft">FT</span>' : '<span class="lm-badge badge-ns">UPCOMING</span>';
-    html += '<div class="live-match'+(isLive?' is-live':'')+(isCol?' col-match':'')+'">';
-    html += '<div class="lm-top">';
-    html += '<div class="lm-teams">'+(FLAGS[t1]||'')+'&nbsp;'+t1+' <span style="color:rgba(255,255,255,0.3)">vs</span> '+t2+'&nbsp;'+(FLAGS[t2]||'')+'</div>';
-    html += '<div class="lm-score'+(isLive?' is-live':'')+'">'+score+'</div>';
-    html += badge;
-    html += '</div>';
-    html += '<div class="lm-meta"><span>'+m.date+'</span><span>'+(m.group||'Group K')+'</span>'+(m.ground?'<span>📍 '+m.ground+'</span>':'')+'</div>';
-    html += '</div>';
-  });
-  el.innerHTML = html;
-}
-
-function renderStandings(standings) {
-  // Sort by pts desc, then GD, then GF
-  var sorted = GROUP_K_TEAMS.slice().sort(function(a,b){
-    var pa=standings[a],pb=standings[b];
-    if(pb.pts!==pa.pts)return pb.pts-pa.pts;
-    var gda=pa.gf-pa.ga, gdb=pb.gf-pb.ga;
-    if(gdb!==gda)return gdb-gda;
-    return pb.gf-pa.gf;
-  });
-  var body = document.getElementById('live-standings-body');
-  if(!body)return;
-  body.innerHTML = sorted.map(function(t,i){
-    var s=standings[t];
-    var isCol=t==='Colombia';
-    var qualify=i<2;
-    return '<tr'+(isCol?' class="col-row"':'')+'>'+
-      '<td class="pos'+(qualify?' q':'')+'>'+(i+1)+'</td>'+
-      '<td>'+(FLAGS[t]||'')+' '+t+'</td>'+
-      '<td>'+s.p+'</td><td>'+s.w+'</td><td>'+s.d+'</td><td>'+s.l+'</td>'+
-      '<td>'+(s.gf-s.ga>=0?'+':'')+(s.gf-s.ga)+'</td>'+
-      '<td class="pts">'+s.pts+'</td>'+
-    '</tr>';
-  }).join('');
-}
-
-function showOffline() {
-  var dot = document.getElementById('live-dot');
-  var status = document.getElementById('live-status');
-  dot.style.background = '#888';
-  status.textContent = 'LIVE DATA UNAVAILABLE · CHECK CONNECTION';
-}
-
-// Fetch on load, then every 60 seconds
-fetchLiveData();
-setInterval(fetchLiveData, 60000);
-
-
+function playVal(){var ac=getAC(),SCALE=[146.83,164.81,185,196,220,246.94,277.18,293.66],MEL=[4,4,5,4,3,2,0,0,4,4,5,6,5,4,3,3],step=0,bpm=132,beat=60/bpm;var dr=ac.createOscillator(),drg=ac.createGain();dr.type='sawtooth';dr.frequency.value=73.42;drg.gain.value=0.05;dr.connect(drg);drg.connect(MMG);dr.start();mOscs.push(dr);mInts.push(setInterval(function(){var t=ac.currentTime,f=SCALE[MEL[step++%MEL.length]];mN(f,t,0.35,0.11,'square');mN(f*2,t+0.02,0.25,0.03,'sine');},beat*1000));var cp=[1,0,0,1,0,1,0,0],cs=0;mInts.push(setInterval(function(){var t=ac.currentTime;if(cp[cs++%cp.length]){mZ(t,0.08,0.16,80,200);mN(90,t,0.1,0.12,'sine');}},beat*500));mInts.push(setInterval(function(){mZ(ac.currentTime,0.03,0.05,3000,8000);},beat*250));var bq=[73.42,82.41,92.5,73.42,65.41,73.42,82.41,73.42],bs=0;mInts.push(setInterval(function(){mN(bq[bs++%bq.length],ac.currentTime,beat*0.8,0.09,'triangle');},beat*500));}
+function playSalsa(){var ac=getAC(),bpm=180,beat=60/bpm;var dr=ac.createOscillator(),drg=ac.createGain();dr.type='sawtooth';dr.frequency.value=73.42;drg.gain.value=0.04;dr.connect(drg);drg.connect(MMG);dr.start();mOscs.push(dr);var clave=[1,0,0,1,0,0,1,0,1,0,1,0,0,0,0,0],cs=0;mInts.push(setInterval(function(){var t=ac.currentTime;if(clave[cs++%clave.length]){mZ(t,0.04,0.1,2000,5000);mN(1200,t,0.03,0.07,'square');}},beat*250));var tp=[0,0,1,0,0,0,1,0],ts=0;mInts.push(setInterval(function(){if(tp[ts++%tp.length])mZ(ac.currentTime,0.05,0.18,800,3000);},beat*250));var kp=[1,0,0,1,0,0,0,0],ks=0;mInts.push(setInterval(function(){var t=ac.currentTime;if(kp[ks++%kp.length]){mZ(t,0.08,0.18,40,120);mN(80,t,0.1,0.13,'sine');}},beat*250));var MONT=[[220,261.63,329.63],[174.61,220,293.66],[164.81,207.65,329.63],[220,261.63,329.63]],ms=0;mInts.push(setInterval(function(){var t=ac.currentTime,ch=MONT[Math.floor(ms++/2)%MONT.length];ch.forEach(function(f){mN(f,t,beat*0.4,0.05,'triangle');mN(f*2,t+beat*0.5,beat*0.3,0.03,'triangle');});},beat*1000));var bq=[110,110,123.47,130.81,110,98,110,110],bs=0;mInts.push(setInterval(function(){mN(bq[bs++%bq.length],ac.currentTime,beat*0.7,0.1,'sawtooth');},beat*500));var cow=[1,0,1,0,1,0,1,0,1,0,1,1,0,1,0,0],cowS=0;mInts.push(setInterval(function(){var t=ac.currentTime;if(cow[cowS++%cow.length]){mN(800,t,0.04,0.06,'square');mZ(t,0.03,0.04,600,1200);}},beat*250));}
 </script>
+</body>
+</html>
